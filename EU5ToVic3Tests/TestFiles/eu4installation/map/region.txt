@@ -1,6 +1,0 @@
-land_region = { 
-	areas = { land_area } 
-}
-sea_region = { 
-	areas = { sea_area } 
-}

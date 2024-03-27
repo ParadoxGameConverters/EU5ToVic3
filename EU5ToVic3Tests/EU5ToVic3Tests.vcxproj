@@ -72,216 +72,7 @@
     <ClCompile Include="..\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="ConfigurationTests\ConfigurationTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryArmyTests\EU4ArmyTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryArmyTests\EU4RegimentTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryGovernmentTests\EU4GovernmentSectionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryGovernmentTests\EU4ReformStackSectionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryHistoryTests\CountryHistoryDateTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryHistoryTests\CountryHistoryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryLeaderTests\EU4LeaderIDTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryLeaderTests\EU4LeaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryRelationsTests\EU4RelationDetailsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\CountryRelationsTests\EU4RelationsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4ActiveIdeasTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4ActivePolicyTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4CountryFlagsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4CountryManagerTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4CountryModifierTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4CountryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU4TechnologyTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\NationalSymbolTests\EU4CustomColorsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CountryManagerTests\NationalSymbolTests\EU4NationalSymbolTests.cpp" />
-    <ClCompile Include="EU5WorldTests\DiplomacyParserTests\EU4AgreementTests.cpp" />
-    <ClCompile Include="EU5WorldTests\DiplomacyParserTests\DiplomacyParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\EmpireParser\EmpireParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\BuildingCostLoaderTests\BuildingCostLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\BuildingCostLoaderTests\BuildingCostTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\ColonialRegionLoaderTests\ColonialRegionLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\ColonialRegionLoaderTests\ColonialRegionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests\CommonCountryLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\CultureLoaderTests\CultureGroupParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\CultureLoaderTests\CultureLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\CultureLoaderTests\CultureParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\DefaultMapParserTests\DefaultMapParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\DefinitionScraperTests\DefinitionScraperTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\LocalizationLoaderTests\EU4LocalizationTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\ReligionLoaderTests\ReligionEntryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\ReligionLoaderTests\ReligionLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\ReligionLoaderTests\ReligionParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\TradeCompanyLoaderTests\TradeCompanyEntryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\TradeCompanyLoaderTests\TradeCompanyLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\UnitTypeLoaderTests\UnitTypeLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\UnitTypeLoaderTests\UnitTypeParserTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\DateItemsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU4ProvinceTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\PopRatioTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceBuildingsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceHistoryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp" />
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp" />
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionManagerTests.cpp" />
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\SuperRegionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\WarParserTests\WarDetailsTests.cpp" />
-    <ClCompile Include="EU5WorldTests\WarParserTests\WarParserTests.cpp" />
-    <ClCompile Include="MapperTests\AISecretGoalMapperTests\AISecretGoalMapperTests.cpp" />
-    <ClCompile Include="MapperTests\AISecretGoalMapperTests\AISecretGoalMappingTests.cpp" />
-    <ClCompile Include="MapperTests\AIStrategyMapperTests\AIStrategyMapperTests.cpp" />
-    <ClCompile Include="MapperTests\AIStrategyMapperTests\AIStrategyMappingTests.cpp" />
-    <ClCompile Include="MapperTests\BuildingMapperTests\ProductionMethodEntryTests.cpp" />
-    <ClCompile Include="MapperTests\BuildingMapperTests\ProductionMethodMapperTests.cpp" />
-    <ClCompile Include="MapperTests\BuildingMapperTests\ProductionMethodMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CharacterTraitMapperTests\AssignmentMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CharacterTraitMapperTests\CharacterTraitMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CharacterTraitMapperTests\SkillMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CoastalMapperTests\CoastalMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ColonialRegionMapperTests\ColonialRegionMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ColonialRegionMapperTests\ColonialRegionMappingTests.cpp" />
-    <ClCompile Include="MapperTests\ColonialTagMapperTests\ColonialTagMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ColonialTagMapperTests\ColonialTagMappingTests.cpp" />
-    <ClCompile Include="MapperTests\BuildingMapperTests\BuildingMapperTests.cpp" />
-    <ClCompile Include="MapperTests\BuildingMapperTests\BuildingMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CountryMapperTests\CountryMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CountryMapperTests\CountryMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CountryTierMapperTests\CountryTierMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CountryTierMapperTests\CountryTierMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureDefinitionLoaderTests\CultureDefinitionEntryTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureDefinitionLoaderTests\CultureDefinitionLoaderTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureMappingRuleTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureTraitMapperTests\CultureTraitMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\CultureTraitMapperTests\CultureTraitMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\NameListLoaderTests\NameListEntryTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\NameListLoaderTests\NameListLoaderTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\NameListMapperTests\NameListMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\NameListMapperTests\NameListMappingTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\TraitDefinitionLoaderTests\TraitDefinitionEntryTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\TraitDefinitionLoaderTests\TraitDefinitionLoaderTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\WesternizationMapperTests\WesternizationMapperTests.cpp" />
-    <ClCompile Include="MapperTests\CultureMapperTests\WesternizationMapperTests\WesternizationMappingTests.cpp" />
-    <ClCompile Include="MapperTests\DiplomaticMapperTests\DiplomaticMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ExcludedTradeCompaniesMapperTests\ExcludedTradeCompaniesMapperTests.cpp" />
-    <ClCompile Include="MapperTests\IdeaEffectsMapperTests\IdeaEffectsMapperTests.cpp" />
-    <ClCompile Include="MapperTests\IdeaEffectsMapperTests\IdeaEffectsMappingTests.cpp" />
-    <ClCompile Include="MapperTests\IGIdeologiesMapperTests\IGIdeologiesMapperTests.cpp" />
-    <ClCompile Include="MapperTests\IGIdeologiesMapperTests\IGIdeologiesMappingTests.cpp" />
-    <ClCompile Include="MapperTests\LawMapperTests\LawGroupTests.cpp" />
-    <ClCompile Include="MapperTests\LawMapperTests\LawMapperTests.cpp" />
-    <ClCompile Include="MapperTests\LawMapperTests\LawMappingTests.cpp" />
-    <ClCompile Include="MapperTests\MinorityPopMapperTests\MinorityPopMapperTests.cpp" />
-    <ClCompile Include="MapperTests\MinorityPopMapperTests\MinorityPopTests.cpp" />
-    <ClCompile Include="MapperTests\NationMergeMapperTests\MergeBlocksTests.cpp" />
-    <ClCompile Include="MapperTests\NationMergeMapperTests\NationMergeMapperTests.cpp" />
-    <ClCompile Include="MapperTests\PopulationSetupMapperTests\PopulationSetupMapperTests.cpp" />
-    <ClCompile Include="MapperTests\PopulationSetupMapperTests\PopulationSetupMappingTests.cpp" />
-    <ClCompile Include="MapperTests\ProvinceMapperTests\ProvinceMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ProvinceMapperTests\ProvinceMappingsVersionTests.cpp" />
-    <ClCompile Include="MapperTests\ProvinceMapperTests\ProvinceMappingTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionDefinitionLoaderTests\ReligionDefinitionEntryTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionDefinitionLoaderTests\ReligionDefinitionLoaderTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionGroupMapperTests\ReligionGroupMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionGroupMapperTests\ReligionGroupMappingTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionMapperTests.cpp" />
-    <ClCompile Include="MapperTests\ReligionMapperTests\ReligionMappingTests.cpp" />
-    <ClCompile Include="MapperTests\SlaveCultureMapperTests\SlaveCultureMapperTests.cpp" />
-    <ClCompile Include="MapperTests\SlaveCultureMapperTests\SlaveCultureMappingTests.cpp" />
-    <ClCompile Include="MapperTests\SuperGroupMapperTests\AssimilationParserTests.cpp" />
-    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupMapperTests.cpp" />
-    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperRegionParserTests.cpp" />
-    <ClCompile Include="MapperTests\TechSetupMapperTests\TechSetupMapperTests.cpp" />
-    <ClCompile Include="MapperTests\TechSetupMapperTests\TechSetupMappingTests.cpp" />
-    <ClCompile Include="MapperTests\VNColonialMapper\VNColonialMapperTests.cpp" />
-    <ClCompile Include="MapperTests\VNColonialMapper\VNColonialMappingTests.cpp" />
-    <ClCompile Include="V3WorldTests\ClayManagerTests\ClayManagerTests.cpp" />
-    <ClCompile Include="V3WorldTests\ClayManagerTests\StateTests\ChunkTests.cpp" />
-    <ClCompile Include="V3WorldTests\ClayManagerTests\StateTests\StateModifierTests.cpp" />
-    <ClCompile Include="V3WorldTests\ClayManagerTests\StateTests\StateTests.cpp" />
-    <ClCompile Include="V3WorldTests\ClayManagerTests\StateTests\SubStateTests.cpp" />
-    <ClCompile Include="V3WorldTests\FlagCrafterTests\FlagColorLoaderTests\FlagColorLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\FlagCrafterTests\FlagCrafterTests.cpp" />
-    <ClCompile Include="V3WorldTests\FlagCrafterTests\FlagNameLoaderTests\FlagNameLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\BuildingTests\BuildingGroupsTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\BuildingTests\BuildingTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\BuildingTests\ProductionMethodGroupTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\BuildingTests\ProductionMethodTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\EconomyManagerTests.cpp" />
-    <ClCompile Include="V3WorldTests\EconomyManagerTests\NationalBudgetTests\SectorTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\BuildingLoaderTests\BuildingGroupLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\BuildingLoaderTests\BuildingLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\BuildingLoaderTests\ProductionMethodGroupLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\BuildingLoaderTests\ProductionMethodLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\CountryDefinitionLoaderTests\CountryDefinitionLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\LawLoaderTests\LawEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\LawLoaderTests\LawLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\DefinesLoaderTests\BuildingScriptValuesLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\DefinesLoaderTests\EconDefniesLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\LocLoaderTests\LocalizationLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\MajorFormablesLoaderTests\MajorFormablesEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\MajorFormablesLoaderTests\MajorFormablesLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\NationalBudgetLoaderTests\MathScriptTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\NationalBudgetLoaderTests\NationalBudgetLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\NationalBudgetLoaderTests\SectorLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\PopLoaderTests\PopEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\PopLoaderTests\PopLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\PopLoaderTests\StateEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\PopLoaderTests\SubStateEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\PopLoaderTests\SubStatePopEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\StateLoaderTests\StateLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\StateModifierLoaderTests\StateModifierLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\SuperRegionLoaderTests\SuperRegionLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\SuperRegionLoaderTests\V3RegionTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\SuperRegionLoaderTests\V3SuperRegionTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\TechLoaderTests\TechEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\TechLoaderTests\TechLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\TerrainLoaderTests\TerrainLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\TerrainLoaderTests\TerrainModifierLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaBuildingLoaderTests\VanillaBuildingEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaBuildingLoaderTests\VanillaBuildingLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaCharacterLoaderTests\VanillaCharacterEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaCharacterLoaderTests\VanillaCharacterLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaCountryHistoryLoaderTests\VanillaCountryHistoryLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaCountryHistoryLoaderTests\VanillaCountryHistoryEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomacyLoaderTests\VanillaAgreementEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomacyLoaderTests\VanillaDiplomacyEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomacyLoaderTests\VanillaDiplomacyLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomacyLoaderTests\VanillaRelationEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomacyLoaderTests\VanillaTruceEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomaticPlayLoaderTests\VanillaDiplomaticPlayEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaDiplomaticPlayLoaderTests\VanillaDiplomaticPlayLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaPopulationHistoryLoaderTests\VanillaPopulationHistoryLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaStateLoaderTests\VanillaStateEntriesTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaStateLoaderTests\VanillaStateEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaStateLoaderTests\VanillaStateLoaderTests.cpp" />
-    <ClCompile Include="V3WorldTests\LoaderTests\VanillaStateLoaderTests\VanillaSubStateEntryTests.cpp" />
-    <ClCompile Include="V3WorldTests\PoliticalManagerTests\CountryTests\CountryTests.cpp" />
-    <ClCompile Include="V3WorldTests\PoliticalManagerTests\PoliticalManagerTests.cpp" />
-    <ClCompile Include="V3WorldTests\PoliticalManagerTests\TechValuesTests\TechValuesTests.cpp" />
-    <ClCompile Include="V3WorldTests\PopManagerTests\PopManagerTests.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\eu4">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\countries\Aaacountry.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/countries</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\countries\Bbbcountry.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/countries</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\country_tags\00_countries.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/country_tags</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\positions.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\mod\themod.mod">
@@ -303,12 +94,6 @@
     <CopyFileToFolders Include="TestFiles\vic3installation\binaries\victoria3">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/vic3installation/binaries</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\launcher-settings.json">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -368,29 +153,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\default.map">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\definition.csv">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\area.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\region.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\eu4installation\map\superregion.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/map</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="TestFiles\vic3installation\game\map_data\state_regions\chunks_region.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/vic3installation/game/map_data/state_regions</DestinationFolders>
     </CopyFileToFolders>
@@ -409,11 +171,6 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\configurables\country_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/configurables</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\religions\00_religion.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/religions</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -440,11 +197,6 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\configurables\culture_map.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/configurables</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\cultures\00_cultures.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/cultures</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -548,11 +300,6 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\configurables\blankMod\output\common\coat_of_arms\coat_of_arms\99_flags.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/configurables/blankMod/output/common/coat_of_arms/coat_of_arms</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\custom_country_colors\00_custom_country_colors.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/custom_country_colors</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -694,11 +441,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu4installation\common\trade_companies\00_trade_companies.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu4installation/common/trade_companies</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="TestFiles\configurables\economy\production_method_rules.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/configurables/economy</DestinationFolders>
     </CopyFileToFolders>
@@ -719,6 +461,21 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\vic3installation\game\common\discrimination_traits\02_cultural_descriptive.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/vic3installation/game/common/discrimination_traits/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\eu5installation\eu5">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\eu5installation\launcher-settings.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\eu5installation\map\positions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation/map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

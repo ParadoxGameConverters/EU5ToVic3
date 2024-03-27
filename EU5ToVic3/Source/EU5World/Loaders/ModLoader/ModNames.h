@@ -1,8 +1,8 @@
-#ifndef EU4_MODNAMES_H
-#define EU4_MODNAMES_H
+#ifndef EU5_MODNAMES_H
+#define EU5_MODNAMES_H
 #include "ConvenientParser.h"
 
-namespace EU4
+namespace EU5
 {
 class ModNames: commonItems::convenientParser
 {
@@ -18,6 +18,6 @@ class ModNames: commonItems::convenientParser
 	std::string name;
 	std::string path;
 };
-} // namespace EU4
+} // namespace EU5
 
-#endif // EU4_MODNAMES_H
+#endif // EU5_MODNAMES_H

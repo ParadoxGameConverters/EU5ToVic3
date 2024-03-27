@@ -12,7 +12,7 @@ void convertEU4ToVic3(commonItems::ConverterVersion&& converterVersion)
 	Log(LogLevel::Info) << "<> Configuration imported.";
 	Log(LogLevel::Progress) << "4 %";
 
-	const EU4::World sourceWorld(configuration, converterVersion);
+	const EU5::World sourceWorld(configuration, converterVersion);
 	const V3::World destWorld(*configuration, sourceWorld);
 	OUT::exportWorld(*configuration, destWorld, converterVersion);
 

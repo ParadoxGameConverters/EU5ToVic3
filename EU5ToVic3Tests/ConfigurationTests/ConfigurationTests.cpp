@@ -4,7 +4,7 @@
 TEST(ConfigurationTests, BrokenEU4PathThrowsException)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installationBROKE\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installationBROKE\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
 	const commonItems::ConverterVersion converterVersion;
 
@@ -14,7 +14,7 @@ TEST(ConfigurationTests, BrokenEU4PathThrowsException)
 TEST(ConfigurationTests, BrokenVic3PathThrowsException)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installationBROKE\"\n";
 	const commonItems::ConverterVersion converterVersion;
 
@@ -24,35 +24,35 @@ TEST(ConfigurationTests, BrokenVic3PathThrowsException)
 TEST(ConfigurationTests, InstallationPathsCanBeUpdatedRetrieved)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n"; // updated with "/game/"
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ("TestFiles/eu4installation", configuration.getEU4Path());
+	EXPECT_EQ("TestFiles/eu5installation", configuration.getEU5Path());
 	EXPECT_EQ("TestFiles/vic3installation/game/", configuration.getVic3Path());
 }
 
 TEST(ConfigurationTests, SaveAndDocumentsPathCanBeRetrieved)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
-	configurationInput << "EU4DocumentsDirectory = \"TestFiles\"\n";
-	configurationInput << "SaveGame = \"C:\\autosave.eu4\"\n";
+	configurationInput << "EU5DocumentsDirectory = \"TestFiles\"\n";
+	configurationInput << "SaveGame = \"C:\\autosave.eu5\"\n";
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ("TestFiles", configuration.getEU4DocumentsPath());
-	EXPECT_EQ("C:\\autosave.eu4", configuration.getEU4SaveGamePath());
+	EXPECT_EQ("TestFiles", configuration.getEU5DocumentsPath());
+	EXPECT_EQ("C:\\autosave.eu5", configuration.getEU5SaveGamePath());
 }
 
 TEST(ConfigurationTests, OutputNameNormalizesSetsFromSavegameName)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
-	configurationInput << "SaveGame = \"C:\\autosave.eu4\"\n";
+	configurationInput << "SaveGame = \"C:\\autosave.eu5\"\n";
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
@@ -62,9 +62,9 @@ TEST(ConfigurationTests, OutputNameNormalizesSetsFromSavegameName)
 TEST(ConfigurationTests, OutputNameNormalizesItselfFromSavegameName)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
-	configurationInput << "SaveGame = \"C:\\autosave - something.eu4\"\n";
+	configurationInput << "SaveGame = \"C:\\autosave - something.eu5\"\n";
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
@@ -74,9 +74,9 @@ TEST(ConfigurationTests, OutputNameNormalizesItselfFromSavegameName)
 TEST(ConfigurationTests, OutputNameSetsFromOverrideName)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
-	configurationInput << "SaveGame = \"C:\\autosave.eu4\"\n";
+	configurationInput << "SaveGame = \"C:\\autosave.eu5\"\n";
 	configurationInput << "output_name = \"ddd\"\n";
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
@@ -87,9 +87,9 @@ TEST(ConfigurationTests, OutputNameSetsFromOverrideName)
 TEST(ConfigurationTests, OutputNameNormalizesItselfFromOverrideName)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU4directory = \"TestFiles/eu4installation\"\n";
+	configurationInput << "EU5directory = \"TestFiles/eu5installation\"\n";
 	configurationInput << "Vic3directory = \"TestFiles/vic3installation\"\n";
-	configurationInput << "SaveGame = \"C:\\autosave - something.eu4\"\n";
+	configurationInput << "SaveGame = \"C:\\autosave - something.eu5\"\n";
 	configurationInput << "output_name = \"ddd - something\"\n";
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);

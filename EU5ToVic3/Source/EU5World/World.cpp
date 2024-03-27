@@ -1,28 +1,25 @@
 #include "World.h"
 #include "CommonRegexes.h"
 #include "Configuration.h"
-#include "EmpireParser/EmpireParser.h"
-#include "EmpireParser/RevolutionParser.h"
 #include "GameVersion.h"
 #include "Log.h"
 #include "ModLoader/ModNames.h"
 #include "ParserHelpers.h"
 #include "rakaly.h"
 #include "zip.h"
-#include <exception>
 #include <filesystem>
 #include <fstream>
 #include <string>
 namespace fs = std::filesystem;
 
-EU4::World::World(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
+EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
-	Log(LogLevel::Info) << "*** Hello EU4, loading World. ***";
-	EU4Path = theConfiguration->getEU4Path();
-	saveGame.path = theConfiguration->getEU4SaveGamePath();
+	Log(LogLevel::Info) << "*** Hello EU5, loading World. ***";
+	EU5Path = theConfiguration->getEU5Path();
+	saveGame.path = theConfiguration->getEU5SaveGamePath();
 	Log(LogLevel::Progress) << "6 %";
 
-	Log(LogLevel::Info) << "-> Verifying EU4 save.";
+	Log(LogLevel::Info) << "-> Verifying EU5 save.";
 	verifySave();
 	Log(LogLevel::Progress) << "7 %";
 
@@ -39,98 +36,71 @@ EU4::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	Log(LogLevel::Progress) << "15 %";
 
 	// With mods loaded we can init stuff that requires them.
-	modFS = commonItems::ModFilesystem(EU4Path, mods);
+	modFS = commonItems::ModFilesystem(EU5Path, mods);
 
 	Log(LogLevel::Info) << "-> Booting Loaders:";
 	Log(LogLevel::Info) << "\t\tRegions";
-	regionManager.loadRegions(modFS);
 	Log(LogLevel::Info) << "\t\tColonial Regions";
-	regionManager.loadColonialRegions(modFS);
 	Log(LogLevel::Info) << "\t\tTrade Companies";
-	regionManager.loadTradeCompanies(modFS);
-	regionManager.loadExcludedTradeCompanies("configurables/excluded_trade_companies.txt");
 	Log(LogLevel::Info) << "\t\tReligions";
-	religionLoader.loadReligions(modFS);
 	Log(LogLevel::Info) << "\t\tCultures";
-	cultureLoader.loadCultures(modFS);
 	Log(LogLevel::Info) << "\t\tUnit Types";
-	countryManager.loadUnitTypes(modFS);
 	Log(LogLevel::Info) << "\t\tCommon Countries";
-	countryManager.loadCommonCountries(modFS);
 	Log(LogLevel::Info) << "\t\tLocalizations";
-	countryManager.loadLocalizations(modFS);
 	Log(LogLevel::Progress) << "16 %";
 
 	Log(LogLevel::Info) << "*** Building world ***";
 
 	Log(LogLevel::Info) << "-> Classifying Provinces According to Aesthetic Principles";
-	provinceManager.loadParsers(modFS);
-	provinceManager.classifyProvinces(regionManager);
 	Log(LogLevel::Progress) << "17 %";
 
 	Log(LogLevel::Info) << "-> Calculating Province Weights";
-	provinceManager.buildProvinceWeights(regionManager);
 	Log(LogLevel::Progress) << "18 %";
 
 	Log(LogLevel::Info) << "-> Determining Demographics";
-	provinceManager.buildPopRatios(datingData, theConfiguration->configBlock.convertAll);
 	Log(LogLevel::Progress) << "19 %";
 
 	Log(LogLevel::Info) << "-> Linking Provinces to Countries";
-	countryManager.linkProvincesToCountries(provinceManager);
 	Log(LogLevel::Progress) << "20 %";
 
 	Log(LogLevel::Info) << "-> Updating Unit Types in Regiments";
-	countryManager.updateUnitTypes();
 	Log(LogLevel::Progress) << "21 %";
 
 	Log(LogLevel::Info) << "-> Injecting Imperialism into Countries";
-	countryManager.setHREAndEmperors(HREmperor, celestialEmperor, provinceManager);
 	Log(LogLevel::Progress) << "22 %";
 
 	Log(LogLevel::Info) << "-> Injecting Art Deco into Countries";
-	countryManager.injectColorsIntoCountries();
 	Log(LogLevel::Progress) << "23 %";
 
 	Log(LogLevel::Info) << "-> Injecting Smokestacks into Provinces";
-	countryManager.buildManufactoryCounts();
-	countryManager.assignGPStatuses();
 	Log(LogLevel::Progress) << "24 %";
 
 	Log(LogLevel::Info) << "-> Injecting Localizations into Countries";
-	countryManager.injectLocalizations();
 	Log(LogLevel::Progress) << "25 %";
 
 	Log(LogLevel::Info) << "-> Viva la revolution?";
-	countryManager.setRevolutionTarget(revolutionTarget);
 	Log(LogLevel::Progress) << "26 %";
 
 	Log(LogLevel::Info) << "-> Merging Nations";
-	countryManager.bootNationMergeMapper();
-	countryManager.mergeNations();
 	Log(LogLevel::Progress) << "27 %";
 
 	Log(LogLevel::Info) << "-> Cataloguing Native Fauna";
-	regionManager.catalogueNativeCultures(provinceManager);
 	Log(LogLevel::Info) << "-> Clasifying Invasive Fauna";
-	regionManager.flagNeoCultures(provinceManager);
 	Log(LogLevel::Progress) << "28 %";
 
 	Log(LogLevel::Info) << "-> Dropping Dead, Empty and/or Coreless Nations";
-	countryManager.filterDeadNations(theConfiguration->configBlock.removeType);
 	Log(LogLevel::Progress) << "29 %";
 
 	Log(LogLevel::Info) << "-> Splitting Trade Companies into nations";
-	countryManager.splitTradeCompanies(provinceManager, regionManager, diplomacyParser, theConfiguration->configBlock.splitTCs);
 	Log(LogLevel::Progress) << "39 %";
 
 	Log(LogLevel::Info) << "*** Good-bye EU4, you served us well. ***";
 	Log(LogLevel::Progress) << "40 %";
 }
 
-void EU4::World::registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
+void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
-	registerKeyword("EU4txt", [](std::istream& theStream) {
+	registerKeyword("EU5txt", [](std::istream& theStream) {
 	});
 	registerKeyword("date", [this](std::istream& theStream) {
 		if (saveGame.parsedMeta)
@@ -140,20 +110,6 @@ void EU4::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 	});
 	registerKeyword("start_date", [this](std::istream& theStream) {
 		datingData.startEU4Date = date(commonItems::getString(theStream));
-	});
-	registerRegex("(multiplayer_)?random_seed", [this](const std::string& unused, std::istream& theStream) {
-		auto theSeed = commonItems::getString(theStream);
-		if (theSeed.size() > 5)
-			theSeed = theSeed.substr(theSeed.size() - 5);
-		try
-		{
-			eu4Seed = std::stoi(theSeed);
-		}
-		catch (std::exception& e)
-		{
-			Log(LogLevel::Error) << "Failed reading random_seed, setting 0: " << e.what();
-			eu4Seed = 0;
-		}
 	});
 	registerKeyword("savegame_version", [this, converterVersion](std::istream& theStream) {
 		if (saveGame.parsedMeta)
@@ -197,68 +153,13 @@ void EU4::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 
 		// Let's locate, verify and potentially update those mods immediately.
 		commonItems::ModLoader modLoader;
-		modLoader.loadMods(theConfiguration->getEU4DocumentsPath(), incomingMods);
+		modLoader.loadMods(theConfiguration->getEU5DocumentsPath(), incomingMods);
 		mods = modLoader.getMods();
-
-		// check for overrides.
-		for (const auto& mod: mods)
-		{
-			if (mod.name == "Voltaire's Nightmare")
-			{
-				Log(LogLevel::Notice) << "Voltaire's Nightmare detected. Enabling VN support.";
-				theConfiguration->setVN();
-				if (theConfiguration->configBlock.euroCentric != Configuration::EUROCENTRISM::EuroCentric)
-				{
-					Log(LogLevel::Notice) << "VN is auto-enabling Eurocentric conversion.";
-					theConfiguration->setEurocentric();
-				}
-				if (theConfiguration->configBlock.startDate != Configuration::STARTDATE::Vanilla)
-				{
-					Log(LogLevel::Notice) << "VN is auto-enabling 1836 startdate.";
-					theConfiguration->setVanillaStartDate();
-				}
-			}
-		}
-	});
-	registerKeyword("provinces", [this](std::istream& theStream) {
-		Log(LogLevel::Info) << "-> Importing Provinces";
-		provinceManager.loadProvinces(theStream);
-		Log(LogLevel::Info) << "<> Imported " << provinceManager.getAllProvinces().size() << " provinces.";
-	});
-	registerKeyword("countries", [this](std::istream& theStream) {
-		Log(LogLevel::Info) << "-> Importing Countries";
-		countryManager.loadCountries(theStream);
-		Log(LogLevel::Info) << "<> Imported " << countryManager.getCountries().size() << " countries.";
-	});
-	registerKeyword("empire", [this](std::istream& theStream) {
-		const EmpireParser empireBlock(theStream);
-		HREmperor = empireBlock.getEmperor();
-		hreReforms = empireBlock.getHREReforms();
-		Log(LogLevel::Info) << "-> HREmperor is: " << HREmperor;
-	});
-	registerKeyword("celestial_empire", [this](std::istream& theStream) {
-		const EmpireParser empireBlock(theStream);
-		celestialEmperor = empireBlock.getEmperor();
-		Log(LogLevel::Info) << "-> Celestial emperor is: " << celestialEmperor;
-	});
-	registerKeyword("revolution", [this](std::istream& theStream) {
-		const RevolutionParser revolutionBlock(theStream);
-		revolutionTarget = revolutionBlock.getRevolutionTarget();
-		Log(LogLevel::Info) << "-> The revolution's leader is: " << revolutionTarget;
-	});
-	registerKeyword("diplomacy", [this](std::istream& theStream) {
-		Log(LogLevel::Info) << "-> Loading Diplomacy";
-		diplomacyParser.loadDiplomacy(theStream);
-		Log(LogLevel::Info) << "-> Loaded " << diplomacyParser.getAgreements().size() << " agreements";
-	});
-	registerKeyword("active_war", [this](std::istream& theStream) {
-		const WarParser newWar(theStream);
-		wars.push_back(newWar);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
-void EU4::World::verifySave()
+void EU5::World::verifySave()
 {
 	const std::ifstream saveFile(std::filesystem::u8path(saveGame.path), std::ios::in | std::ios::binary);
 	std::stringstream inStream;
