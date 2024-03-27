@@ -38,7 +38,6 @@ class World: commonItems::parser
 	DatingData datingData;
 
 	GameVersion version;
-
 };
 } // namespace EU5
 

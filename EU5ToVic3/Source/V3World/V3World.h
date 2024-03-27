@@ -15,13 +15,12 @@ class World
   public:
 	World(const Configuration& configuration, const EU5::World& sourceWorld);
 
-		[[nodiscard]] const auto& getDatingData() const { return datingData; }
+	[[nodiscard]] const auto& getDatingData() const { return datingData; }
 
   private:
 	std::string V3Path;
 	Configuration::ConfigBlock configBlock;
 	DatingData datingData;
-
 };
 
 } // namespace V3
