@@ -1,0 +1,6 @@
+[submodule "commonItems"]
+	path = commonItems
+	url = https://github.com/ParadoxGameConverters/commonItems.git
+[submodule "Fronter"]
+	path = Fronter
+	url = https://github.com/ParadoxGameConverters/Fronter.git

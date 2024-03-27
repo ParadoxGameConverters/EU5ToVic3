@@ -1,0 +1,7 @@
+1. Scraper - something that doesn't rely on commons to load data (like old definitions.csv which doesn't use PDXscript)
+2. Parser - something used to load PDXscript data for use in some processor (ie. parsing sections of the save)
+3. Mapper - something initialized by stuff in configurables (ie. it maps A to B according to a mapping file or smilar)
+4. Loader - something initialized by stuff in installations (ie. loading up world gregions and geography data)
+5. Manager - endpoint for mappers and loaders, smart class with internal processing logic.
+
+Loaders and Mappers drive the parsers and scrapers, Managers drive loaders and mappers.

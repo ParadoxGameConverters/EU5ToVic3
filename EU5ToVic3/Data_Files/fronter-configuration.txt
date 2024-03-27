@@ -1,0 +1,58 @@
+name = EU5ToVic3
+converterFolder = EU5ToVic3
+backendExePath = EU5ToVic3Converter
+displayName = EU5DISPLAYNAME
+sourceGame = EU5GAME
+targetGame = VIC3GAME
+
+#enableUpdateChecker = true
+#checkForUpdatesOnStartup = true
+enableUpdateChecker = false
+checkForUpdatesOnStartup = false
+latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/EU5ToVic3/releases/"
+converterReleaseForumThread = "https://forum.paradoxplaza.com/forum/threads/eu5-to-vic3-converter-thread.1475054/"
+pagesCommitIdUrl = "https://paradoxgameconverters.com/commit_ids/EU5ToVic3.txt"
+overwritePlayset = true
+
+requiredFolder = {
+	name = EU5directory
+	displayName = EU5FOLDER
+	tooltip = EU5FOLDERTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 236850
+}
+requiredFolder = {
+	name = EU5DocumentsDirectory
+	displayName = EU5DOC
+	tooltip = EU5DOCTIP
+	mandatory = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Europa Universalis IV"
+}
+requiredFolder = {
+	name = Vic3directory
+	displayName = VIC3FOLDER
+	tooltip = VIC3FOLDERTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 529340
+}
+requiredFolder = {
+	name = targetGameModPath
+	displayName = VIC3MOD
+	tooltip = VIC3MODTIP
+	mandatory = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Victoria 3\mod"
+}
+requiredFile = {
+	name = SaveGame
+	displayName = EU5SAVE
+	tooltip = EU5SAVETIP
+	mandatory = true
+	outputtable = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Europa Universalis IV\save games"
+	allowedExtension = "*.eu4"
+}

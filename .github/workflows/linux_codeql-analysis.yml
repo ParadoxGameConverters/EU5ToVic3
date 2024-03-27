@@ -1,0 +1,103 @@
+name: "CodeQL"
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: '0 16 * * 6'
+
+#concurrency:
+#  group: ${{ github.workflow }}-${{ github.ref }}
+#  cancel-in-progress: true
+
+jobs:
+  analyze_main:
+    name: Analyze Local
+    if: github.repository_owner == 'ParadoxGameConverters'
+    runs-on: [self-hosted, linux]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['cpp']
+
+    steps:
+    - name: "Cloning repo"
+      uses: actions/checkout@v4
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive commonItems
+       git -c submodule."external/commonItems".update=none \
+           submodule update --init --recursive Fronter
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Build solution
+      run: |
+       chmod u+x build_linux.sh
+       ./build_linux.sh
+
+    - name: Run Tests
+      run: |
+       cd test/Release-Linux
+       ./EU4ToVic3Tests
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      
+    - name: Cleanup
+      uses: colpal/actions-clean@v1
+      if: always()
+
+  analyze:
+    name: Analyze Foreign
+    if: github.repository_owner != 'ParadoxGameConverters'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['cpp']
+
+    steps:
+    - name: "Cloning repo"
+      uses: actions/checkout@v4
+
+    - name: "Cloning selective submodules"
+      run: |
+       git submodule update --init --recursive commonItems
+       git -c submodule."external/commonItems".update=none \
+           submodule update --init --recursive Fronter
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+    
+    - name: Install Prerequisites
+      run: |
+       sudo apt-key adv --fetch-keys https://repos.codelite.org/CodeLite.asc
+       sudo apt-add-repository 'deb https://repos.codelite.org/wx3.2/ubuntu/ jammy universe'
+       sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+       sudo apt-get update
+       sudo apt-get install libcurl4-openssl-dev libwxbase3.2-0-unofficial \
+                libwxbase3.2unofficial-dev libwxgtk3.2-0-unofficial libwxgtk3.2unofficial-dev \
+                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev
+      
+    - name: Build solution
+      run: |
+       chmod u+x build_linux_foreign.sh
+       ./build_linux_foreign.sh
+
+    - name: Run Tests
+      run: |
+       cd test/Release-Linux
+       ./EU4ToVic3Tests
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3

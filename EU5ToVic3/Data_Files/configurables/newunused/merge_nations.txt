@@ -1,0 +1,322 @@
+### Merging the Daimyos of Japan
+
+# This entry is unique for automatically mapping daimyos into Japan.
+# Daimyos are detected specifically, merge into JAP, and default to merging.
+
+merge_daimyos = yes
+
+### Merging other nations
+
+# You may add your own entries here if you wish, or find the ones you like and set "merge = yes".
+# Each entry contains ONE master and N slave tags, and a "merge" statement which can be "yes" (enabled) or "no" (disabled).
+# ALL TAGS ARE EU4 TAGS!  Merging is done BEFORE conversion!  "master" should have a one-to-one mapping for best results.
+
+france =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = FRA
+	slave = ALE # Alençon
+	slave = ALS	# Alsace
+	slave = AMG	# Armagnac
+	slave = AUV	# Auvergne
+	slave = AVI	# Avignon
+	slave = BOU	# Bourbonnais
+	slave = BRI	# Brittany
+	slave = BUR	# Burgundy
+	slave = CHP	# Champagne
+	slave = DAU	# Dauphine
+	slave = FOI	# Foix
+	slave = FRA	# France (proper)
+	slave = GUY	# Guyenne
+	slave = NEV	# Nevers
+	slave = NRM	# Normandy
+	slave = ORL	# Orleans
+	slave = PIC # Picardy
+	slave = PRO	# Provence
+	slave = TOU	# Toulouse
+	slave = BER	# Berry
+
+	# Uncomment these lines to include Corsica and/or Savoy in merged France
+	# slave = COR	# Corsica
+	# slave = SAV	# Savoy
+	# slave = SPI   # Sardinia-Piedmont
+}	
+
+ireland =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = IRE
+	slave = ULS # Ulster
+	slave = TYR # Tyrone
+	slave = TRY # Tyrconnel
+	slave = MTH # Meath
+	slave = KID # Kildare
+	slave = FLY # Offaly
+	slave = SLN # Sligo
+	slave = CNN # Connacht
+	slave = LEI # Leinster
+	slave = ORD # Ormond
+	slave = MNS # Thomond (Ireland, not Germany)
+	slave = DMS # Desmond
+	slave = MCM # Munster
+	slave = IRE # Ireland (proper)
+}
+
+spain =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = SPA
+	slave = CAS	# Castille
+	slave = LON # León
+	slave = GAL	# Galicia
+	slave = GRA	# Granada
+	slave = NAV	# Navarra
+	slave = SPA	# Spain (proper)
+
+	# Uncomment these lines to include Aragon/Catalunya in merged Spain
+	# slave = ARA	# Aragon
+	# slave = CAT	# Catalunya
+	# slave = ADU   # Andalusia
+}
+
+holland =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = NED
+	slave = FRI	# Friesland
+	slave = GEL	# Gelre
+	slave = HAI	# Hainaut
+	slave = HOL	# Holland
+	slave = NED	# The Netherlands (proper)
+	slave = UTR	# Utrecht
+	slave = EFR # East Frisia
+
+	# Uncomment these lines to include Brabant and Flanders in merged Netherlands
+	# slave = BRB	# Brabant
+	# slave = FLA	# Flanders
+}
+
+russia =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = RUS
+	slave = AST	# Astrakhan
+	slave = GOL	# Golden Horde
+	slave = KAZ	# Kazan
+	slave = MOS	# Muscowy
+	slave = NOV	# Novgorod
+	slave = PSK	# Pskov
+	slave = QAS	# Qasim Khanate
+	slave = RUS	# Russia (proper)
+	slave = RYA # Ryazan
+	slave = TVE	# Tver
+	slave = YAR	# Yaroslavl
+	slave = NOG	# Nogai
+	slave = SIB	# Sibir
+	slave = PLT	# Polotsk
+	slave = PRM # Perm
+	slave = BLO # Beloozero
+	slave = RSO # Rostov
+	slave = GLH # Actual Golden Horde
+
+	# Uncomment these lines to include Georgia and Armenia in merged Russia
+	# slave = GEO	# Georgia
+	# slave = ARM	# Armenia
+}
+
+ukraine =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = UKR
+	slave = CRI	# Crimea
+	slave = UKR	# Ukraine (proper)
+	slave = ZAZ	# Zaporozhie
+}
+
+persia =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = PER
+	slave = KHO	# Khorasan
+	slave = PER	# Persia (proper)
+	slave = QAR	# Qara Koyunlu
+	slave = TIM	# The Timurids
+	slave = KRY # Gilan
+	slave = TAB # Tabarestan
+	slave = LRI # Luristan
+	slave = SIS # Sistan
+	slave = BPI # Biapas
+	slave = FRS # Fars
+	slave = KRM # Kerman
+	slave = YZD # Yazd
+	slave = ISF # Isfahan
+	slave = TBR # Tabriz
+	slave = MGR # Maregh
+	slave = QOM # Qom
+
+	# Uncomment the lines you want to be joined as well
+	# slave = TRS # Transoxiana
+	# slave = ORM # Ormuz
+}
+
+morocco =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = MOR
+	slave = FEZ	# Fez
+	slave = MOR	# Morocco (proper)
+	slave = TFL # Tafilalt
+	slave = SOS # Sus
+}
+
+metis =
+{
+	merge = no	# Change to yes to enable merging
+
+	master = IRO
+	slave = IRO	# Iroquois
+	slave = HUR	# Huron
+}
+
+## Decentralized Confederations, merged by default
+northwestern_confederacy = # United Indian Nations (Expanded council of three fires)
+{
+	merge = yes
+	master = UN1 # United Indian Nations
+	slave = OJI # Ojibwe
+	slave = OTT # Ottawa
+	slave = POT # Potawatomi
+}
+
+iroquois_confederacy = # Haudenosaunee
+{
+	merge = yes
+	master = IRO # Haudenosaunee
+	slave = MOH # Mohawk
+	slave = ONE # Oneida
+	slave = ONO # Onondaga
+	slave = CAY # Cayuga
+	slave = SEN # Seneca
+	#slave = TSC # Tuscarora (Historically part of the confederacy, but only after they migrated north and there is no guarantee they will do so in eu4)
+}
+
+wabanakik_confederacy = # Wabanakik
+{
+	merge = yes
+	master = W02 # Wabanakik
+	slave = ABE # Abenaki
+	slave = PEN # Penobscot
+	slave = MLS # Maliseet
+	slave = MIK # Mikmaq
+}
+	
+iron_confederacy = # Iron Confederacy
+{
+	merge = yes
+	master = IRC # Iron Confederacy
+	slave = ASI # Assiniboine
+	slave = NAK # Nakawe (Salteaux)
+	slave = NEH # Nehiyaw (Plains Cree)
+}
+
+great_sioux = # Great Sioux
+{
+	merge = yes
+	master = LKT # Great Sioux Nations
+	slave = SIO # Sioux
+	slave = LAK # Lakota
+	slave = OEO # Oneota
+	slave = WCY # Wichiyena
+}
+
+pueblo = # Pueblo
+{
+	merge = yes
+	master = PUE # Pueblo
+	slave = OHK # Ohkay Owingeh
+	slave = ISL # Isleta
+	slave = KER # Zia
+	slave = ACO # Acoma
+	slave = ZNI # Zuni
+}
+	
+apacheria = # Apache
+{
+	merge = yes
+	master = APC # Apache
+	slave = APA # Apache
+	slave = MSC # Mescalero
+	slave = LIP # Lipan
+}
+	
+caddo_confederacy = # Caddo
+{
+	merge = yes
+	master = C05 # Caddo
+	slave = CAD # Caddo
+	slave = HNI # Hasinai
+	slave = NTC # Natchitoches
+}
+
+muscogee_confederacy = # Muscogee
+{
+	merge = yes
+	master = MSC # Muscogee
+	slave = KSI # Kashita
+	slave = COW # Coweta
+	slave = ETO # Etowah
+	slave = COO # Coosa
+	slave = ABI # Abihka
+	slave = SAT # Satapo
+}
+
+ye_iswa = # Catawba
+{
+	merge = yes
+	master = C02 # Ye Iswa (Catawba)
+	slave = JOA # Joara
+	slave = COW # Cofitachequi
+}
+
+shawnee_confederacy = # Shawnee
+{
+	merge = yes
+	master = S10 # Shawnee
+	slave = CLG # Chalaghawtha
+	slave = KSP # Kispoko
+	slave = HWK # Hathawekela
+}
+
+## Decentralized Empires, merged by default
+incan_empire = # Tawantinsuyu
+{
+	merge = yes
+	master = TWT # Tawantinsuyu
+	slave = CSU # Cusco
+	slave = WKA # Wankao
+	slave = ICM # Ichma
+	slave = CHM # Chima
+	slave = HJA # Huyla
+	slave = CYA # Chachapoya
+	slave = CJA # Cajamarca
+	slave = QTO # Quito
+
+}
+great_aimara = # Aymara
+{
+	merge = yes
+	master = AYM # Aymara
+	slave = CLA # Colla
+	slave = PCJ # Pacajes
+	slave = CRA # Charca
+	slave = CCQ # Calchaqui
+
+}
