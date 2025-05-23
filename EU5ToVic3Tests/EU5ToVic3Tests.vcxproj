@@ -51,7 +51,7 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)lib;$(SolutionDir)commonItems\pch;../commonItems;../commonItems/external/googletest/googletest;../commonItems/external/googletest/googletest/include;../commonItems/external/googletest/googlemock;../commonItems/external/googletest/googlemock/include;../EU5ToVic3/Source;../EU5ToVic3/Source/EU5World/Loaders;../EU5ToVic3/Source/EU5World;../EU5ToVic3/Source/Mappers;../EU5ToVic3/Source/V3World;../EU5ToVic3/Source/Configuration;../commonItems/external/zip/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING;_SILENCE_CXX20_U8PATH_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -464,10 +464,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\eu5installation\eu5">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation</DestinationFolders>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\eu5installation\launcher-settings.json">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation</DestinationFolders>
@@ -476,6 +472,12 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\eu5installation\map\positions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation/map</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\eu5installation\binaries\eu5">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/TestFiles/eu5installation/binaries</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

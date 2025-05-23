@@ -10,7 +10,6 @@
 #include <filesystem>
 #include <fstream>
 #include <string>
-namespace fs = std::filesystem;
 
 EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
@@ -161,7 +160,7 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 
 void EU5::World::verifySave()
 {
-	const std::ifstream saveFile(std::filesystem::u8path(saveGame.path), std::ios::in | std::ios::binary);
+	const std::ifstream saveFile(saveGame.path, std::ios::in | std::ios::binary);
 	std::stringstream inStream;
 	inStream << saveFile.rdbuf();
 	saveGame.gamestate = inStream.str();
@@ -195,10 +194,10 @@ void EU5::World::verifySave()
 		melt.writeData(saveGame.gamestate);
 	}
 
-	zip_t* zip = zip_open(saveGame.path.c_str(), 0, 'r');
+	zip_t* zip = zip_open(saveGame.path.string().c_str(), 0, 'r');
 	const auto entriesCount = zip_entries_total(zip);
 	if (entriesCount > 3)
-		throw std::runtime_error("Unrecognized savegame structure! RNW savegames are NOT supported!");
+		throw std::runtime_error("Unrecognized savegame structure!");
 
 	// Always dump to disk for easier debug.
 	std::ofstream metaDump("metaDump.txt");

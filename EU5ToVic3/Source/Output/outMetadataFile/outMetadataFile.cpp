@@ -4,10 +4,10 @@
 
 namespace
 {
-void outMetadataFile(std::ostream& output, const std::string& outName)
+void outMetadataFile(std::ostream& output, const std::filesystem::path& outName)
 {
 	output << "{\n";
-	output << "\t\"name\" : \"Converted - " << outName << "\",\n";
+	output << "\t\"name\" : \"Converted - " << outName.string() << "\",\n";
 	output << "\t\"id\" : \"\",\n";
 	output << "\t\"version\" : \"\",\n";
 	output << "\t\"picture\" : \"thumbnail.png\",\n";
@@ -41,12 +41,13 @@ void outMetadataFile(std::ostream& output, const std::string& outName)
 }
 } // namespace
 
-void OUT::exportMetadataFile(const std::string& outputName)
+void OUT::exportMetadataFile(const std::filesystem::path& outputName)
 {
-	std::ofstream output("output/" + outputName + "/.metadata/metadata.json");
+	std::filesystem::create_directories("output" / outputName / ".metadata");
+	std::ofstream output("output" / outputName / ".metadata/metadata.json");
 	if (!output.is_open())
-		throw std::runtime_error("Could not create " + outputName + "/.metadata/metadata.json");
-	Log(LogLevel::Info) << "<< Writing to: output/" + outputName + "/.metadata/metadata.json";
+		throw std::runtime_error("Could not create " + outputName.string() + "/.metadata/metadata.json");
+	Log(LogLevel::Info) << "<< Writing to: output/" + outputName.string() + "/.metadata/metadata.json";
 	outMetadataFile(output, outputName);
 	output.close();
 }

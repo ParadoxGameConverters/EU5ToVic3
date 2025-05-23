@@ -11,7 +11,7 @@ Configuration::Configuration(const commonItems::ConverterVersion& converterVersi
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	registerKeys();
-	parseFile("configuration.txt");
+	parseFile(std::filesystem::path("configuration.txt"));
 	clearRegisteredKeywords();
 	setOutputName();
 	verifyEU5Path();
@@ -38,20 +38,20 @@ void Configuration::registerKeys()
 	// ------ config stuff
 
 	registerKeyword("SaveGame", [this](std::istream& theStream) {
-		EU5SaveGamePath = commonItems::getString(theStream);
-		Log(LogLevel::Info) << "EU5 savegame path: " << EU5SaveGamePath;
+		EU5SaveGamePath = std::filesystem::path(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "EU5 savegame path: " << EU5SaveGamePath.string();
 	});
-	registerKeyword("EU5directory", [this](std::istream& theStream) {
-		EU5Path = commonItems::getString(theStream);
-		Log(LogLevel::Info) << "EU5 path: " << EU5Path;
+	registerKeyword("EU5Directory", [this](std::istream& theStream) {
+		EU5Path = std::filesystem::path(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "EU5 path: " << EU5Path.string();
 	});
 	registerKeyword("EU5DocumentsDirectory", [this](std::istream& theStream) {
-		EU5DocumentsPath = commonItems::getString(theStream);
-		Log(LogLevel::Info) << "EU5 documents path: " << EU5DocumentsPath;
+		EU5DocumentsPath = std::filesystem::path(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "EU5 documents path: " << EU5DocumentsPath.string();
 	});
-	registerKeyword("Vic3directory", [this](std::istream& theStream) {
-		Vic3Path = commonItems::getString(theStream);
-		Log(LogLevel::Info) << "Vic3 path: " << Vic3Path;
+	registerKeyword("Vic3Directory", [this](std::istream& theStream) {
+		Vic3Path = std::filesystem::path(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "Vic3 path: " << Vic3Path.string();
 	});
 
 	// ------- options
@@ -62,8 +62,8 @@ void Configuration::registerKeys()
 		Log(LogLevel::Info) << "Start Date: " << startDateString;
 	});
 	registerKeyword("output_name", [this](std::istream& theStream) {
-		outputName = commonItems::getString(theStream);
-		Log(LogLevel::Info) << "Output Name: " << outputName;
+		outputName = std::filesystem::path(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "Output Name: " << outputName.string();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
@@ -71,46 +71,45 @@ void Configuration::registerKeys()
 void Configuration::verifyEU5Path() const
 {
 	if (!commonItems::DoesFolderExist(EU5Path))
-		throw std::runtime_error("EU5 path " + EU5Path + " does not exist!");
-	if (!commonItems::DoesFileExist(EU5Path + "/eu5.exe") && !commonItems::DoesFileExist(EU5Path + "/eu5") &&
-		 !commonItems::DoesFolderExist(EU5Path + "/eu5.app"))
-		throw std::runtime_error(EU5Path + " does not contain Europa Universalis 5!");
-	if (!commonItems::DoesFileExist(EU5Path + "/map/positions.txt"))
-		throw std::runtime_error(EU5Path + " does not appear to be a valid EU5 install!");
-	Log(LogLevel::Info) << "\tEU5 install path is " << EU5Path;
+		throw std::runtime_error("EU5 path " + EU5Path.string() + " does not exist!");
+	if (!commonItems::DoesFileExist(EU5Path / "binaries/eu5.exe") && !commonItems::DoesFileExist(EU5Path / "binaries/eu5"))
+		throw std::runtime_error(EU5Path.string() + " does not contain Europa Universalis 5!");
+	if (!commonItems::DoesFileExist(EU5Path / "map/positions.txt"))
+		throw std::runtime_error(EU5Path.string() + " does not appear to be a valid EU5 install!");
+	Log(LogLevel::Info) << "\tEU5 install path is " << EU5Path.string();
 }
 
 void Configuration::verifyVic3Path()
 {
 	if (!commonItems::DoesFolderExist(Vic3Path))
-		throw std::runtime_error("Vic3 path " + Vic3Path + " does not exist!");
-	if (!commonItems::DoesFileExist(Vic3Path + "/binaries/victoria3.exe") && !commonItems::DoesFileExist(Vic3Path + "/Vic3game") &&
-		 !commonItems::DoesFileExist(Vic3Path + "/binaries/victoria3"))
-		throw std::runtime_error(Vic3Path + " does not contain Victoria 3!");
-	if (!commonItems::DoesFileExist(Vic3Path + "/game/map_data/provinces.png"))
-		throw std::runtime_error(Vic3Path + " does not appear to be a valid Vic3 install!");
-	Log(LogLevel::Info) << "\tVic3 install path is " << Vic3Path;
-	Vic3Path += "/game/"; // We're adding "/game/" since all we ever need from now on is in that subdirectory.
+		throw std::runtime_error("Vic3 path " + Vic3Path.string() + " does not exist!");
+	if (!commonItems::DoesFileExist(Vic3Path / "binaries/victoria3.exe") && !commonItems::DoesFileExist(Vic3Path / "Vic3game") &&
+		 !commonItems::DoesFileExist(Vic3Path / "binaries/victoria3"))
+		throw std::runtime_error(Vic3Path.string() + " does not contain Victoria 3!");
+	if (!commonItems::DoesFileExist(Vic3Path / "game/map_data/provinces.png"))
+		throw std::runtime_error(Vic3Path.string() + " does not appear to be a valid Vic3 install!");
+	Log(LogLevel::Info) << "\tVic3 install path is " << Vic3Path.string();
+	Vic3Path = Vic3Path / "game"; // We're adding "/game/" since all we ever need from now on is in that subdirectory.
 }
 
 void Configuration::setOutputName()
 {
 	if (outputName.empty())
 	{
-		outputName = trimPath(EU5SaveGamePath);
+		outputName = EU5SaveGamePath.stem();
 	}
 
-	outputName = trimExtension(outputName);
-	outputName = replaceCharacter(outputName, '-');
-	outputName = replaceCharacter(outputName, ' ');
+	outputName = outputName.filename();
+	outputName = std::filesystem::path(replaceCharacter(outputName.string(), '-'));
+	outputName = std::filesystem::path(replaceCharacter(outputName.string(), ' '));
 
-	outputName = commonItems::normalizeUTF8Path(outputName);
-	Log(LogLevel::Info) << "Using output name " << outputName;
+	outputName = commonItems::normalizeUTF8Path(outputName.string());
+	Log(LogLevel::Info) << "Using output name " << outputName.string();
 }
 
 void Configuration::verifyEU5Version(const commonItems::ConverterVersion& converterVersion) const
 {
-	const auto EU5Version = GameVersion::extractVersionFromLauncher(EU5Path + "/launcher-settings.json");
+	const auto EU5Version = GameVersion::extractVersionFromLauncher(EU5Path / "../launcher-settings.json");
 	if (!EU5Version)
 	{
 		Log(LogLevel::Error) << "EU5 version could not be determined, proceeding blind!";
@@ -135,7 +134,7 @@ void Configuration::verifyEU5Version(const commonItems::ConverterVersion& conver
 
 void Configuration::verifyVic3Version(const commonItems::ConverterVersion& converterVersion) const
 {
-	const auto V3Version = GameVersion::extractVersionFromLauncher(Vic3Path + "../launcher/launcher-settings.json");
+	const auto V3Version = GameVersion::extractVersionFromLauncher(Vic3Path / "../launcher/launcher-settings.json");
 	if (!V3Version)
 	{
 		Log(LogLevel::Error) << "Vic3 version could not be determined, proceeding blind!";

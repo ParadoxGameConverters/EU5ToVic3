@@ -3,7 +3,9 @@
 #include "Log.h"
 
 V3::World::World(const Configuration& configuration, const EU5::World& sourceWorld):
-	 V3Path(configuration.getVic3Path()), configBlock(configuration.configBlock), datingData(sourceWorld.getDatingData())
+	 V3Path(configuration.getVic3Path()),
+	 configBlock(configuration.configBlock),
+	 datingData(sourceWorld.getDatingData())
 {
 	Mods overrideMods;
 	// We use decentralized world mod to fill out wasteland and out-of-scope clay with decentralized tribes.

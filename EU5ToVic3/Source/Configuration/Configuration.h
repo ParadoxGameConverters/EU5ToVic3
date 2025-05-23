@@ -2,7 +2,6 @@
 #define CONFIGURATION_H
 #include "ConverterVersion.h"
 #include "Parser.h"
-#include <string>
 
 class Configuration: commonItems::parser
 {
@@ -22,7 +21,7 @@ class Configuration: commonItems::parser
 		STARTDATE startDate = STARTDATE::Vanilla;
 	} configBlock;
 
-	void setOutputName(const std::string& name) { outputName = name; }
+	void setOutputName(const std::filesystem::path& name) { outputName = name; }
 	void setVanillaStartDate() { configBlock.startDate = STARTDATE::Vanilla; }
 
 	[[nodiscard]] const auto& getEU5SaveGamePath() const { return EU5SaveGamePath; }
@@ -40,11 +39,11 @@ class Configuration: commonItems::parser
 	void verifyEU5Version(const commonItems::ConverterVersion& converterVersion) const;
 
 	// options from configuration.txt
-	std::string EU5SaveGamePath;
-	std::string EU5Path;
-	std::string EU5DocumentsPath;
-	std::string Vic3Path;
-	std::string outputName;
+	std::filesystem::path EU5SaveGamePath;
+	std::filesystem::path EU5Path;
+	std::filesystem::path EU5DocumentsPath;
+	std::filesystem::path Vic3Path;
+	std::filesystem::path outputName;
 };
 
 #endif // CONFIGURATION_H

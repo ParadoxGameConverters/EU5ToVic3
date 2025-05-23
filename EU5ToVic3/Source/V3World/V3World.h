@@ -18,7 +18,7 @@ class World
 	[[nodiscard]] const auto& getDatingData() const { return datingData; }
 
   private:
-	std::string V3Path;
+	std::filesystem::path V3Path;
 	Configuration::ConfigBlock configBlock;
 	DatingData datingData;
 };
