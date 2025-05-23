@@ -102,8 +102,8 @@ void Configuration::setOutputName()
 	outputName = outputName.filename();
 	outputName = std::filesystem::path(replaceCharacter(outputName.string(), '-'));
 	outputName = std::filesystem::path(replaceCharacter(outputName.string(), ' '));
+	outputName = std::filesystem::path(commonItems::normalizeUTF8Path(outputName.string()));
 
-	outputName = commonItems::normalizeUTF8Path(outputName.string());
 	Log(LogLevel::Info) << "Using output name " << outputName.string();
 }
 

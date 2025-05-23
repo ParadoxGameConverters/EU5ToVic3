@@ -44,7 +44,11 @@ TEST(ConfigurationTests, SaveAndDocumentsPathCanBeRetrieved)
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
 	EXPECT_EQ(std::filesystem::path("TestFiles"), configuration.getEU5DocumentsPath());
+#ifdef _MSC_BUILD
 	EXPECT_EQ(std::filesystem::path("C:\\autosave.eu5"), configuration.getEU5SaveGamePath());
+#else
+	EXPECT_EQ(std::filesystem::path("C__autosave.eu5"), configuration.getEU5SaveGamePath());
+#endif
 }
 
 TEST(ConfigurationTests, OutputNameNormalizesSetsFromSavegameName)
@@ -68,7 +72,11 @@ TEST(ConfigurationTests, OutputNameNormalizesItselfFromSavegameName)
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
+#ifdef _MSC_BUILD
 	EXPECT_EQ(std::filesystem::path("autosave___something"), configuration.getOutputName());
+#else
+	EXPECT_EQ(std::filesystem::path("C__autosave___something"), configuration.getOutputName());
+#endif
 }
 
 TEST(ConfigurationTests, OutputNameSetsFromOverrideName)
