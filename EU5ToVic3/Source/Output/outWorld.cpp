@@ -104,12 +104,12 @@ void OUT::exportBookmark(const std::filesystem::path& outputName, const Configur
 void OUT::copyCustomFlags(const std::filesystem::path& outputName)
 {
 	auto counter = 0;
-	if (!commonItems::DoesFolderExist(std::filesystem::path("flags.tmp")))
+	if (!commonItems::DoesFolderExist("flags.tmp"))
 	{
 		Log(LogLevel::Warning) << "Flag folder flags.tmp not found!";
 		return;
 	}
-	for (const auto& filename: commonItems::GetAllFilesInFolder(std::filesystem::path("flags.tmp")))
+	for (const auto& filename: commonItems::GetAllFilesInFolder("flags.tmp"))
 	{
 		std::filesystem::copy_file("flags.tmp" / filename,
 			 "output" / outputName / "/gfx/coat_of_arms/textured_emblems/custom_export/" / filename,

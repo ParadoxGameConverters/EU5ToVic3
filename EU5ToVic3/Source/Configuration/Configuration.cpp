@@ -11,7 +11,7 @@ Configuration::Configuration(const commonItems::ConverterVersion& converterVersi
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	registerKeys();
-	parseFile(std::filesystem::path("configuration.txt"));
+	parseFile("configuration.txt");
 	clearRegisteredKeywords();
 	setOutputName();
 	verifyEU5Path();
@@ -38,19 +38,19 @@ void Configuration::registerKeys()
 	// ------ config stuff
 
 	registerKeyword("SaveGame", [this](std::istream& theStream) {
-		EU5SaveGamePath = std::filesystem::path(commonItems::getString(theStream));
+		EU5SaveGamePath = commonItems::getString(theStream);
 		Log(LogLevel::Info) << "EU5 savegame path: " << EU5SaveGamePath.string();
 	});
 	registerKeyword("EU5Directory", [this](std::istream& theStream) {
-		EU5Path = std::filesystem::path(commonItems::getString(theStream));
+		EU5Path = commonItems::getString(theStream);
 		Log(LogLevel::Info) << "EU5 path: " << EU5Path.string();
 	});
 	registerKeyword("EU5DocumentsDirectory", [this](std::istream& theStream) {
-		EU5DocumentsPath = std::filesystem::path(commonItems::getString(theStream));
+		EU5DocumentsPath = commonItems::getString(theStream);
 		Log(LogLevel::Info) << "EU5 documents path: " << EU5DocumentsPath.string();
 	});
 	registerKeyword("Vic3Directory", [this](std::istream& theStream) {
-		Vic3Path = std::filesystem::path(commonItems::getString(theStream));
+		Vic3Path = commonItems::getString(theStream);
 		Log(LogLevel::Info) << "Vic3 path: " << Vic3Path.string();
 	});
 
@@ -62,7 +62,7 @@ void Configuration::registerKeys()
 		Log(LogLevel::Info) << "Start Date: " << startDateString;
 	});
 	registerKeyword("output_name", [this](std::istream& theStream) {
-		outputName = std::filesystem::path(commonItems::getString(theStream));
+		outputName = commonItems::getString(theStream);
 		Log(LogLevel::Info) << "Output Name: " << outputName.string();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
@@ -100,9 +100,9 @@ void Configuration::setOutputName()
 	}
 
 	outputName = outputName.filename();
-	outputName = std::filesystem::path(replaceCharacter(outputName.string(), '-'));
-	outputName = std::filesystem::path(replaceCharacter(outputName.string(), ' '));
-	outputName = std::filesystem::path(commonItems::normalizeUTF8Path(outputName.string()));
+	outputName = replaceCharacter(outputName.string(), '-');
+	outputName = replaceCharacter(outputName.string(), ' ');
+	outputName = commonItems::normalizeUTF8Path(outputName.string());
 
 	Log(LogLevel::Info) << "Using output name " << outputName.string();
 }

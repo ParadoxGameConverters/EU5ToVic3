@@ -29,8 +29,8 @@ TEST(ConfigurationTests, InstallationPathsCanBeUpdatedRetrieved)
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ(std::filesystem::path("TestFiles/eu5installation"), configuration.getEU5Path());
-	EXPECT_EQ(std::filesystem::path("TestFiles/vic3installation/game"), configuration.getVic3Path());
+	EXPECT_EQ("TestFiles/eu5installation", configuration.getEU5Path());
+	EXPECT_EQ("TestFiles/vic3installation/game", configuration.getVic3Path());
 }
 
 TEST(ConfigurationTests, SaveAndDocumentsPathCanBeRetrieved)
@@ -43,11 +43,11 @@ TEST(ConfigurationTests, SaveAndDocumentsPathCanBeRetrieved)
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ(std::filesystem::path("TestFiles"), configuration.getEU5DocumentsPath());
+	EXPECT_EQ("TestFiles", configuration.getEU5DocumentsPath());
 #ifdef _MSC_BUILD
-	EXPECT_EQ(std::filesystem::path("C:\\autosave.eu5"), configuration.getEU5SaveGamePath());
+	EXPECT_EQ("C:\\autosave.eu5", configuration.getEU5SaveGamePath());
 #else
-	EXPECT_EQ(std::filesystem::path("C:\\autosave.eu5"), configuration.getEU5SaveGamePath());
+	EXPECT_EQ("C:\\autosave.eu5", configuration.getEU5SaveGamePath());
 #endif
 }
 
@@ -61,9 +61,9 @@ TEST(ConfigurationTests, OutputNameNormalizesSetsFromSavegameName)
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
 #ifdef _MSC_BUILD
-	EXPECT_EQ(std::filesystem::path("autosave"), configuration.getOutputName());
+	EXPECT_EQ("autosave", configuration.getOutputName());
 #else
-	EXPECT_EQ(std::filesystem::path("C__autosave"), configuration.getOutputName());
+	EXPECT_EQ("C__autosave", configuration.getOutputName());
 #endif
 }
 
@@ -77,9 +77,9 @@ TEST(ConfigurationTests, OutputNameNormalizesItselfFromSavegameName)
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
 #ifdef _MSC_BUILD
-	EXPECT_EQ(std::filesystem::path("autosave___something"), configuration.getOutputName());
+	EXPECT_EQ("autosave___something", configuration.getOutputName());
 #else
-	EXPECT_EQ(std::filesystem::path("C__autosave___something"), configuration.getOutputName());
+	EXPECT_EQ("C__autosave___something", configuration.getOutputName());
 #endif
 }
 
@@ -93,7 +93,7 @@ TEST(ConfigurationTests, OutputNameSetsFromOverrideName)
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ(std::filesystem::path("ddd"), configuration.getOutputName());
+	EXPECT_EQ("ddd", configuration.getOutputName());
 }
 
 TEST(ConfigurationTests, OutputNameNormalizesItselfFromOverrideName)
@@ -106,5 +106,5 @@ TEST(ConfigurationTests, OutputNameNormalizesItselfFromOverrideName)
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ(std::filesystem::path("ddd___something"), configuration.getOutputName());
+	EXPECT_EQ("ddd___something", configuration.getOutputName());
 }
