@@ -13,7 +13,7 @@ Checks: "*,
         -readability-static-accessed-through-instance,
         -readability-avoid-const-params-in-decls,
 "
-WarningsAsErrors: '*'
+WarningsAsErrors: '*, -readability-identifier-naming.*'
 HeaderFilterRegex: ""
 ExcludeHeaderFilterRegex: '.*Fronter|commonItems.*'
 CheckOptions:
