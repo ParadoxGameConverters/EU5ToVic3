@@ -36,7 +36,7 @@ jobs:
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
         cmake --preset x64-clang-tidy-windows
-        cmake --build --preset build-x64-clang-tidy-windows --target EU5ToVic3 EU5ToVic3Tests -- -j40
+        cmake --build --preset build-x64-clang-tidy-windows --target EU5ToVic3Converter EU5ToVic3Tests -- -j40
 
     - name: "Cleanup"
       if: always()
@@ -69,7 +69,7 @@ jobs:
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         cmake --preset x64-clang-tidy-windows
-        cmake --build --preset build-x64-clang-tidy-windows --target EU5ToVic3 EU5ToVic3Tests -- -j40
+        cmake --build --preset build-x64-clang-tidy-windows --target EU5ToVic3Converter EU5ToVic3Tests -- -j40
 
     - name: "Cleanup"
       if: always()
