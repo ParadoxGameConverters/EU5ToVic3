@@ -42,7 +42,7 @@ jobs:
 
     - name: Run Tests
       run: |
-       cd test/Release-Linux
+       cd build/test/Release-Linux
        ./EU5ToVic3Tests
 
     - name: Perform CodeQL Analysis
@@ -95,7 +95,7 @@ jobs:
 
     - name: Run tests
       run: |
-       cd test/Release-Linux
+       cd build/test/Release-Linux
        ./EU5ToVic3Tests
 
     - name: Perform CodeQL Analysis
