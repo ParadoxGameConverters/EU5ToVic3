@@ -39,7 +39,7 @@ Type: filesandordirs; Name: "{app}\EU5ToVic3\blankMod"
 Type: filesandordirs; Name: "{app}\EU5ToVic3\configurables"
 
 [Files]
-Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "build\Release-Windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
