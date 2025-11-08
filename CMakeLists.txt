@@ -231,6 +231,14 @@ file(GLOB OUT_SUBSUBDIR_SOURCES "${CONVERTER_SOURCE_DIR}/Output/*/*/*.cpp")
 file(GLOB MAPPER_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*.cpp")
 file(GLOB MAPPER_SUBDIR_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*/*.cpp")
 
+link_directories("${CONVERTER_DIR}/resources") # You may need to place the rakaly files in a subfolder named rakaly for this to work properly
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/commonItems EXCLUDE_FROM_ALL)
+
+if (RUN_CLANG_TIDY)
+	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
+endif(RUN_CLANG_TIDY)
+
 add_library(EU5ToVic3lib
 	${CONFIGURATION_SOURCES}
 	${EU5_WORLD_SOURCES}
@@ -245,18 +253,6 @@ add_library(EU5ToVic3lib
 	${OUT_SUBSUBDIR_SOURCES}
 	${MAPPER_SOURCES}
 	${MAPPER_SUBDIR_SOURCES}
-)
-
-link_directories("${CONVERTER_DIR}/resources") # You may need to place the rakaly files in a subfolder named rakaly for this to work properly
-
-add_subdirectory(${CMAKE_SOURCE_DIR}/commonItems EXCLUDE_FROM_ALL)
-
-if (RUN_CLANG_TIDY)
-	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
-endif(RUN_CLANG_TIDY)
-
-add_library(EU5ToVic3lib
-	${CONVERTER_SOURCES}
 )
 
 target_precompile_headers(EU5ToVic3lib PUBLIC ${PCH_SOURCES})
