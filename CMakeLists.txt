@@ -86,7 +86,6 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModParser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/external/zip/src/zip.c")
 
 add_library(commonLib ${COMMON_SOURCES})
-#target_precompile_headers(commonLib PUBLIC ${PCH_SOURCES})
 
 
 #### Fronter ####
