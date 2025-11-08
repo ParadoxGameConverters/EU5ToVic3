@@ -129,29 +129,29 @@ elseif (PLATFORM STREQUAL "Linux")
 endif (PLATFORM STREQUAL "Windows")
 
 if (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
-	configure_file("external/Fronter/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}/converter.ico" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}/GeneralFAQ-READ.ME.FIRST.txt" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcrypto-1_1-x64.dll" COPYONLY)
-	configure_file("external/Fronter/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libssl-1_1-x64.dll" COPYONLY)
-	configure_file("external/Fronter/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcurl-x64.dll" COPYONLY)
+	configure_file("${FRONTER_DIR}/Fronter/Resources/converter.ico" "${FRONTER_OUTPUT_DIRECTORY}/converter.ico" COPYONLY)
+	configure_file("${FRONTER_DIR}/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt" "${FRONTER_OUTPUT_DIRECTORY}/GeneralFAQ-READ.ME.FIRST.txt" COPYONLY)
+	configure_file("${FRONTER_DIR}/Fronter/Resources/libcrypto-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcrypto-1_1-x64.dll" COPYONLY)
+	configure_file("${FRONTER_DIR}/Fronter/Resources/libssl-1_1-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libssl-1_1-x64.dll" COPYONLY)
+	configure_file("${FRONTER_DIR}/external/curl/bin/libcurl-x64.dll" "${FRONTER_OUTPUT_DIRECTORY}/libcurl-x64.dll" COPYONLY)
 	if (CMAKE_BUILD_TYPE STREQUAL "Release")
-		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("${FRONTER_DIR}/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32u_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("${FRONTER_DIR}/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32u_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	elseif (CMAKE_BUILD_TYPE STREQUAL "Debug")
-		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
-		configure_file("external/Fronter/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("${FRONTER_DIR}/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxbase32ud_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
+		configure_file("${FRONTER_DIR}/external/wxWidgets/3.2.1/lib/vc14x_x64_dll/wxmsw32ud_core_vc14x_x64.dll" "${FRONTER_OUTPUT_DIRECTORY}" COPYONLY)
 	endif (CMAKE_BUILD_TYPE STREQUAL "Release")
 	file(GLOB FRONTER_CONFIG "data/fronter/*")
 	file(COPY ${FRONTER_CONFIG} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
-	file(GLOB LOCALIZATIONS "external/Fronter/Fronter/Resources/*.yml")
+	file(GLOB LOCALIZATIONS "${FRONTER_DIR}/Fronter/Resources/*.yml")
 	file(COPY ${LOCALIZATIONS} DESTINATION "${FRONTER_OUTPUT_DIRECTORY}/Configuration/")
 elseif (PLATFORM STREQUAL "Linux" AND NOT RUN_CLANG_TIDY)
 	add_custom_command(TARGET ConverterFrontend
 		COMMAND mkdir -p "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
 		cp -r "data/fronter/*" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp -r "external/Fronter/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
-		cp external/Fronter/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
-		cp external/Fronter/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
+		cp -r "${FRONTER_DIR}/Fronter/Resources/*yml" "${FRONTER_OUTPUT_DIRECTORY}/Configuration/" &&
+		cp ${FRONTER_DIR}/Fronter/Resources/converter.ico ${FRONTER_OUTPUT_DIRECTORY} &&
+		cp ${FRONTER_DIR}/Fronter/Resources/GeneralFAQ-READ.ME.FIRST.txt ${FRONTER_OUTPUT_DIRECTORY}
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	)
 endif (PLATFORM STREQUAL "Windows" AND NOT RUN_CLANG_TIDY)
@@ -233,7 +233,7 @@ file(GLOB MAPPER_SUBDIR_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*/*.cpp")
 
 link_directories("${CONVERTER_DIR}/resources") # You may need to place the rakaly files in a subfolder named rakaly for this to work properly
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/commonItems EXCLUDE_FROM_ALL)
+#add_subdirectory(${CMAKE_SOURCE_DIR}/commonItems EXCLUDE_FROM_ALL)
 
 if (RUN_CLANG_TIDY)
 	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
