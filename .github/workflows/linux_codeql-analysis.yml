@@ -33,10 +33,12 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
+    - name: Configure cmake
+      run: cmake --preset x64-release-linux
+
     - name: Build solution
-      run: |
-       chmod u+x build_linux.sh
-       ./build_linux.sh
+      run: cmake --build --preset build-x64-release-linux --target EU5ToVic3 ConverterFrontend EU5ToVic3Tests -- -j40
+
 
     - name: Run Tests
       run: |
@@ -83,17 +85,22 @@ jobs:
        sudo apt-get update
        sudo apt-get install libcurl4-openssl-dev libwxbase3.2-0-unofficial \
                 libwxbase3.2unofficial-dev libwxgtk3.2-0-unofficial libwxgtk3.2unofficial-dev \
-                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev
+                wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov cmake \
+                ninja-build
       
     - name: Build solution
       run: |
-       chmod u+x build_linux_foreign.sh
-       ./build_linux_foreign.sh
+        cmake --preset x64-release-linux
+        cmake --build --preset build-x64-release-linux --target Vic3ToHoi4 ConverterFrontend Vic3ToHoi4Tests -- -j40
 
-    - name: Run Tests
+    - name: Run tests
       run: |
        cd test/Release-Linux
        ./EU5ToVic3Tests
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
+
+    - name: Cleanup
+      uses: colpal/actions-clean@v1
+      if: always()
