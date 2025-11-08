@@ -29,6 +29,66 @@ elseif (PLATFORM STREQUAL "Linux")
 	endif (COVERAGE STREQUAL true)
 endif (PLATFORM STREQUAL "Windows")
 
+
+#### Commons ####
+
+# Ideally , this would all be set up in the CommonItems cmake file and we'd just need to `add_subdirectory(${COMMONITEMS_DIR})`
+
+include_directories("${CMAKE_SOURCE_DIR}/commonItems")
+include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/zip/src")
+
+set(PCH_SOURCES "commonItems/BulkParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Color.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/CommonFunctions.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/CommonRegexes.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ConvenientParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ConverterVersion.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Date.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/GameVersion.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/iconvlite.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Log.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/OSCompatibilityLayer.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Parser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ParserHelpers.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/StringUtils.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/targa.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModFilesystem.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/Mod.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModLoader.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModParser.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationBlock.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationDatabase.h")
+set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationLambdas.h")
+
+set(COMMON_SOURCES "commonItems/CommonFunctions.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Color.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ConvenientParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ConverterVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Date.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/GameVersion.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/iconvlite.cpp")
+if (PLATFORM STREQUAL "Windows")
+  set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/WinUtils.cpp")
+elseif (PLATFORM STREQUAL "Linux")
+  set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/LinuxUtils.cpp")
+endif (PLATFORM STREQUAL "Windows")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Log.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Parser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ParserHelpers.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/OSCommonLayer.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/StringUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/targa.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModFilesystem.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModLoader.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModParser.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/external/zip/src/zip.c")
+
+add_library(commonLib ${COMMON_SOURCES})
+#target_precompile_headers(commonLib PUBLIC ${PCH_SOURCES})
+
+
 #### Fronter ####
 
 # Ideally, this would all be set up in the Fronter's cmake file and we'd just need to `add_subdirectory(${FRONTER_DIR})`
@@ -171,51 +231,6 @@ include_directories("${CONVERTER_SOURCE_DIR}/Configuration")
 
 link_directories(${CONVERTER_DIR}/Resources)
 
-
-set(PCH_SOURCES "commonItems/BulkParser.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Color.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/CommonFunctions.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/CommonRegexes.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ConvenientParser.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ConverterVersion.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Date.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/GameVersion.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Log.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/OSCompatibilityLayer.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Parser.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ParserHelpers.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/StringUtils.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/targa.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModFilesystem.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/Mod.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModLoader.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/ModLoader/ModParser.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationBlock.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationDatabase.h")
-set(PCH_SOURCES ${PCH_SOURCES} "commonItems/Localization/LocalizationLambdas.h")
-
-set(COMMON_SOURCES "commonItems/CommonFunctions.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Color.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ConvenientParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ConverterVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Date.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/GameVersion.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/LinuxUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Log.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/Parser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ParserHelpers.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/OSCommonLayer.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/StringUtils.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/targa.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModFilesystem.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModLoader.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/ModLoader/ModParser.cpp")
-set(COMMON_SOURCES ${COMMON_SOURCES} "commonItems/external/zip/src/zip.c")
-
-add_library(CommonItems ${COMMON_SOURCES})
-
 file(GLOB MAIN_SOURCES "${CONVERTER_SOURCE_DIR}/*.cpp")
 file(GLOB CONFIGURATION_SOURCES "${CONVERTER_SOURCE_DIR}/Configuration/*.cpp")
 file(GLOB EU5_WORLD_SOURCES "${CONVERTER_SOURCE_DIR}/EU5World/*.cpp")
@@ -232,8 +247,6 @@ file(GLOB MAPPER_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*.cpp")
 file(GLOB MAPPER_SUBDIR_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*/*.cpp")
 
 link_directories("${CONVERTER_DIR}/resources") # You may need to place the rakaly files in a subfolder named rakaly for this to work properly
-
-#add_subdirectory(${CMAKE_SOURCE_DIR}/commonItems EXCLUDE_FROM_ALL)
 
 if (RUN_CLANG_TIDY)
 	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
@@ -296,6 +309,11 @@ endif (NOT RUN_CLANG_TIDY)
 
 ### TESTS ###
 
+include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googletest")
+include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googletest/include")
+include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googlemock")
+include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googlemock/include")
+
 file(GLOB TEST_SOURCES "EU5ToVic3Tests/*.cpp")
 file(GLOB TEST_SUB_SOURCES "EU5ToVic3Tests/*/*.cpp")
 file(GLOB TEST_SUB_SUB_SOURCES "EU5ToVic3Tests/*/*/*.cpp")
@@ -315,6 +333,11 @@ set_target_properties(EU5ToVic3Tests
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${TEST_OUTPUT_DIRECTORY}
 )
+if (PLATFORM STREQUAL "Windows")
+	target_compile_options(EU5ToVic3Tests PRIVATE /permissive /W4 /w14242 /w14254 /w14263 /w14265 /w14287 /we4289 /w14296 
+        /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928 
+        /external:anglebrackets /external:W0 /WX)
+endif (PLATFORM  STREQUAL "Windows")
 
 target_precompile_headers(EU5ToVic3Tests REUSE_FROM EU5ToVic3lib)
 target_link_libraries(EU5ToVic3Tests LINK_PUBLIC EU5ToVic3lib)
