@@ -1,5 +1,7 @@
 #ifndef OUT_METADATA_FILE_H
 #define OUT_METADATA_FILE_H
+
+#include <filesystem>
 #include <string>
 
 namespace OUT

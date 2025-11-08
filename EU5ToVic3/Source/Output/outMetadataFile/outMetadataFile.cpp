@@ -1,6 +1,9 @@
 #include "outMetadataFile.h"
 #include "Log.h"
+#include <filesystem>
 #include <fstream>
+#include <ostream>
+#include <stdexcept>
 
 namespace
 {

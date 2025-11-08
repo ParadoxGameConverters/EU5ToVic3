@@ -1,11 +1,13 @@
 #include "EU5ToVic3Converter.h"
 #include "Configuration.h"
+#include "ConverterVersion.h"
 #include "EU5World/World.h"
 #include "Log.h"
 #include "V3World/V3World.h"
 #include "outWorld.h"
+#include <memory>
 
-void convertEU4ToVic3(commonItems::ConverterVersion&& converterVersion)
+void convertEU4ToVic3(const commonItems::ConverterVersion& converterVersion)
 {
 	Log(LogLevel::Progress) << "0 %";
 	auto configuration = std::make_shared<Configuration>(converterVersion);

@@ -1,5 +1,8 @@
 #include "Configuration.h"
+#include "ConverterVersion.h"
 #include "gtest/gtest.h"
+#include <sstream>
+#include <stdexcept>
 
 TEST(ConfigurationTests, BrokenEU4PathThrowsException)
 {

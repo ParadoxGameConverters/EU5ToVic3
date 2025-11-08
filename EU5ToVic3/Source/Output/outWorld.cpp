@@ -1,8 +1,15 @@
 #include "outWorld.h"
 #include "CommonFunctions.h"
+#include "Configuration.h"
+#include "ConverterVersion.h"
+#include "DatingData.h"
+#include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "V3World/V3World.h"
 #include "outMetadataFile/outMetadataFile.h"
+#include <filesystem>
 #include <fstream>
+#include <stdexcept>
 
 void OUT::exportWorld(const Configuration& configuration, const V3::World& world, const commonItems::ConverterVersion& converterVersion)
 {
