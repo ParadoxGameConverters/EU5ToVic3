@@ -2,7 +2,7 @@
 #include "Log.h"
 #include <fstream>
 
-int main(const int argc, const char* argv[])
+int main(const int argc, [[maybe_unused]] const char* argv[])
 {
 	try
 	{
