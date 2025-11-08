@@ -54,7 +54,7 @@ jobs:
     - name: "Prepare release"
       run: |
         cd "C:\Program Files\7-Zip\"
-        .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\Release-Windows\*
+        .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
         cp $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\EU5ToVic3-latest-win-x64.zip
 
     - name: "Prepare installer"
