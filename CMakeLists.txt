@@ -30,6 +30,14 @@ elseif (PLATFORM STREQUAL "Linux")
 endif (PLATFORM STREQUAL "Windows")
 
 
+#### GoogleTest ####
+
+set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googletest/src/gtest_main.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googletest/src/gtest-all.cc")
+set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googlemock/src/gmock-all.cc")
+add_library(gtest ${GTEST_SOURCES})
+
+
 #### Commons ####
 
 # Ideally , this would all be set up in the CommonItems cmake file and we'd just need to `add_subdirectory(${COMMONITEMS_DIR})`
@@ -248,7 +256,7 @@ file(GLOB MAPPER_SUBDIR_SOURCES "${CONVERTER_SOURCE_DIR}/Mappers/*/*/*.cpp")
 link_directories("${CONVERTER_DIR}/resources") # You may need to place the rakaly files in a subfolder named rakaly for this to work properly
 
 if (RUN_CLANG_TIDY)
-	set(CMAKE_CXX_CLANG_TIDY clang-tidy --header-filter=.*src.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
+	set(CMAKE_CXX_CLANG_TIDY clang-tidy --exclude-header-filter=.*commonItems|Fronter.* --config-file=${CMAKE_SOURCE_DIR}/.clang-tidy --extra-arg=/EHsc)
 endif(RUN_CLANG_TIDY)
 
 add_library(EU5ToVic3lib
@@ -316,16 +324,12 @@ include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googlem
 file(GLOB TEST_SOURCES "EU5ToVic3Tests/*.cpp")
 file(GLOB TEST_SUB_SOURCES "EU5ToVic3Tests/*/*.cpp")
 file(GLOB TEST_SUB_SUB_SOURCES "EU5ToVic3Tests/*/*/*.cpp")
-set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googletest/src/gtest_main.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googletest/src/gtest-all.cc")
-set(GTEST_SOURCES ${GTEST_SOURCES} "commonItems/external/googletest/googlemock/src/gmock-all.cc")
 
 add_executable(
 	EU5ToVic3Tests
 	${TEST_SOURCES}
 	${TEST_SUB_SOURCES}
 	${TEST_SUB_SUB_SOURCES}
-	${GTEST_SOURCES}
 )
 
 set_target_properties(EU5ToVic3Tests
@@ -339,6 +343,6 @@ if (PLATFORM STREQUAL "Windows")
 endif (PLATFORM  STREQUAL "Windows")
 
 target_precompile_headers(EU5ToVic3Tests REUSE_FROM EU5ToVic3lib)
-target_link_libraries(EU5ToVic3Tests LINK_PUBLIC EU5ToVic3lib)
+target_link_libraries(EU5ToVic3Tests LINK_PUBLIC EU5ToVic3lib gtest)
 
 file(COPY "EU5ToVic3Tests/TestFiles" DESTINATION "${TEST_OUTPUT_DIRECTORY}")
