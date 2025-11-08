@@ -99,7 +99,7 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 
 void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
-	registerKeyword("EU5txt", []([[maybe_unused]]std::istream& theStream) {
+	registerKeyword("EU5txt", []([[maybe_unused]] std::istream& theStream) {
 	});
 	registerKeyword("date", [this](std::istream& theStream) {
 		if (saveGame.parsedMeta)
