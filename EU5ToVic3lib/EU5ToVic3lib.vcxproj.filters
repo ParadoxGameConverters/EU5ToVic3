@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="EU5World">
+      <UniqueIdentifier>{371d4cb5-643a-4b5e-ba4f-6f177c2dfefa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{82320073-8d32-47d2-9aa5-f74f9799783a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mappers">
+      <UniqueIdentifier>{187b5c13-d1a0-458f-b0fe-32dd8b551682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Output">
+      <UniqueIdentifier>{e226fd86-309b-4835-8a68-e47426f49359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Output\outMetadataFile">
+      <UniqueIdentifier>{f49d495d-2136-4302-9a08-8bcf86616b34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic3World">
+      <UniqueIdentifier>{664b836e-fd9c-465f-b07c-c6301efc8238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{ee706bf8-01ff-4bce-94b2-cbb1564e1a0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders">
+      <UniqueIdentifier>{1d4c37a6-1e56-47ef-8f62-a329edccdb39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\ModLoader">
+      <UniqueIdentifier>{ca17ef5f-51c9-480f-be68-57812f4e6b99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
+      <Filter>EU5World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Output\outWorld.cpp">
+      <Filter>Output</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.cpp">
+      <Filter>Output\outMetadataFile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\V3World\V3World.cpp">
+      <Filter>Vic3World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5ToVic3Converter.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\Configuration\Configuration.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.cpp">
+      <Filter>EU5World\Loaders\ModLoader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\World.h">
+      <Filter>EU5World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Helpers\rakaly.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Output\outWorld.h">
+      <Filter>Output</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.h">
+      <Filter>Output\outMetadataFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\V3World\V3World.h">
+      <Filter>Vic3World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5ToVic3Converter.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\Configuration\Configuration.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Configuration\DatingData.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.h">
+      <Filter>EU5World\Loaders\ModLoader</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
