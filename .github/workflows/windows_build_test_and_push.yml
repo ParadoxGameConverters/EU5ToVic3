@@ -39,22 +39,20 @@ jobs:
       id: previoustag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
 
-    - name: Build with cmake
-      shell: cmd
+    - name: "Build solution"
       run: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
-        cmake --preset x64-release-windows
-        cmake --build --preset build-x64-release-windows --target EU5ToVic3Converter ConverterFrontend EU5ToVic3Tests -- -j40
+       cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\EU5ToVic3.sln
 
     - name: "Run tests"
       run: |
-       cd $Env:GITHUB_WORKSPACE\build\test\Release-Windows
+       cd $Env:GITHUB_WORKSPACE\Release-Tests\
        .\EU5ToVic3Tests.exe
 
     - name: "Prepare release"
       run: |
         cd "C:\Program Files\7-Zip\"
-        .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
+        .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\Release\*
         cp $Env:GITHUB_WORKSPACE\EU5ToVic3-0.0Aadvark-win-x64.zip $Env:GITHUB_WORKSPACE\EU5ToVic3-latest-win-x64.zip
 
     - name: "Prepare installer"
@@ -88,7 +86,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       run: |
        cd "C:\Program Files\7-Zip\"
-       .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\build\Release-Windows\*
+       .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\Release\*
 
     - uses: actions/upload-artifact@v4
       if: ${{ github.event_name == 'pull_request' }}
@@ -122,16 +120,14 @@ jobs:
       run: |
         choco install ninja
 
-    - name: Build with cmake
-      shell: cmd
+    - name: "Build solution"
       run: |
-        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
-        cmake --preset x64-release-windows
-        cmake --build --preset build-x64-release-windows --target EU5ToVic3Converter ConverterFrontend EU5ToVic3Tests -- -j40
+       cd "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\"
+       .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\EU5ToVic3.sln
 
     - name: "Run tests"
       run: |
-       cd $Env:GITHUB_WORKSPACE\build\test\Release-Windows
+       cd $Env:GITHUB_WORKSPACE\Release-Tests\
        .\EU5ToVic3Tests.exe
 
     - name: "Cleanup"
