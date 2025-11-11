@@ -1,20 +1,27 @@
 #include "World.h"
 #include "CommonRegexes.h"
 #include "Configuration.h"
+#include "ConverterVersion.h"
 #include "GameVersion.h"
 #include "Log.h"
+#include "ModLoader/ModLoader.h"
 #include "ModLoader/ModNames.h"
 #include "ParserHelpers.h"
 #include "rakaly.h"
 #include "zip.h"
 #include <filesystem>
 #include <fstream>
+#include <ios>
+#include <istream>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
 #include <string>
 
-EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
+EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion):
+	 EU5Path(theConfiguration->getEU5Path())
 {
 	Log(LogLevel::Info) << "*** Hello EU5, loading World. ***";
-	EU5Path = theConfiguration->getEU5Path();
 	saveGame.path = theConfiguration->getEU5SaveGamePath();
 	Log(LogLevel::Progress) << "6 %";
 
@@ -99,7 +106,7 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 
 void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
-	registerKeyword("EU5txt", [](std::istream& theStream) {
+	registerKeyword("EU5txt", []([[maybe_unused]] std::istream& theStream) {
 	});
 	registerKeyword("date", [this](std::istream& theStream) {
 		if (saveGame.parsedMeta)
@@ -146,7 +153,7 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		{
 			auto modStream = std::stringstream(modBlob);
 			const auto& modName = ModNames(modStream);
-			incomingMods.emplace_back(Mod(modName.getName(), modName.getPath()));
+			incomingMods.emplace_back(modName.getName(), modName.getPath());
 			Log(LogLevel::Info) << "---> " << modName.getName() << ": " << modName.getPath();
 		}
 

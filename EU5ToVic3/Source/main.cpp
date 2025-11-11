@@ -1,8 +1,10 @@
+#include "ConverterVersion.h"
 #include "EU5ToVic3Converter.h"
 #include "Log.h"
+#include <exception>
 #include <fstream>
 
-int main(const int argc, const char* argv[])
+int main(const int argc, [[maybe_unused]] const char* argv[])
 {
 	try
 	{
@@ -18,7 +20,7 @@ int main(const int argc, const char* argv[])
 			Log(LogLevel::Info) << "EU4ToVic3 takes no parameters.";
 			Log(LogLevel::Info) << "It uses configuration.txt, configured manually or by the frontend.";
 		}
-		convertEU4ToVic3(std::move(converterVersion));
+		convertEU4ToVic3(converterVersion);
 		return 0;
 	}
 

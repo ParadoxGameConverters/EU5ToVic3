@@ -5427,7 +5427,7 @@ chinese_upper_clothes = {
             }
         }
     }
-
+}
     
 
 #Religion Clothes

@@ -1,11 +1,14 @@
 #include "Configuration.h"
 #include "CommonFunctions.h"
 #include "CommonRegexes.h"
+#include "ConverterVersion.h"
 #include "GameVersion.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include <fstream>
+#include <istream>
+#include <stdexcept>
+#include <string>
 
 Configuration::Configuration(const commonItems::ConverterVersion& converterVersion)
 {

@@ -4,6 +4,7 @@
 #include "ConverterVersion.h"
 #include "DatingData.h"
 #include "GameVersion.h"
+#include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
 #include "Parser.h"
 

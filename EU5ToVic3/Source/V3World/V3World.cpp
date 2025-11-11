@@ -1,6 +1,9 @@
 #include "V3World.h"
+#include "Configuration.h"
 #include "EU5World/World.h"
 #include "Log.h"
+#include "ModLoader/ModLoader.h"
+
 
 V3::World::World(const Configuration& configuration, const EU5::World& sourceWorld):
 	 V3Path(configuration.getVic3Path()),
@@ -9,13 +12,13 @@ V3::World::World(const Configuration& configuration, const EU5::World& sourceWor
 {
 	Mods overrideMods;
 	// We use decentralized world mod to fill out wasteland and out-of-scope clay with decentralized tribes.
-	overrideMods.emplace_back(Mod{"Decentralized World", "configurables/decentralized_world/"});
+	overrideMods.emplace_back("Decentralized World", "configurables/decentralized_world/");
 	const auto vanillaFS = commonItems::ModFilesystem(V3Path, {});
 	const auto dwFS = commonItems::ModFilesystem(V3Path, overrideMods);
-	overrideMods.emplace_back(Mod{"Blankmod", "blankMod/output/"});
+	overrideMods.emplace_back("Blankmod", "blankMod/output/");
 	const auto allFS = commonItems::ModFilesystem(V3Path, overrideMods);
 	overrideMods.clear();
-	overrideMods.emplace_back(Mod{"Blankmod", "blankMod/output/"});
+	overrideMods.emplace_back("Blankmod", "blankMod/output/");
 	const auto blankModFS = commonItems::ModFilesystem(V3Path, overrideMods);
 
 	Log(LogLevel::Progress) << "45 %";

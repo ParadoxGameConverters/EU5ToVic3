@@ -5,17 +5,28 @@ on:
   pull_request:
     branches: [ master ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build_test_and_publish:
     name: Build, test and publish local
     if: github.repository_owner == 'ParadoxGameConverters'
     runs-on: [self-hosted, windows]
-    
+
     steps:
+    - name: work around permission issue
+      run: git config --global --add safe.directory /github/workspace
+
+    - name: Add Ninja build to PATH
+      run: echo "c:\program files\ninja" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
     - name: "Cloning repo"
       uses: actions/checkout@v5
       with:
         fetch-depth: 0
+        submodules: recursive
 
     - name: "Cloning selective submodules"
       run: |
@@ -27,12 +38,12 @@ jobs:
       if: ${{ github.event_name == 'push' }}
       id: previoustag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
-      
+
     - name: "Build solution"
       run: |
        cd "C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\"
        .\MSBuild.exe -m -p:Configuration=Release $Env:GITHUB_WORKSPACE\EU5ToVic3.sln
-       
+
     - name: "Run tests"
       run: |
        cd $Env:GITHUB_WORKSPACE\Release-Tests\
@@ -48,7 +59,7 @@ jobs:
       run: |
         c:\"Program Files (x86)\Inno Setup 6\iscc" EU5ToVic3-Installer.iss
         cp $Env:GITHUB_WORKSPACE\Output\EU5ToVic3-latest-win-x64.exe $Env:GITHUB_WORKSPACE\Output\EU5ToVic3-0.0Aadvark-win-x64.exe
-       
+
     - name: "Upload binaries to release"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
@@ -59,7 +70,7 @@ jobs:
         omitNameDuringUpdate: true
         artifacts: EU5ToVic3-0.0Aadvark-win-x64.zip, Output\EU5ToVic3-0.0Aadvark-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
-        
+
     - name: "Upload binaries to archive"
       if: ${{ github.event_name == 'push' }}
       uses: ncipollo/release-action@v1
@@ -70,7 +81,19 @@ jobs:
         omitNameDuringUpdate: true
         artifacts: EU5ToVic3-0.0Aadvark-win-x64.zip, EU5ToVic3-latest-win-x64.zip, Output\EU5ToVic3-0.0Aadvark-win-x64.exe, Output\EU5ToVic3-latest-win-x64.exe
         token: ${{ secrets.API_TOKEN_GITHUB }}
-        
+
+    - name: "Prepare pull request artifact"
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+       cd "C:\Program Files\7-Zip\"
+       .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\Release\*
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ github.event_name == 'pull_request' }}
+      with:
+        name: pull-request-version
+        path: EU5ToVic3-pull-request-win-x64.zip
+
     - name: "Cleanup"
       if: always()
       run: |
@@ -80,16 +103,22 @@ jobs:
     name: Build and test foreign
     if: github.repository_owner != 'ParadoxGameConverters'
     runs-on: windows-2022
-    
+
     steps:
     - name: "Cloning repo"
       uses: actions/checkout@v5
+      with:
+        submodules: recursive
 
     - name: "Cloning selective submodules"
       run: |
        git submodule update --init --recursive commonItems
        git -c submodule."external/commonItems".update=none `
            submodule update --init --recursive Fronter
+
+    - name: Install ninja
+      run: |
+        choco install ninja
 
     - name: "Build solution"
       run: |
@@ -100,3 +129,8 @@ jobs:
       run: |
        cd $Env:GITHUB_WORKSPACE\Release-Tests\
        .\EU5ToVic3Tests.exe
+
+    - name: "Cleanup"
+      if: always()
+      run: |
+        Get-ChildItem -Path $Env:GITHUB_WORKSPACE -Recurse -Force | Remove-Item -force -recurse

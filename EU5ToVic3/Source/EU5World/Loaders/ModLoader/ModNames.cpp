@@ -1,6 +1,7 @@
 #include "ModNames.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include <istream>
 
 EU5::ModNames::ModNames(std::istream& theStream)
 {

@@ -22,3 +22,7 @@ jobs:
         user_name: 'idhrendur'
         destination_branch: 'main'
         commit_message: "Publish EU5ToVic3's commit id"
+
+    - name: Cleanup
+      uses: colpal/actions-clean@v1
+      if: always()
