@@ -39,7 +39,6 @@ jobs:
     - name: Build solution
       run: cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j40
 
-
     - name: Run Tests
       run: |
        cd build/test/Release-Linux
@@ -88,10 +87,13 @@ jobs:
                 wx3.2-headers wx-common libnotify-dev libnotify4 libcurl4-openssl-dev lcov cmake \
                 ninja-build
       
-    - name: Build solution
+    - name: Configure cmake
       run: |
+        sudo ln -s /usr/include/wx-3.2 /usr/include/wx-3.2-unofficial
         cmake --preset x64-release-linux
-        cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j40
+
+    - name: Build solution
+      run: cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j5
 
     - name: Run tests
       run: |
@@ -100,7 +102,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
-
-    - name: Cleanup
-      uses: colpal/actions-clean@v1
-      if: always()
