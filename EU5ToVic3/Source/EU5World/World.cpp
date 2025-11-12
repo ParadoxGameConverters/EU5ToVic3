@@ -172,7 +172,7 @@ void EU5::World::verifySave()
 	inStream << saveFile.rdbuf();
 	saveGame.gamestate = inStream.str();
 
-	const auto save = rakaly::parseEu4(saveGame.gamestate);
+	const auto save = rakaly::parseEu5(saveGame.gamestate);
 	if (const auto& melt = save.meltMeta(); melt)
 	{
 		Log(LogLevel::Info) << "Meta extracted successfully.";
