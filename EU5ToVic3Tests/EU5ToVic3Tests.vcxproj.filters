@@ -171,11 +171,17 @@
     <Filter Include="EU5WorldTests\LoaderTests\ModLoaderTests">
       <UniqueIdentifier>{410554a5-ba4a-44f3-a3c1-268eae345bec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TestFiles\eu5installation\map">
-      <UniqueIdentifier>{24bb5fa9-535b-4b7f-84e5-430c3f6e687d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TestFiles\eu5installation\binaries">
       <UniqueIdentifier>{9fb8dbdc-ea5d-4991-95a9-9a4aa873a9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\eu5installation\game">
+      <UniqueIdentifier>{02cff798-f03a-4428-b0c6-e9686f55b57e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\eu5installation\game\in_game">
+      <UniqueIdentifier>{2d670ef8-1c7f-4464-b5e7-e8cbd5eded01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\eu5installation\game\in_game\map_data">
+      <UniqueIdentifier>{8cf20e20-876b-4147-aeb2-375818fafcdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -437,14 +443,11 @@
     <CopyFileToFolders Include="TestFiles\vic3installation\game\common\discrimination_traits\00_cultural_heritage.txt">
       <Filter>TestFiles\vic3installation\game\common\discrimination_traits</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\eu5installation\launcher-settings.json">
-      <Filter>TestFiles\eu5installation</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\eu5installation\map\positions.txt">
-      <Filter>TestFiles\eu5installation\map</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\eu5installation\binaries\eu5">
       <Filter>TestFiles\eu5installation\binaries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\eu5installation\game\in_game\map_data\definitions.txt">
+      <Filter>TestFiles\eu5installation\game\in_game\map_data</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
