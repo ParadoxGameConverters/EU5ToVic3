@@ -89,7 +89,7 @@ jobs:
       
     - name: Configure cmake
       run: |
-        sudo ln -s /usr/include/wx-3.2-unofficial /usr/include/wx-3.2
+        sudo ln -s /usr/include/wx-3.2 /usr/include/wx-3.2-unofficial
         cmake --preset x64-release-linux
 
     - name: Build solution
