@@ -37,9 +37,7 @@ jobs:
       run: cmake --preset x64-release-linux
 
     - name: Build solution
-      run: |
-        chmod u+x build_linux.sh
-        ./build_linux.sh
+      run: cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j40
 
     - name: Run Tests
       run: |
@@ -90,9 +88,7 @@ jobs:
                 ninja-build
       
     - name: Build solution
-      run: |
-        chmod u+x build_linux_foreign.sh
-        ./build_linux_foreign.sh
+      run: cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j5
 
     - name: Run tests
       run: |
