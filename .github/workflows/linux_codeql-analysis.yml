@@ -88,7 +88,9 @@ jobs:
                 ninja-build
       
     - name: Configure cmake
-      run: cmake --preset x64-release-linux
+      run: |
+        sudo ln -s /usr/include/wx-3.2-unofficial /usr/include/wx-3.2
+        cmake --preset x64-release-linux
 
     - name: Build solution
       run: cmake --build --preset build-x64-release-linux --target EU5ToVic3Converter EU5ToVic3Tests -- -j5
