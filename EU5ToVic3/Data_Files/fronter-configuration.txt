@@ -5,22 +5,20 @@ displayName = EU5DISPLAYNAME
 sourceGame = EU5GAME
 targetGame = VIC3GAME
 
-#enableUpdateChecker = true
-#checkForUpdatesOnStartup = true
-enableUpdateChecker = false
-checkForUpdatesOnStartup = false
-latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/EU5ToVic3/releases/"
-converterReleaseForumThread = "https://forum.paradoxplaza.com/forum/threads/eu5-to-vic3-converter-thread.1475054/"
+enableUpdateChecker = true
+checkForUpdatesOnStartup = true
+latestGitHubConverterReleaseUrl = "https://github.com/ParadoxGameConverters/EU5ToVic3/releases"
+converterReleaseForumThread = "https://forum.paradoxplaza.com/forum/threads/eu5-to-vic3-converter.1866690/"
 pagesCommitIdUrl = "https://paradoxgameconverters.com/commit_ids/EU5ToVic3.txt"
 overwritePlayset = true
 
 requiredFolder = {
-	name = EU5directory
+	name = EU5Directory
 	displayName = EU5FOLDER
 	tooltip = EU5FOLDERTIP
 	mandatory = true
 	searchPathType = steamFolder
-	searchPathID = 236850
+	searchPathID = 3450310
 }
 requiredFolder = {
 	name = EU5DocumentsDirectory
@@ -28,10 +26,10 @@ requiredFolder = {
 	tooltip = EU5DOCTIP
 	mandatory = true
 	searchPathType = windowsUsersFolder
-	searchPath = "Paradox Interactive\Europa Universalis IV"
+	searchPath = "Paradox Interactive\Europa Universalis V"
 }
 requiredFolder = {
-	name = Vic3directory
+	name = Vic3Directory
 	displayName = VIC3FOLDER
 	tooltip = VIC3FOLDERTIP
 	mandatory = true
@@ -53,6 +51,6 @@ requiredFile = {
 	mandatory = true
 	outputtable = true
 	searchPathType = windowsUsersFolder
-	searchPath = "Paradox Interactive\Europa Universalis IV\save games"
-	allowedExtension = "*.eu4"
+	searchPath = "Paradox Interactive\Europa Universalis V\save games"
+	allowedExtension = "*.eu5"
 }

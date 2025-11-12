@@ -77,7 +77,7 @@ void Configuration::verifyEU5Path() const
 		throw std::runtime_error("EU5 path " + EU5Path.string() + " does not exist!");
 	if (!commonItems::DoesFileExist(EU5Path / "binaries/eu5.exe") && !commonItems::DoesFileExist(EU5Path / "binaries/eu5"))
 		throw std::runtime_error(EU5Path.string() + " does not contain Europa Universalis 5!");
-	if (!commonItems::DoesFileExist(EU5Path / "map/positions.txt"))
+	if (!commonItems::DoesFileExist(EU5Path / "game/in_game/map_data/definitions.txt"))
 		throw std::runtime_error(EU5Path.string() + " does not appear to be a valid EU5 install!");
 	Log(LogLevel::Info) << "\tEU5 install path is " << EU5Path.string();
 }

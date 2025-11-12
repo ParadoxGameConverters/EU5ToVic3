@@ -4,7 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 
-TEST(ConfigurationTests, BrokenEU4PathThrowsException)
+TEST(ConfigurationTests, BrokenEU5PathThrowsException)
 {
 	std::stringstream configurationInput;
 	configurationInput << "EU5Directory = \"TestFiles/eu5installationBROKE\"\n";
