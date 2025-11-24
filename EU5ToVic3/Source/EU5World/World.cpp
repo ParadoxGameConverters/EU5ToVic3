@@ -112,12 +112,12 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		if (saveGame.parsedMeta)
 			commonItems::ignoreItem("unused", theStream);
 		else
+		{
 			datingData.lastEU4Date = date(commonItems::getString(theStream));
+			Log(LogLevel::Info) << "-> Last date set to: " << datingData.lastEU4Date;
+		}
 	});
-	registerKeyword("start_date", [this](std::istream& theStream) {
-		datingData.startEU4Date = date(commonItems::getString(theStream));
-	});
-	registerKeyword("savegame_version", [this, converterVersion](std::istream& theStream) {
+	registerKeyword("version", [this, converterVersion](std::istream& theStream) {
 		if (saveGame.parsedMeta)
 		{
 			commonItems::ignoreItem("unused", theStream);
