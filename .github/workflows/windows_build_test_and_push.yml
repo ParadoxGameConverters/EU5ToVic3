@@ -88,7 +88,7 @@ jobs:
        cd "C:\Program Files\7-Zip\"
        .\7z.exe a $Env:GITHUB_WORKSPACE\EU5ToVic3-pull-request-win-x64.zip $Env:GITHUB_WORKSPACE\Release\*
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       if: ${{ github.event_name == 'pull_request' }}
       with:
         name: pull-request-version
