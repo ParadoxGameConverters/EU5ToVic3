@@ -104,7 +104,7 @@ void OUT::exportBookmark(const std::filesystem::path& outputName, const Configur
 	std::ofstream output("output" / outputName / "common/defines/99_converter_defines.txt");
 	if (!output.is_open())
 		throw std::runtime_error("Error writing defines file! Is the output folder writable?");
-	output << commonItems::utf8BOM << "NGame = { START_DATE = \"" << datingData.lastEU4Date << "\" }\n";
+	output << commonItems::utf8BOM << "NGame = { START_DATE = \"" << datingData.lastEU5Date << "\" }\n";
 	output.close();
 }
 

@@ -112,7 +112,7 @@ void Configuration::setOutputName()
 
 void Configuration::verifyEU5Version(const commonItems::ConverterVersion& converterVersion) const
 {
-	const auto EU5Version = GameVersion::extractVersionFromLauncher(EU5Path / "../launcher-settings.json");
+	const auto EU5Version = GameVersion::extractVersionFromBranchTxt(EU5Path / "clausewitz_branch.txt");
 	if (!EU5Version)
 	{
 		Log(LogLevel::Error) << "EU5 version could not be determined, proceeding blind!";

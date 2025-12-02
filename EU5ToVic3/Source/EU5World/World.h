@@ -24,6 +24,10 @@ class World: commonItems::parser
 	void registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion);
 	void verifySave();
 
+	parser metaPreParser;
+	parser metaParser;
+	parser compatibilityParser;
+
 	struct saveData
 	{
 		bool parsedMeta = false;
@@ -37,8 +41,8 @@ class World: commonItems::parser
 	commonItems::ModFilesystem modFS;
 
 	DatingData datingData;
-
 	GameVersion version;
+	std::map<int, std::string> locationIDs;
 };
 } // namespace EU5
 
