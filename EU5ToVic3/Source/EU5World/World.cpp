@@ -4,8 +4,6 @@
 #include "ConverterVersion.h"
 #include "GameVersion.h"
 #include "Log.h"
-#include "ModLoader/ModLoader.h"
-#include "ModLoader/ModNames.h"
 #include "ParserHelpers.h"
 #include "rakaly.h"
 #include "zip.h"
@@ -124,7 +122,7 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 	metaParser.registerKeyword("save_label", [this](std::istream& theStream) {
 		Log(LogLevel::Info) << "\t-> Save Label: " << commonItems::getString(theStream);
 	});
-	metaParser.registerKeyword("version", [this, converterVersion](std::istream& theStream) {
+	metaParser.registerKeyword("version", [this, converterVersion, theConfiguration](std::istream& theStream) {
 		const commonItems::singleString versionString(theStream);
 		version = GameVersion(versionString.getString());
 		Log(LogLevel::Info) << "\t-> Savegave version: " << version.toString();
@@ -138,6 +136,12 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		{
 			Log(LogLevel::Error) << "Converter requires a maximum save from v" << converterVersion.getMaxSource().toShortString();
 			throw std::runtime_error("Savegame vs converter version mismatch!");
+		}
+		if (version > theConfiguration->getEU5Version())
+		{
+			Log(LogLevel::Error) << "Installation version: " << theConfiguration->getEU5Version()->toString()
+										<< " is older than savegame version: " << version.toString() << "! This is a no-go!";
+			throw std::runtime_error("Savegame vs installation version mismatch!");
 		}
 	});
 	metaParser.registerKeyword("player_country_name", [this](std::istream& theStream) {
@@ -155,13 +159,14 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 			throw std::runtime_error("No locations in metadata. This is unacceptable.");
 		}
 
-		int ID = 0;
+		int provinceID = 0;
 		for (const auto& location: locationsSrc)
 		{
-			ID++;
-			locationIDs.emplace(ID, location);
+			provinceID++;
+			locationIDs.emplace(provinceID, location);
 		}
-		Log(LogLevel::Info) << "\t-> Loaded " << ID << " locations, from " << locationIDs.at(1) << "(1) to " << locationIDs.at(ID) << "(" << ID << ").";
+		Log(LogLevel::Info) << "\t-> Loaded " << provinceID << " locations, from " << locationIDs.at(1) << "(1) to " << locationIDs.at(provinceID) << "("
+								  << provinceID << ").";
 	});
 	compatibilityParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

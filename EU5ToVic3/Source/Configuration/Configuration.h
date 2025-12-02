@@ -29,14 +29,16 @@ class Configuration: commonItems::parser
 	[[nodiscard]] const auto& getEU5DocumentsPath() const { return EU5DocumentsPath; }
 	[[nodiscard]] const auto& getVic3Path() const { return Vic3Path; }
 	[[nodiscard]] const auto& getOutputName() const { return outputName; }
+	[[nodiscard]] const auto& getEU5Version() const { return EU5Version; }
+	[[nodiscard]] const auto& getVic3Version() const { return Vic3Version; }
 
   private:
 	void registerKeys();
 	void verifyEU5Path() const;
 	void verifyVic3Path();
 	void setOutputName();
-	void verifyVic3Version(const commonItems::ConverterVersion& converterVersion) const;
-	void verifyEU5Version(const commonItems::ConverterVersion& converterVersion) const;
+	void verifyVic3Version(const commonItems::ConverterVersion& converterVersion);
+	void verifyEU5Version(const commonItems::ConverterVersion& converterVersion);
 
 	// options from configuration.txt
 	std::filesystem::path EU5SaveGamePath;
@@ -44,6 +46,8 @@ class Configuration: commonItems::parser
 	std::filesystem::path EU5DocumentsPath;
 	std::filesystem::path Vic3Path;
 	std::filesystem::path outputName;
+	std::optional<GameVersion> EU5Version;
+	std::optional<GameVersion> Vic3Version;
 };
 
 #endif // CONFIGURATION_H
