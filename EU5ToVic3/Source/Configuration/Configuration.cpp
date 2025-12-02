@@ -110,9 +110,9 @@ void Configuration::setOutputName()
 	Log(LogLevel::Info) << "Using output name " << outputName.string();
 }
 
-void Configuration::verifyEU5Version(const commonItems::ConverterVersion& converterVersion) const
+void Configuration::verifyEU5Version(const commonItems::ConverterVersion& converterVersion)
 {
-	const auto EU5Version = GameVersion::extractVersionFromLauncher(EU5Path / "../launcher-settings.json");
+	EU5Version = GameVersion::extractVersionFromBranchTxt(EU5Path / "clausewitz_branch.txt");
 	if (!EU5Version)
 	{
 		Log(LogLevel::Error) << "EU5 version could not be determined, proceeding blind!";
@@ -135,26 +135,26 @@ void Configuration::verifyEU5Version(const commonItems::ConverterVersion& conver
 	}
 }
 
-void Configuration::verifyVic3Version(const commonItems::ConverterVersion& converterVersion) const
+void Configuration::verifyVic3Version(const commonItems::ConverterVersion& converterVersion)
 {
-	const auto V3Version = GameVersion::extractVersionFromLauncher(Vic3Path / "../launcher/launcher-settings.json");
-	if (!V3Version)
+	Vic3Version = GameVersion::extractVersionFromLauncher(Vic3Path / "../launcher/launcher-settings.json");
+	if (!Vic3Version)
 	{
 		Log(LogLevel::Error) << "Vic3 version could not be determined, proceeding blind!";
 		return;
 	}
 
-	Log(LogLevel::Info) << "Vic3 version: " << V3Version->toShortString();
+	Log(LogLevel::Info) << "Vic3 version: " << Vic3Version->toShortString();
 
-	if (converterVersion.getMinTarget() > *V3Version)
+	if (converterVersion.getMinTarget() > *Vic3Version)
 	{
-		Log(LogLevel::Error) << "Vic3 version is v" << V3Version->toShortString() << ", converter requires minimum v"
+		Log(LogLevel::Error) << "Vic3 version is v" << Vic3Version->toShortString() << ", converter requires minimum v"
 									<< converterVersion.getMinTarget().toShortString() << "!";
 		throw std::runtime_error("Converter vs Vic3 installation mismatch!");
 	}
-	if (!converterVersion.getMaxTarget().isLargerishThan(*V3Version))
+	if (!converterVersion.getMaxTarget().isLargerishThan(*Vic3Version))
 	{
-		Log(LogLevel::Error) << "Vic3 version is v" << V3Version->toShortString() << ", converter requires maximum v"
+		Log(LogLevel::Error) << "Vic3 version is v" << Vic3Version->toShortString() << ", converter requires maximum v"
 									<< converterVersion.getMaxTarget().toShortString() << "!";
 		throw std::runtime_error("Converter vs Vic3 installation mismatch!");
 	}

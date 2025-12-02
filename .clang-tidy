@@ -20,7 +20,7 @@ Checks: "*,
         -readability-avoid-const-params-in-decls,
         -zircon-*,
 "
-WarningsAsErrors: '*, -readability-identifier-naming'
+WarningsAsErrors: 'readability-identifier-naming'
 HeaderFilterRegex: ""
 ExcludeHeaderFilterRegex: '.*Fronter|commonItems.*'
 CheckOptions:
@@ -43,7 +43,7 @@ CheckOptions:
   - { key: readability-identifier-naming.EnumCase,                      value: CamelCase  }
   - { key: readability-identifier-naming.EnumConstantCase,              value: CamelCase  }
   - { key: readability-identifier-naming.EnumConstantPrefix,            value: 'k'        }
-  - { key: readability-identifier-naming.FunctionCase,                  value: CamelCase  }
+  - { key: readability-identifier-naming.FunctionCase,                  value: camelBack  }
   - { key: readability-identifier-naming.GlobalConstantCase,            value: CamelCase  }
   - { key: readability-identifier-naming.GlobalConstantPrefix,          value: 'k'        }
   - { key: readability-identifier-naming.GlobalConstantPointerCase,     value: CamelCase  }
@@ -52,15 +52,15 @@ CheckOptions:
   - { key: readability-identifier-naming.GlobalPointerCase,             value: lower_case }
   - { key: readability-identifier-naming.GlobalVariableCase,            value: lower_case }
   - { key: readability-identifier-naming.InlineNamespaceCase,           value: lower_case }
-  - { key: readability-identifier-naming.LocalConstantCase,             value: lower_case }
+  - { key: readability-identifier-naming.LocalConstantCase,             value: camelBack  }
   - { key: readability-identifier-naming.LocalConstantPointerCase,      value: lower_case }
   - { key: readability-identifier-naming.LocalPointerCase,              value: lower_case }
-  - { key: readability-identifier-naming.LocalVariableCase,             value: lower_case }
+  - { key: readability-identifier-naming.LocalVariableCase,             value: camelBack  }
   - { key: readability-identifier-naming.MacroDefinitionCase,           value: UPPER_CASE }
   - { key: readability-identifier-naming.MemberCase,                    value: lower_case }
   - { key: readability-identifier-naming.MethodCase,                    value: CamelCase  }
   - { key: readability-identifier-naming.NamespaceCase,                 value: lower_case }
-  - { key: readability-identifier-naming.ParameterCase,                 value: lower_case }
+  - { key: readability-identifier-naming.ParameterCase,                 value: camelBack  }
   - { key: readability-identifier-naming.ParameterPackCase,             value: lower_case }
   - { key: readability-identifier-naming.PointerParameterCase,          value: lower_case }
   - { key: readability-identifier-naming.PrivateMemberCase,             value: lower_case }
@@ -84,5 +84,5 @@ CheckOptions:
   - { key: readability-identifier-naming.TypeTemplateParameterCase,     value: CamelCase  }
   - { key: readability-identifier-naming.UnionCase,                     value: CamelCase  }
   - { key: readability-identifier-naming.ValueTemplateParameterCase,    value: lower_case }
-  - { key: readability-identifier-naming.VariableCase,                  value: lower_case }
+  - { key: readability-identifier-naming.VariableCase,                  value: camelBack  }
   - { key: readability-identifier-naming.VirtualMethodCase,             value: CamelCase  }

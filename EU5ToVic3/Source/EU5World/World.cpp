@@ -4,8 +4,6 @@
 #include "ConverterVersion.h"
 #include "GameVersion.h"
 #include "Log.h"
-#include "ModLoader/ModLoader.h"
-#include "ModLoader/ModNames.h"
 #include "ParserHelpers.h"
 #include "rakaly.h"
 #include "zip.h"
@@ -106,26 +104,28 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 
 void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion)
 {
-	registerKeyword("EU5txt", []([[maybe_unused]] std::istream& theStream) {
+	metaPreParser.registerRegex("SAV.*", [](const std::string& unused, std::istream& theStream) {
 	});
-	registerKeyword("date", [this](std::istream& theStream) {
-		if (saveGame.parsedMeta)
-			commonItems::ignoreItem("unused", theStream);
-		else
-			datingData.lastEU4Date = date(commonItems::getString(theStream));
+	metaPreParser.registerKeyword("meta_data", [this](std::istream& theStream) {
+		metaParser.parseStream(theStream);
+		saveGame.parsedMeta = true;
 	});
-	registerKeyword("start_date", [this](std::istream& theStream) {
-		datingData.startEU4Date = date(commonItems::getString(theStream));
-	});
-	registerKeyword("savegame_version", [this, converterVersion](std::istream& theStream) {
-		if (saveGame.parsedMeta)
-		{
-			commonItems::ignoreItem("unused", theStream);
-			return;
-		}
+	metaPreParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-		version = GameVersion(theStream);
-		Log(LogLevel::Info) << "Savegave version: " << version;
+	metaParser.registerKeyword("date", [this](std::istream& theStream) {
+		datingData.lastEU5Date = date(commonItems::getString(theStream));
+		Log(LogLevel::Info) << "\t-> Last date set to: " << datingData.lastEU5Date;
+	});
+	metaParser.registerKeyword("playthrough_name", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Playthrough Name: " << commonItems::getString(theStream);
+	});
+	metaParser.registerKeyword("save_label", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Save Label: " << commonItems::getString(theStream);
+	});
+	metaParser.registerKeyword("version", [this, converterVersion, theConfiguration](std::istream& theStream) {
+		const commonItems::singleString versionString(theStream);
+		version = GameVersion(versionString.getString());
+		Log(LogLevel::Info) << "\t-> Savegave version: " << version.toString();
 
 		if (converterVersion.getMinSource() > version)
 		{
@@ -137,32 +137,53 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 			Log(LogLevel::Error) << "Converter requires a maximum save from v" << converterVersion.getMaxSource().toShortString();
 			throw std::runtime_error("Savegame vs converter version mismatch!");
 		}
+		if (version > theConfiguration->getEU5Version())
+		{
+			Log(LogLevel::Error) << "Installation version: " << theConfiguration->getEU5Version()->toString()
+										<< " is older than savegame version: " << version.toString() << "! This is a no-go!";
+			throw std::runtime_error("Savegame vs installation version mismatch!");
+		}
 	});
-	registerKeyword("mods_enabled_names", [this, theConfiguration](std::istream& theStream) {
+	metaParser.registerKeyword("player_country_name", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Player Country Name: " << commonItems::getString(theStream);
+	});
+	metaParser.registerKeyword("compatibility", [this](std::istream& theStream) {
+		compatibilityParser.parseStream(theStream);
+	});
+	metaParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	compatibilityParser.registerKeyword("locations", [this](std::istream& theStream) {
+		const auto& locationsSrc = commonItems::stringList(theStream).getStrings();
+		if (locationsSrc.empty())
+		{
+			throw std::runtime_error("No locations in metadata. This is unacceptable.");
+		}
+
+		int provinceID = 0;
+		for (const auto& location: locationsSrc)
+		{
+			provinceID++;
+			locationIDs.emplace(provinceID, location);
+		}
+		Log(LogLevel::Info) << "\t-> Loaded " << provinceID << " locations, from " << locationIDs.at(1) << "(1) to " << locationIDs.at(provinceID) << "("
+								  << provinceID << ").";
+	});
+	compatibilityParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	registerRegex("SAV.*", [](const std::string& unused, std::istream& theStream) {
+	});
+	registerKeyword("metadata", [this](std::istream& theStream) {
 		if (saveGame.parsedMeta)
 		{
 			commonItems::ignoreItem("unused", theStream);
-			return;
 		}
-
-		Log(LogLevel::Info) << "-> Detecting used mods.";
-		const auto& modBlobs = commonItems::blobList(theStream);
-		Log(LogLevel::Info) << "<> Savegame claims " << modBlobs.getBlobs().size() << " mods used:";
-		Mods incomingMods;
-		for (const auto& modBlob: modBlobs.getBlobs())
+		else
 		{
-			auto modStream = std::stringstream(modBlob);
-			const auto& modName = ModNames(modStream);
-			incomingMods.emplace_back(modName.getName(), modName.getPath());
-			Log(LogLevel::Info) << "---> " << modName.getName() << ": " << modName.getPath();
+			metaParser.parseStream(theStream);
+			saveGame.parsedMeta = true;
 		}
-
-		// Let's locate, verify and potentially update those mods immediately.
-		commonItems::ModLoader modLoader;
-		modLoader.loadMods(theConfiguration->getEU5DocumentsPath(), incomingMods);
-		mods = modLoader.getMods();
 	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
 }
 
 void EU5::World::verifySave()
