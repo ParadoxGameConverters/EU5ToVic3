@@ -159,14 +159,14 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 			throw std::runtime_error("No locations in metadata. This is unacceptable.");
 		}
 
-		int provinceID = 0;
+		int locationID = 0;
 		for (const auto& location: locationsSrc)
 		{
-			provinceID++;
-			locationIDs.emplace(provinceID, location);
+			locationID++;
+			provinceManager.registerLocation(locationID, location);
 		}
-		Log(LogLevel::Info) << "\t-> Loaded " << provinceID << " locations, from " << locationIDs.at(1) << "(1) to " << locationIDs.at(provinceID) << "("
-								  << provinceID << ").";
+		Log(LogLevel::Info) << "\t-> Loaded " << locationID << " locations, from " << provinceManager.getSeenLocationByID(1)->getLocationSystemName() << "(1) to "
+								  << provinceManager.getSeenLocationByID(locationID)->getLocationSystemName() << "(" << locationID << ").";
 	});
 	compatibilityParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

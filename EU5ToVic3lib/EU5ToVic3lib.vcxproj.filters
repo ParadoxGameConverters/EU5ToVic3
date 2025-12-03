@@ -28,6 +28,15 @@
     <Filter Include="EU5World\Loaders\ModLoader">
       <UniqueIdentifier>{ca17ef5f-51c9-480f-be68-57812f4e6b99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\ProvinceManager">
+      <UniqueIdentifier>{6d621aa1-56e6-48e6-bc4d-d3194b081556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\RegionManager">
+      <UniqueIdentifier>{256048ad-d4f3-461b-b183-d432a6376cf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mappers\SuperGroupMapper">
+      <UniqueIdentifier>{5114ff40-8608-4a11-b17b-84054e4bba15}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -48,6 +57,39 @@
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.cpp">
       <Filter>EU5World\Loaders\ModLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.cpp">
+      <Filter>EU5World\ProvinceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.cpp">
+      <Filter>EU5World\ProvinceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Province.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Region.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.cpp">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.cpp">
+      <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.cpp">
+      <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.cpp">
+      <Filter>Mappers\SuperGroupMapper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +117,39 @@
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.h">
       <Filter>EU5World\Loaders\ModLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.h">
+      <Filter>EU5World\ProvinceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.h">
+      <Filter>EU5World\ProvinceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Province.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Region.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.h">
+      <Filter>EU5World\RegionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.h">
+      <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.h">
+      <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.h">
+      <Filter>Mappers\SuperGroupMapper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
