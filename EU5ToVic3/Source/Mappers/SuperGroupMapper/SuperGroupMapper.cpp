@@ -1,16 +1,19 @@
 #include "SuperGroupMapper.h"
 #include "CommonRegexes.h"
 #include "Log.h"
-#include "ParserHelpers.h"
-#include "SuperRegionParser.h"
-#include <cmath>
+#include "SuperGroupParser.h"
 #include <filesystem>
 
 void mappers::SuperGroupMapper::loadSuperGroups()
 {
 	Log(LogLevel::Info) << "-> Parsing starting supergroups.";
 	registerKeys();
-	parseFile("configurables/world_supergroups.txt");
+	if (commonItems::DoesFileExist("configurables/world_supergroups.txt"))
+		parseFile("configurables/world_supergroups.txt");
+	else if (commonItems::DoesFileExist("TestFiles/configurables/world_supergroups.txt"))
+		parseFile("TestFiles/configurables/world_supergroups.txt");
+	else
+		throw std::runtime_error("Where is configurables/world_supergroups.txt?");
 	clearRegisteredKeywords();
 }
 
@@ -24,29 +27,16 @@ void mappers::SuperGroupMapper::loadSuperGroups(std::istream& theStream)
 void mappers::SuperGroupMapper::registerKeys()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& superGroupName, std::istream& theStream) {
-		const SuperRegionParser newSuperRegionBlock(theStream);
-		superGroups.emplace(superGroupName, newSuperRegionBlock.getSuperRegionNames());
-
-		const auto& aMap = newSuperRegionBlock.getSuperRegionAssimilationMap();
-		assimilationMap.insert(aMap.begin(), aMap.end());
+		Log(LogLevel::Debug) << "sname " << superGroupName;
+		const SuperGroupParser newContinentsBlock(theStream);
+		superGroups.emplace(superGroupName, newContinentsBlock.getContinentNames());
 	});
 }
 
-std::optional<std::string> mappers::SuperGroupMapper::getGroupForSuperRegion(const std::string& superRegionName) const
+std::optional<std::string> mappers::SuperGroupMapper::getGroupForContinent(const std::string& continentName) const
 {
 	for (const auto& [superGroupName, superGroup]: superGroups)
-		if (superGroup.contains(superRegionName))
+		if (superGroup.contains(continentName))
 			return superGroupName;
 	return std::nullopt;
-}
-
-double mappers::SuperGroupMapper::getAssimilationFactor(const std::string& superRegionName) const
-{
-	auto rate = 1;
-	const auto& srIter = assimilationMap.find(superRegionName);
-	if (srIter != assimilationMap.end())
-		rate = srIter->second;
-
-	const auto factor = (1.0 - pow(0.75, rate)) / 100;
-	return factor;
 }

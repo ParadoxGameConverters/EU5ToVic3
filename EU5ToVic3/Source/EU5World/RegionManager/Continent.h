@@ -11,22 +11,16 @@ class Continent: commonItems::parser
 	explicit Continent(std::istream& theStream);
 
 	[[nodiscard]] const auto& getSuperRegions() const { return superRegions; }
-	[[nodiscard]] const auto& getContinent() const { return continent; }
-
+	[[nodiscard]] const auto& getSuperGroup() const { return superGroup; }
 	[[nodiscard]] bool continentContainsLocation(const std::string& location) const;
 
-	void setContinent(const auto& theContinent) { continent = theContinent; }
-	void linkSuperRegion(const std::pair<std::string, std::shared_ptr<SuperRegion>>& theSuperRegion)
-	{
-		superRegions.at(theSuperRegion.first) = theSuperRegion.second;
-	}
+   void setSuperGroup(const std::string& superGroupName) { superGroup = superGroupName; }
 
   private:
 	void registerKeys();
 
 	std::map<std::string, std::shared_ptr<SuperRegion>> superRegions;
-
-	std::string continent;
+	std::string superGroup;
 };
 } // namespace EU5
 

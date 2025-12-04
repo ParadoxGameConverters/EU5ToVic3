@@ -1,6 +1,7 @@
 #ifndef EU5_AREA_H
 #define EU5_AREA_H
 #include "Parser.h"
+#include "Province.h"
 #include <set>
 
 namespace EU5
@@ -11,13 +12,13 @@ class Area: commonItems::parser
 	Area() = default;
 	explicit Area(std::istream& theStream);
 
+	[[nodiscard]] bool areaContainsLocation(const std::string& theLocation) const;
 	[[nodiscard]] const auto& getProvinces() const { return provinces; }
-	[[nodiscard]] bool areaContainsProvince(int province) const;
 
   private:
 	void registerKeys();
 
-	std::set<int> provinces;
+	std::map<std::string, std::shared_ptr<Province>> provinces;
 };
 } // namespace EU5
 

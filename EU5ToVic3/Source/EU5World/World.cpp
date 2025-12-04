@@ -165,8 +165,8 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 			locationID++;
 			provinceManager.registerLocation(locationID, location);
 		}
-		Log(LogLevel::Info) << "\t-> Loaded " << locationID << " locations, from " << provinceManager.getSeenLocationByID(1)->getLocationSystemName() << "(1) to "
-								  << provinceManager.getSeenLocationByID(locationID)->getLocationSystemName() << "(" << locationID << ").";
+		Log(LogLevel::Info) << "\t-> Loaded " << locationID << " locations, from " << provinceManager.getSeenLocationByID(1)->getName() << "(1) to "
+								  << provinceManager.getSeenLocationByID(locationID)->getName() << "(" << locationID << ").";
 	});
 	compatibilityParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

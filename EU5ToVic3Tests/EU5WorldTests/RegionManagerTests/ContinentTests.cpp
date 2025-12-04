@@ -1,82 +1,48 @@
 #include "RegionManager/Area.h"
 #include "RegionManager/Region.h"
 #include "RegionManager/SuperRegion.h"
+#include "RegionManager/Continent.h"
 #include "gtest/gtest.h"
 
-TEST(Mappers_SuperRegionTests, blankSuperRegionLoadsWithNoRegions)
-{
-	const std::vector<std::string> input;
-	const EU4::SuperRegion superRegion(input);
-
-	EXPECT_TRUE(superRegion.getRegions().empty());
-}
-
-TEST(Mappers_SuperRegionTests, RegionsCanBeLoaded)
-{
-	const std::vector<std::string> input = {"region1", "region2"};
-	const EU4::SuperRegion superRegion(input);
-
-	EXPECT_TRUE(superRegion.getRegions().contains("region1"));
-	EXPECT_TRUE(superRegion.getRegions().contains("region2"));
-}
-
-TEST(Mappers_SuperRegionTests, superRegionCanBeLinkedToRegion)
+TEST(Mappers_ContinentTests, blankContinentLoadsWithNoSuperRegions)
 {
 	std::stringstream input;
-	input << "areas = { test_area area2 area3 } \n";
-	auto theRegion = std::make_shared<EU4::Region>(input);
+	const EU5::Continent continent(input);
 
-	const std::vector<std::string> input2 = {"region1"};
-	EU4::SuperRegion superRegion(input2);
-
-	EXPECT_FALSE(superRegion.getRegions().at("region1"));
-	superRegion.linkRegion(std::pair("region1", theRegion));
-	EXPECT_TRUE(superRegion.getRegions().at("region1"));
+	EXPECT_TRUE(continent.getSuperRegions().empty());
 }
 
-TEST(Mappers_SuperRegionTests, LinkedRegionCanLocateProvince)
+TEST(Mappers_ContinentTests, SuperRegionsCanBeLoaded)
 {
-	std::stringstream input2;
-	input2 << "{ 3 4 5 6 } \n";
-	auto area2 = std::make_shared<EU4::Area>(input2);
-
 	std::stringstream input;
-	input << "areas = { area2 } \n";
-	auto theRegion = std::make_shared<EU4::Region>(input);
-	theRegion->linkArea(std::pair("area2", area2));
+	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } } }\n";
+	input << "eastern_europe = { carpathia_region = { moldavia_area = { bacau_province = { bacau hangu_romania piatra_lui_craciun roman targu_neamt targu_trotus } } } }\n";
+	const EU5::Continent continent(input);
 
-	const std::vector<std::string> input3 = {"region1"};
-	EU4::SuperRegion superRegion(input3);
-	superRegion.linkRegion(std::pair("region1", theRegion));
-
-	EXPECT_TRUE(superRegion.superRegionContainsProvince(5));
+	EXPECT_TRUE(continent.getSuperRegions().contains("western_europe"));
+	EXPECT_TRUE(continent.getSuperRegions().contains("eastern_europe"));
 }
 
-TEST(Mappers_SuperRegionTests, LinkedRegionReturnsFalseOnProvinceMismatch)
+TEST(Mappers_ContinentTests, ContinentCanLocateLocation)
 {
-	std::stringstream input2;
-	input2 << "{ 3 4 5 6 } \n";
-	auto area2 = std::make_shared<EU4::Area>(input2);
-
 	std::stringstream input;
-	input << "areas = { area2 } \n";
-	auto theRegion = std::make_shared<EU4::Region>(input);
-	theRegion->linkArea(std::pair("area2", area2));
+	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } "
+				"} }\n";
+	input << "eastern_europe = { carpathia_region = { moldavia_area = { bacau_province = { bacau hangu_romania piatra_lui_craciun roman targu_neamt "
+				"targu_trotus } } } }\n";
+	const EU5::Continent continent(input);
 
-	const std::vector<std::string> input3 = {"region1"};
-	EU4::SuperRegion superRegion(input3);
-	superRegion.linkRegion(std::pair("region1", theRegion));
-
-	EXPECT_FALSE(superRegion.superRegionContainsProvince(9));
+	EXPECT_TRUE(continent.continentContainsLocation("roman"));
 }
 
-TEST(Mappers_SuperRegionTests, NativeCultureCanBeRegisteredAndRetrieved)
+TEST(Mappers_ContinentTests, ContinentReturnsFalseOnLocationMismatch)
 {
-	const std::vector<std::string> input = {"region"};
-	EU4::SuperRegion superRegion(input);
+	std::stringstream input;
+	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } "
+				"} }\n";
+	input << "eastern_europe = { carpathia_region = { moldavia_area = { bacau_province = { bacau hangu_romania piatra_lui_craciun roman targu_neamt "
+				"targu_trotus } } } }\n";
+	const EU5::Continent continent(input);
 
-	superRegion.registerNativeCulture("culture");
-
-	EXPECT_TRUE(superRegion.superRegionContainsNativeCulture("culture"));
-	EXPECT_FALSE(superRegion.superRegionContainsNativeCulture("dummy"));
+	EXPECT_FALSE(continent.continentContainsLocation("nonsense"));
 }

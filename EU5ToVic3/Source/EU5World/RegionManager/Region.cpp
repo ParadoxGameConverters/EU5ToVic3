@@ -1,6 +1,4 @@
 #include "Region.h"
-#include "CommonRegexes.h"
-#include "ParserHelpers.h"
 #include <ranges>
 
 EU5::Region::Region(std::istream& theStream)
@@ -12,17 +10,15 @@ EU5::Region::Region(std::istream& theStream)
 
 void EU5::Region::registerKeys()
 {
-	registerKeyword("areas", [this](std::istream& theStream) {
-		for (const auto& name: commonItems::getStrings(theStream))
-			areas.emplace(name, nullptr);
+	registerRegex(R"([\w_]+)", [this](const std::string& areaName, std::istream& theStream) {
+		areas.emplace(areaName, std::make_shared<Area>(theStream));
 	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
-bool EU5::Region::regionContainsProvince(int provinceID) const
+bool EU5::Region::regionContainsLocation(const std::string& theLocation) const
 {
 	for (const auto& area: areas | std::views::values)
-		if (area->areaContainsProvince(provinceID))
+		if (area->areaContainsLocation(theLocation))
 			return true;
 	return false;
 }

@@ -1,12 +1,12 @@
 #ifndef EU5_REGIONMANAGER_H
 #define EU5_REGIONMANAGER_H
 #include "Area.h"
+#include "Continent.h"
 #include "Mappers/SuperGroupMapper/SuperGroupMapper.h"
 #include "Parser.h"
+#include "Province.h"
 #include "Region.h"
 #include "SuperRegion.h"
-#include "Continent.h"
-#include "Province.h"
 
 namespace EU5
 {
@@ -15,51 +15,32 @@ class RegionManager: commonItems::parser
 {
   public:
 	void loadRegions(const commonItems::ModFilesystem& modsFS);
-	void loadRegions(std::istream& areaStream, std::istream& regionStream, std::istream& superRegionStream); // for testing
-	void loadSuperGroups(const mappers::SuperGroupMapper& sgMapper) { superGroupMapper = sgMapper; }			// for testing
+	void loadRegions(std::istream& theStream); // for testing
 
-	void loadColonialRegions(const commonItems::ModFilesystem& modFS) { colonialRegionLoader.loadColonialRegions(modFS); }
-	void loadColonialRegions(const ColonialRegionLoader& loader) { colonialRegionLoader = loader; } // testing
-
-	void loadTradeCompanies(const commonItems::ModFilesystem& modFS) { tradeCompanyLoader.loadTradeCompanies(modFS); }
-	void loadExcludedTradeCompanies(const std::filesystem::path& filePath) { tradeCompanyLoader.loadExcludedTradeCompanies(filePath); }
-	[[nodiscard]] const auto& getTradeCompanyLoader() const { return tradeCompanyLoader; }
-
-	[[nodiscard]] bool provinceIsInRegion(int provinceID, const std::string& regionName) const;
+	[[nodiscard]] bool locationIsInRegion(const std::string& location, const std::string& regionName) const;
 	[[nodiscard]] bool regionNameIsValid(const std::string& regionName) const;
-	[[nodiscard]] bool provinceIsValid(int provinceID) const;
-	[[nodiscard]] std::optional<std::string> getColonialRegionForProvince(int province) const;
+	[[nodiscard]] bool locationIsValid(const std::string& location) const;
 
-	[[nodiscard]] std::optional<std::string> getParentAreaName(int provinceID) const;
-	[[nodiscard]] std::optional<std::string> getParentRegionName(int provinceID) const;
-	[[nodiscard]] std::optional<std::string> getParentSuperRegionName(int provinceID) const;
-	[[nodiscard]] std::optional<std::string> getParentSuperGroupName(int provinceID) const;
-	[[nodiscard]] std::optional<double> getAssimilationFactor(int provinceID) const;
+	[[nodiscard]] std::optional<std::string> getParentAreaName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentProvinceName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentRegionName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentSuperRegionName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentContinentName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentSuperGroupName(const std::string& location) const;
 
-	[[nodiscard]] bool doesProvinceRequireNeoCulture(int provinceID, const std::string& culture) const;
-
+	void loadSuperGroups(const mappers::SuperGroupMapper& sgMapper) { superGroupMapper = sgMapper; }
 	void applySuperGroups();
-	void catalogueNativeCultures(const ProvinceManager& provinceManager) const;
-	void flagNeoCultures(const ProvinceManager& provinceManager) const;
 
   private:
-	[[nodiscard]] bool superGroupContainsNativeCulture(const std::string& culture, const std::string& superGroupName) const;
-
-	void registerAreaKeys();
-	void registerSuperRegionKeys();
-	void registerRegionKeys();
-	void linkSuperRegions();
-	void linkRegions();
+	void registerKeys();
 
 	std::map<std::string, std::shared_ptr<Province>> provinces;
 	std::map<std::string, std::shared_ptr<Area>> areas;
 	std::map<std::string, std::shared_ptr<Region>> regions;
 	std::map<std::string, std::shared_ptr<SuperRegion>> superRegions;
-	std::map<std::string, std::shared_ptr<SuperRegion>> continents;
+	std::map<std::string, std::shared_ptr<Continent>> continents;
 
 	mappers::SuperGroupMapper superGroupMapper;
-	ColonialRegionLoader colonialRegionLoader;
-	TradeCompanyLoader tradeCompanyLoader;
 };
 } // namespace EU5
 

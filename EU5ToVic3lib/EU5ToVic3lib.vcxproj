@@ -19,9 +19,8 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp" />
-    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.cpp" />
-    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Output\outWorld.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\V3World\V3World.cpp" />
@@ -41,9 +40,8 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\World.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Helpers\rakaly.h" />
-    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.h" />
-    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Output\outWorld.h" />
     <ClInclude Include="..\EU5ToVic3\Source\V3World\V3World.h" />

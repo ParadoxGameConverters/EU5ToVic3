@@ -82,13 +82,10 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.cpp">
       <Filter>EU5World\RegionManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.cpp">
-      <Filter>Mappers\SuperGroupMapper</Filter>
-    </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.cpp">
       <Filter>Mappers\SuperGroupMapper</Filter>
     </ClCompile>
-    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.cpp">
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.cpp">
       <Filter>Mappers\SuperGroupMapper</Filter>
     </ClCompile>
   </ItemGroup>
@@ -142,13 +139,10 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.h">
       <Filter>EU5World\RegionManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\AssimilationParser.h">
-      <Filter>Mappers\SuperGroupMapper</Filter>
-    </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.h">
       <Filter>Mappers\SuperGroupMapper</Filter>
     </ClInclude>
-    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperRegionParser.h">
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.h">
       <Filter>Mappers\SuperGroupMapper</Filter>
     </ClInclude>
   </ItemGroup>

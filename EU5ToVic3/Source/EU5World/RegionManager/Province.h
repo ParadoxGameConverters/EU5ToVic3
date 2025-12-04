@@ -1,15 +1,14 @@
 #ifndef EU5_PROVINCE_H
 #define EU5_PROVINCE_H
-#include "Parser.h"
 #include <set>
 
 namespace EU5
 {
-class Province: commonItems::parser
+class Province
 {
   public:
 	Province() = default;
-	explicit Province(std::istream& theStream);
+	explicit Province(const std::vector<std::string>& theLocations);
 
 	[[nodiscard]] const auto& getLocations() const { return locations; }
 	[[nodiscard]] bool provinceContainsLocation(const std::string& location) const;

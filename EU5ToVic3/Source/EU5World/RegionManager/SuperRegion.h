@@ -4,30 +4,19 @@
 
 namespace EU5
 {
-class SuperRegion
+class SuperRegion: commonItems::parser
 {
   public:
 	SuperRegion() = default;
-	explicit SuperRegion(const std::vector<std::string>& theRegions);
+	explicit SuperRegion(std::istream& theStream);
 
 	[[nodiscard]] const auto& getRegions() const { return regions; }
-	[[nodiscard]] auto getAssimilationFactor() const { return assimilation; }
-	[[nodiscard]] const auto& getSuperGroup() const { return superGroup; }
-
-	[[nodiscard]] bool superRegionContainsProvince(int provinceID) const;
-	[[nodiscard]] bool superRegionContainsNativeCulture(const std::string& culture) const;
-
-	void setAssimilationFactor(double factor) { assimilation = factor; }
-	void setSuperGroup(const auto& sGroup) { superGroup = sGroup; }
-	void linkRegion(const std::pair<std::string, std::shared_ptr<Region>>& theRegion) { regions.at(theRegion.first) = theRegion.second; }
-	void registerNativeCulture(const std::string& culture) { nativeCultures.insert(culture); }
+	[[nodiscard]] bool superRegionContainsLocation(const std::string& theLocation) const;
 
   private:
-	std::map<std::string, std::shared_ptr<Region>> regions;
-	std::set<std::string> nativeCultures;
+	void registerKeys();
 
-	double assimilation = 0;
-	std::string superGroup;
+	std::map<std::string, std::shared_ptr<Region>> regions;
 };
 } // namespace EU5
 

@@ -7,14 +7,14 @@ class Location
 {
   public:
 	Location() = default;
-	explicit Location(int theLocationID, std::string theSystemName);
+	explicit Location(int theLocationID, std::string theLocationName);
 
-	[[nodiscard]] int getLocationID() const { return locID; }
-	[[nodiscard]] const auto& getLocationSystemName() const { return systemName; }
+	[[nodiscard]] int getID() const { return locID; }
+	[[nodiscard]] const auto& getName() const { return name; }
 
   private:
 	int locID = 0;
-	std::string systemName;
+	std::string name;
 };
 } // namespace EU5
 

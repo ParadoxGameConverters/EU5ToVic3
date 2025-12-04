@@ -18,4 +18,7 @@ bool EU5::Continent::continentContainsLocation(const std::string& location) cons
 
 void EU5::Continent::registerKeys()
 {
+	registerRegex(R"([\w_]+)", [this](const std::string& superRegionName, std::istream& theStream) {
+		superRegions.emplace(superRegionName, std::make_shared<SuperRegion>(theStream));
+	});
 }

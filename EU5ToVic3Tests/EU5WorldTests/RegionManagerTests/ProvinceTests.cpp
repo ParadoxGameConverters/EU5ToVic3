@@ -1,40 +1,37 @@
-#include "RegionManager/Area.h"
+#include "RegionManager/Province.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 
-TEST(Mappers_AreaTests, blankAreasLoadForNoProvinces)
+TEST(Mappers_ProvinceTests, blankProvincesLoadForNoLocations)
 {
-	std::stringstream input;
-	const EU4::Area newArea(input);
+	std::vector<std::string> locations;
+	const EU5::Province newProvince(locations);
 
-	EXPECT_TRUE(newArea.getProvinces().empty());
+	EXPECT_TRUE(newProvince.getLocations().empty());
 }
 
-TEST(Mappers_AreaTests, provincesCanBeLoaded)
+TEST(Mappers_ProvinceTests, locationsCanBeLoaded)
 {
-	std::stringstream input;
-	input << "{ 1 2 3 }";
-	const EU4::Area newArea(input);
+	std::vector<std::string> locations = {"a", "b", "c"};
+	const EU5::Province newProvince(locations);
 
-	EXPECT_THAT(newArea.getProvinces(), testing::UnorderedElementsAre(1, 2, 3));
+	EXPECT_THAT(newProvince.getLocations(), testing::UnorderedElementsAre("a", "b", "c"));
 }
 
-TEST(Mappers_AreaTests, provincesCanBeFound)
+TEST(Mappers_ProvinceTests, locationsCanBeFound)
 {
-	std::stringstream input;
-	input << "{ 1 2 3 }";
-	const EU4::Area newArea(input);
+	std::vector<std::string> locations = {"a", "b", "c"};
+	const EU5::Province newProvince(locations);
 
-	EXPECT_TRUE(newArea.areaContainsProvince(1));
-	EXPECT_TRUE(newArea.areaContainsProvince(2));
-	EXPECT_TRUE(newArea.areaContainsProvince(3));
+	EXPECT_TRUE(newProvince.provinceContainsLocation("a"));
+	EXPECT_TRUE(newProvince.provinceContainsLocation("b"));
+	EXPECT_TRUE(newProvince.provinceContainsLocation("c"));
 }
 
-TEST(Mappers_AreaTests, provinceMismatchReturnsFalse)
+TEST(Mappers_ProvinceTests, provinceMismatchReturnsFalse)
 {
-	std::stringstream input;
-	input << "{ 1 2 3 }";
-	const EU4::Area newArea(input);
+	std::vector<std::string> locations = {"a", "b", "c"};
+	const EU5::Province newProvince(locations);
 
-	EXPECT_FALSE(newArea.areaContainsProvince(4));
+	EXPECT_FALSE(newProvince.provinceContainsLocation("d"));
 }

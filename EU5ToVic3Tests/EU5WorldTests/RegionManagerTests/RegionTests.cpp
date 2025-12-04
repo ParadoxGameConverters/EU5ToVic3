@@ -5,70 +5,38 @@
 TEST(Mappers_RegionTests, blankRegionLoadsWithNoAreas)
 {
 	std::stringstream input;
-	const EU4::Region region(input);
+	const EU5::Region region(input);
 
 	EXPECT_TRUE(region.getAreas().empty());
 }
 
-TEST(Mappers_RegionTests, areaCanBeLoaded)
+TEST(Mappers_RegionTests, areasCanBeLoaded)
 {
 	std::stringstream input;
-	input << "areas = { test_area } \n";
-	const EU4::Region region(input);
+	input << "svealand_area = { uppland_province = {stockholm norrtalje enkoping uppsala kastelholm tierp heby} }\n";
+	input << "gotaland_area = { ostergotland_province = {linkoping soderkoping norrkoping alvastra vadstena vattern} }\n";
+	const EU5::Region region(input);
 
-	EXPECT_TRUE(region.getAreas().contains("test_area"));
+	EXPECT_TRUE(region.getAreas().contains("svealand_area"));
+	EXPECT_TRUE(region.getAreas().contains("gotaland_area"));
 }
 
-TEST(Mappers_RegionTests, multipleAreasCanBeLoaded)
+TEST(Mappers_RegionTests, RegionCanLocateLocation)
 {
 	std::stringstream input;
-	input << "areas = { test_area area2 area3 } \n";
-	const EU4::Region region(input);
+	input << "svealand_area = { uppland_province = {stockholm norrtalje enkoping uppsala kastelholm tierp heby} }\n";
+	input << "gotaland_area = { ostergotland_province = {linkoping soderkoping norrkoping alvastra vadstena vattern} }\n";
+	const EU5::Region region(input);
 
-	EXPECT_EQ(3, region.getAreas().size());
+	EXPECT_TRUE(region.regionContainsLocation("stockholm"));
 }
 
-TEST(Mappers_RegionTests, regionCanBeLinkedToArea)
+TEST(Mappers_RegionTests, RegionReturnsFalseForLocationMismatch)
 {
 	std::stringstream input;
-	input << "areas = { test_area area2 area3 } \n";
-	EU4::Region region(input);
+	input << "svealand_area = { uppland_province = {stockholm norrtalje enkoping uppsala kastelholm tierp heby} }\n";
+	input << "gotaland_area = { ostergotland_province = {linkoping soderkoping norrkoping alvastra vadstena vattern} }\n";
+	const EU5::Region region(input);
 
-	std::stringstream input2;
-	input << "{ 3 4 5 6 } \n";
-	auto area2 = std::make_shared<EU4::Area>(input);
-
-	EXPECT_FALSE(region.getAreas().at("area2"));
-	region.linkArea(std::pair("area2", area2));
-	EXPECT_TRUE(region.getAreas().at("area2"));
-}
-
-TEST(Mappers_RegionTests, LinkedRegionCanLocateProvince)
-{
-	std::stringstream input;
-	input << "areas = { area2 } \n";
-	EU4::Region region(input);
-
-	std::stringstream input2;
-	input2 << "{ 3 4 5 6 } \n";
-	auto area2 = std::make_shared<EU4::Area>(input2);
-
-	region.linkArea(std::pair("area2", area2));
-
-	EXPECT_TRUE(region.regionContainsProvince(5));
-}
-
-TEST(Mappers_RegionTests, LinkedRegionReturnsFalseForProvinceMismatch)
-{
-	std::stringstream input;
-	input << "areas = { area2 } \n";
-	EU4::Region region(input);
-
-	std::stringstream input2;
-	input << "{ 3 4 5 6 } \n";
-	auto area2 = std::make_shared<EU4::Area>(input);
-
-	region.linkArea(std::pair("area2", area2));
-
-	EXPECT_FALSE(region.regionContainsProvince(9));
+	EXPECT_FALSE(region.regionContainsLocation("nonsense"));
 }

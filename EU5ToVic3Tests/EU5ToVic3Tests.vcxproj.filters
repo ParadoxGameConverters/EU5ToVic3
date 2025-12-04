@@ -10,13 +10,10 @@
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp">
       <Filter>EU5WorldTests\LoaderTests\ModLoaderTests</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\SuperGroupMapperTests\AssimilationParserTests.cpp">
-      <Filter>MapperTests\SuperGroupMapperTests</Filter>
-    </ClCompile>
     <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupMapperTests.cpp">
       <Filter>MapperTests\SuperGroupMapperTests</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperRegionParserTests.cpp">
+    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupParserTests.cpp">
       <Filter>MapperTests\SuperGroupMapperTests</Filter>
     </ClCompile>
     <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp">
@@ -37,19 +34,7 @@
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ProvinceTests.cpp">
       <Filter>EU5WorldTests\RegionManagerTests</Filter>
     </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\DateItemsTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
-    </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5ProvinceTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
-    </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\PopRatioTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
-    </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceBuildingsTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
-    </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceHistoryTests.cpp">
+    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5LocationTests.cpp">
       <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
     </ClCompile>
     <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp">
@@ -502,6 +487,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\eu5installation\game\in_game\map_data\definitions.txt">
       <Filter>TestFiles\eu5installation\game\in_game\map_data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\configurables\world_supergroups.txt">
+      <Filter>TestFiles\configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

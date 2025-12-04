@@ -18,8 +18,9 @@ const std::shared_ptr<EU5::Location>& EU5::ProvinceManager::getSeenLocationByID(
 {
 	for (const auto& Location: seenLocations | std::views::values)
 	{
-		if (Location->getLocationID() == theID)
+		if (Location->getID() == theID)
 			return Location;
 	}
-	return nullptr;
+
+	throw std::runtime_error("Trying to access seenLocations by ID " + std::to_string(theID) + " which does not exists! Fire! Bad!");
 }

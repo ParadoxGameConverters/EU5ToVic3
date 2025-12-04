@@ -1,7 +1,5 @@
 #include "Area.h"
-#include "CommonRegexes.h"
-#include "Log.h"
-#include "ParserHelpers.h"
+#include <ranges>
 
 EU5::Area::Area(std::istream& theStream)
 {
@@ -12,23 +10,17 @@ EU5::Area::Area(std::istream& theStream)
 
 void EU5::Area::registerKeys()
 {
-	registerKeyword("color", commonItems::ignoreItem);
-	registerRegex(commonItems::integerRegex, [this](const std::string& number, std::istream& theStream) {
-		// This is a peculiar file format where we pull free-floating numbers from thin air.
-		// The regex itself will consume the stream.
-		try
-		{
-			provinces.emplace(std::stoi(number));
-		}
-		catch (std::exception& e)
-		{
-			Log(LogLevel::Error) << "Broken province inside area.txt?! " << e.what();
-			throw std::runtime_error(e.what());
-		}
+	registerRegex(R"([\w_]+)", [this](const std::string& provinceName, std::istream& theStream) {
+		auto locations = commonItems::stringList(theStream);
+		auto newProvince = std::make_shared<Province>(locations.getStrings());
+		provinces.emplace(provinceName, newProvince);
 	});
 }
 
-bool EU5::Area::areaContainsProvince(const int province) const
+bool EU5::Area::areaContainsLocation(const std::string& theLocation) const
 {
-	return provinces.contains(province);
+	for (const auto& province: provinces | std::views::values)
+		if (province->provinceContainsLocation(theLocation))
+			return true;
+	return false;
 }
