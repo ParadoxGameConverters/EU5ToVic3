@@ -1,7 +1,7 @@
 #include "RegionManager/Area.h"
+#include "RegionManager/Continent.h"
 #include "RegionManager/Region.h"
 #include "RegionManager/SuperRegion.h"
-#include "RegionManager/Continent.h"
 #include "gtest/gtest.h"
 
 TEST(Mappers_ContinentTests, blankContinentLoadsWithNoSuperRegions)
@@ -15,8 +15,10 @@ TEST(Mappers_ContinentTests, blankContinentLoadsWithNoSuperRegions)
 TEST(Mappers_ContinentTests, SuperRegionsCanBeLoaded)
 {
 	std::stringstream input;
-	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } } }\n";
-	input << "eastern_europe = { carpathia_region = { moldavia_area = { bacau_province = { bacau hangu_romania piatra_lui_craciun roman targu_neamt targu_trotus } } } }\n";
+	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } "
+				"} }\n";
+	input << "eastern_europe = { carpathia_region = { moldavia_area = { bacau_province = { bacau hangu_romania piatra_lui_craciun roman targu_neamt "
+				"targu_trotus } } } }\n";
 	const EU5::Continent continent(input);
 
 	EXPECT_TRUE(continent.getSuperRegions().contains("western_europe"));

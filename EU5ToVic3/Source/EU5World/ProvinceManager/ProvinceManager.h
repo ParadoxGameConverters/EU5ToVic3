@@ -3,7 +3,6 @@
 #include "EU5Location.h"
 #include <map>
 
-
 namespace EU5
 {
 class ProvinceManager
@@ -11,7 +10,7 @@ class ProvinceManager
   public:
 	ProvinceManager() = default;
 
-	void registerLocation(int theLocationID, const std::string& theSystemName);
+	void registerLocation(int theLocationID, const std::string& locationName);
 	[[nodiscard]] const auto& getSeenLocations() const { return seenLocations; }
 	[[nodiscard]] const std::shared_ptr<Location>& getSeenLocationByID(int theID) const;
 

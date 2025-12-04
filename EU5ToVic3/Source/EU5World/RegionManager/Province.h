@@ -18,6 +18,6 @@ class Province
 
 	std::set<std::string> locations;
 };
-} // namespace EU4
+} // namespace EU5
 
 #endif // EU5_PROVINCE_H

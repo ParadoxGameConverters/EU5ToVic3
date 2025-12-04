@@ -14,7 +14,7 @@ class Continent: commonItems::parser
 	[[nodiscard]] const auto& getSuperGroup() const { return superGroup; }
 	[[nodiscard]] bool continentContainsLocation(const std::string& location) const;
 
-   void setSuperGroup(const std::string& superGroupName) { superGroup = superGroupName; }
+	void setSuperGroup(const std::string& superGroupName) { superGroup = superGroupName; }
 
   private:
 	void registerKeys();

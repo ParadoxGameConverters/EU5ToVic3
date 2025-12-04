@@ -44,7 +44,7 @@ class World: commonItems::parser
 	DatingData datingData;
 	GameVersion version;
 
-   ProvinceManager provinceManager;
+	ProvinceManager provinceManager;
 };
 } // namespace EU5
 

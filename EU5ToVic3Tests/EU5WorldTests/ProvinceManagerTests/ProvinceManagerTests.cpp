@@ -28,6 +28,17 @@ TEST(EU5World_ProvinceManagerTests, accessingNonExistentLocationThrowsException)
 	EXPECT_THROW(auto a = theProvinceManager.getSeenLocationByID(42), std::runtime_error);
 }
 
+TEST(EU5World_ProvinceManagerTests, SameNamedLocationsCanNotBeRegistered)
+{
+	EU5::ProvinceManager theProvinceManager;
+	theProvinceManager.registerLocation(1, "a");
+	theProvinceManager.registerLocation(2, "a");
+
+	EXPECT_TRUE(theProvinceManager.getSeenLocations().contains("a"));
+	EXPECT_EQ(1, theProvinceManager.getSeenLocationByID(1)->getID());
+	EXPECT_THROW(auto a = theProvinceManager.getSeenLocationByID(2), std::runtime_error);
+}
+
 TEST(EU5World_ProvinceManagerTests, locationsCanBeRetrieved)
 {
 	EU5::ProvinceManager theProvinceManager;

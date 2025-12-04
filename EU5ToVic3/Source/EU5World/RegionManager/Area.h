@@ -2,7 +2,6 @@
 #define EU5_AREA_H
 #include "Parser.h"
 #include "Province.h"
-#include <set>
 
 namespace EU5
 {

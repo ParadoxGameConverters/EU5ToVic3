@@ -25,9 +25,11 @@ TEST(Mappers_RegionMapperTests, locationServicesWork)
 {
 	EU5::RegionManager theMapper;
 	std::stringstream input;
-	input << "europe = { western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } "
+	input << "europe = { western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm "
+				"tierp heby } } "
 				"} } }\n";
-	input << "oceania = { australasia = { australia_region = { southwestern_australia_area = { wardandi_province = {wardandi gurbillup nannup manjimup bibbulman jarrah_karri munite mallee kaniyang "
+	input << "oceania = { australasia = { australia_region = { southwestern_australia_area = { wardandi_province = {wardandi gurbillup nannup manjimup "
+				"bibbulman jarrah_karri munite mallee kaniyang "
 				"} } } } }\n";
 	theMapper.loadRegions(input);
 
@@ -195,4 +197,3 @@ TEST(Mappers_RegionMapperTests, brokenAndMissingSuperGroupDefaultsToIgnored)
 	EXPECT_EQ("this_is_ignored", theMapper.getParentSuperGroupName("stockholm"));
 	EXPECT_EQ("this_is_ignored", theMapper.getParentSuperGroupName("wardandi"));
 }
-

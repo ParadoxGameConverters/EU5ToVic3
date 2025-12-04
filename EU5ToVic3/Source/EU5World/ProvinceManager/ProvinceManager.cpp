@@ -2,16 +2,16 @@
 #include "Log.h"
 #include <ranges>
 
-void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string& theSystemName)
+void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string& locationName)
 {
-	if (seenLocations.contains(theSystemName))
+	if (seenLocations.contains(locationName))
 	{
-		Log(LogLevel::Error) << "Attempting to register location " << theSystemName << " (" << theLocationID << ")  which is already registered. This is bad.";
+		Log(LogLevel::Error) << "Attempting to register location " << locationName << " (" << theLocationID << ")  which is already registered. This is bad.";
 		return;
 	}
 
-	auto newLocation = std::make_shared<Location>(theLocationID, theSystemName);
-	seenLocations.emplace(theSystemName, newLocation);
+	auto newLocation = std::make_shared<Location>(theLocationID, locationName);
+	seenLocations.emplace(locationName, newLocation);
 }
 
 const std::shared_ptr<EU5::Location>& EU5::ProvinceManager::getSeenLocationByID(int theID) const
