@@ -14,7 +14,7 @@ void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string
 	seenLocations.emplace(locationName, newLocation);
 }
 
-const std::shared_ptr<EU5::Location>& EU5::ProvinceManager::getSeenLocationByID(int theID) const
+std::shared_ptr<EU5::Location> EU5::ProvinceManager::getSeenLocationByID(int theID) const
 {
 	for (const auto& Location: seenLocations | std::views::values)
 	{
@@ -22,5 +22,6 @@ const std::shared_ptr<EU5::Location>& EU5::ProvinceManager::getSeenLocationByID(
 			return Location;
 	}
 
-	throw std::runtime_error("Trying to access seenLocations by ID " + std::to_string(theID) + " which does not exists! Fire! Bad!");
+	Log(LogLevel::Error) << "Trying to access seenLocations by ID " << std::to_string(theID) << " which does not exists! Fire! Bad!";
+	return nullptr;
 }

@@ -12,7 +12,7 @@ class ProvinceManager
 
 	void registerLocation(int theLocationID, const std::string& locationName);
 	[[nodiscard]] const auto& getSeenLocations() const { return seenLocations; }
-	[[nodiscard]] const std::shared_ptr<Location>& getSeenLocationByID(int theID) const;
+	[[nodiscard]] std::shared_ptr<Location> getSeenLocationByID(int theID) const;
 
   private:
 	std::map<std::string, std::shared_ptr<Location>> seenLocations;
