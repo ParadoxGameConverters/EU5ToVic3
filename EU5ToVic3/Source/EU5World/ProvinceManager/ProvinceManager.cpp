@@ -24,6 +24,7 @@ void EU5::ProvinceManager::registerKeys()
 		}
 		theLocation->parseData(theStream);
 		locations.emplace(theLocation->getName(), theLocation);
+		// There is no Step 2.
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

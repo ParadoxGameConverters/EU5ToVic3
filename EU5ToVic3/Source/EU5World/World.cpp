@@ -153,7 +153,7 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 	metaParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	compatibilityParser.registerKeyword("locations", [this](std::istream& theStream) {
-		Log(LogLevel::Info) << "-> Registering Provinces";
+		Log(LogLevel::Info) << "\t-> Registering Provinces";
 		const auto& locationsSrc = commonItems::stringList(theStream).getStrings();
 		if (locationsSrc.empty())
 		{
@@ -166,7 +166,7 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 			locationID++;
 			provinceManager.registerLocation(locationID, location);
 		}
-		Log(LogLevel::Info) << "\t-> Registered " << locationID << " locations, from " << provinceManager.getSeenLocationByID(1)->getName() << "(1) to "
+		Log(LogLevel::Info) << "\t<> Registered " << locationID << " locations, from " << provinceManager.getSeenLocationByID(1)->getName() << "(1) to "
 								  << provinceManager.getSeenLocationByID(locationID)->getName() << "(" << locationID << ").";
 	});
 	compatibilityParser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
@@ -185,11 +185,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		}
 	});
 	registerKeyword("locations", [this](std::istream& theStream) {
-		Log(LogLevel::Info) << "-> Importing Locations";
+		Log(LogLevel::Info) << "\t-> Importing Locations";
 		provinceManager.loadProvinces(theStream);
-		Log(LogLevel::Info) << "<> Imported " << provinceManager.getAllLocations().size() << " provinces.";
+		Log(LogLevel::Info) << "\t<> Imported " << provinceManager.getAllLocations().size() << " provinces.";
 	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreAndLogItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 void EU5::World::verifySave()
