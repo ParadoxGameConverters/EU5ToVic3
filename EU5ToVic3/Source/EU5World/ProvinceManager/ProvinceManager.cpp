@@ -2,6 +2,32 @@
 #include "Log.h"
 #include <ranges>
 
+void EU5::ProvinceManager::loadProvinces(std::istream& theStream)
+{
+	registerKeys();
+	parseStream(theStream);
+	clearRegisteredKeywords();
+}
+
+void EU5::ProvinceManager::registerKeys()
+{
+	registerKeyword("locations", [this](const std::string& unused, std::istream& theStream) {
+		parseStream(theStream); // Double-tapping locations keyword.
+	});
+	registerRegex(commonItems::integerRegex, [this](const std::string& numberString, std::istream& theStream) {
+		// Step 1. Find what location we're talking about.
+		const auto theLocation = getSeenLocationByID(std::stoi(numberString));
+		if (!theLocation)
+		{
+			Log(LogLevel::Error) << "Attempting to load location data for (" << numberString << ") which is NOT registered. THIS IS CORRUPTION-LEVEL BAD.";
+			return;
+		}
+		theLocation->parseData(theStream);
+		locations.emplace(theLocation->getName(), theLocation);
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
+
 void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string& locationName)
 {
 	if (seenLocations.contains(locationName))
