@@ -7,6 +7,7 @@
 #include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
 #include "Parser.h"
+#include "ProvinceManager/ProvinceManager.h"
 
 namespace EU5
 {
@@ -42,7 +43,8 @@ class World: commonItems::parser
 
 	DatingData datingData;
 	GameVersion version;
-	std::map<int, std::string> locationIDs;
+
+	ProvinceManager provinceManager;
 };
 } // namespace EU5
 

@@ -10,6 +10,36 @@
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp">
       <Filter>EU5WorldTests\LoaderTests\ModLoaderTests</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupMapperTests.cpp">
+      <Filter>MapperTests\SuperGroupMapperTests</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupParserTests.cpp">
+      <Filter>MapperTests\SuperGroupMapperTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionManagerTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\SuperRegionTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\ContinentTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\ProvinceTests.cpp">
+      <Filter>EU5WorldTests\RegionManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5LocationTests.cpp">
+      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp">
+      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EU5WorldTests">
@@ -182,6 +212,15 @@
     </Filter>
     <Filter Include="TestFiles\eu5installation\game\in_game\map_data">
       <UniqueIdentifier>{8cf20e20-876b-4147-aeb2-375818fafcdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\SuperGroupMapperTests">
+      <UniqueIdentifier>{d02ac9c1-1da4-43f1-a20a-56fe9ddcd7c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\RegionManagerTests">
+      <UniqueIdentifier>{205ccac8-49df-49f3-bd03-e1d264dcb6fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\ProvinceManagerTests">
+      <UniqueIdentifier>{50997f70-8e94-4ae9-a2eb-d09fb454575a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +487,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\eu5installation\game\in_game\map_data\definitions.txt">
       <Filter>TestFiles\eu5installation\game\in_game\map_data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\configurables\world_supergroups.txt">
+      <Filter>TestFiles\configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

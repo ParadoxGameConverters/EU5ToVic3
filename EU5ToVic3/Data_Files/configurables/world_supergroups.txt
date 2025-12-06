@@ -1,0 +1,14 @@
+# Thee are global supergroups. They are used to determine what is 
+# old world and what is new world for purposes of assimilation maybe.
+
+old_world = {
+	continents = { europe asia africa }
+}
+
+new_world = {
+	continents = { america oceania }
+}
+
+this_is_ignored = {
+	continents = { atlantic_ocean_continent indian_ocean_continent pacific_ocean_continent antarctic_ocean_continent }
+}
