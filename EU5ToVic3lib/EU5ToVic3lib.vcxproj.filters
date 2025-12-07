@@ -37,6 +37,15 @@
     <Filter Include="Mappers\SuperGroupMapper">
       <UniqueIdentifier>{5114ff40-8608-4a11-b17b-84054e4bba15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\CountryManager">
+      <UniqueIdentifier>{398391fb-546f-4bd2-b480-dfbbbd5f6a42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mappers\NamedColorsMapper">
+      <UniqueIdentifier>{080410e9-0ae9-4206-b917-4eec6c2a12cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\CommonCountryLoader">
+      <UniqueIdentifier>{9f8f9f7f-3f9f-4dc8-8da5-7536d783db3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -87,6 +96,18 @@
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.cpp">
       <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.cpp">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.cpp">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\Mappers\NamedColors\NamedColorsMapper.cpp">
+      <Filter>Mappers\NamedColorsMapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CountryColorLoader\CommonCountryLoader.cpp">
+      <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +165,18 @@
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.h">
       <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.h">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.h">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\Mappers\NamedColors\NamedColorsMapper.h">
+      <Filter>Mappers\NamedColorsMapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CountryColorLoader\CommonCountryLoader.h">
+      <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

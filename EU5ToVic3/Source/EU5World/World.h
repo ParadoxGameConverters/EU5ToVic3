@@ -8,6 +8,7 @@
 #include "ModLoader/ModLoader.h"
 #include "Parser.h"
 #include "ProvinceManager/ProvinceManager.h"
+#include "Mappers/NamedColors/NamedColorsMapper.h"
 
 namespace EU5
 {
@@ -24,6 +25,7 @@ class World: commonItems::parser
   private:
 	void registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion);
 	void verifySave();
+	void primeLaFabricaDeColor();
 
 	parser metaPreParser;
 	parser metaParser;
@@ -45,6 +47,7 @@ class World: commonItems::parser
 	GameVersion version;
 
 	ProvinceManager provinceManager;
+	mappers::NamedColorsMapper namedColors;
 };
 } // namespace EU5
 
