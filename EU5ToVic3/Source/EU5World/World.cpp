@@ -34,6 +34,9 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	parseStream(metaData);
 	if (!saveGame.metadata.empty())
 		saveGame.parsedMeta = true;
+
+	primeLaFabricaDeColor();
+
 	parseStream(gameState);
 	clearRegisteredKeywords();
 	Log(LogLevel::Progress) << "\t* Import Complete. *";
@@ -241,4 +244,16 @@ void EU5::World::verifySave()
 	std::ofstream saveDump("saveDump.txt");
 	saveDump << saveGame.gamestate;
 	saveDump.close();
+}
+
+void EU5::World::primeLaFabricaDeColor()
+{
+	Log(LogLevel::Info) << "-> Loading colors.";
+	for (const auto& file: modFS.GetAllFilesInFolder( "main_menu/common/named_colors"))
+	{
+		if (file.extension() != ".txt")
+			continue;
+		namedColors.loadColors(file);
+	}
+	Log(LogLevel::Info) << "<> Loaded " << laFabricaDeColor.getRegisteredColors().size() << " colors.";
 }
