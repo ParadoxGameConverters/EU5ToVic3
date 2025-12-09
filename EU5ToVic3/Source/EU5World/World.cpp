@@ -254,7 +254,7 @@ void EU5::World::verifySave()
 void EU5::World::primeLaFabricaDeColor()
 {
 	Log(LogLevel::Info) << "-> Loading colors.";
-	for (const auto& file: modFS.GetAllFilesInFolder( "main_menu/common/named_colors"))
+	for (const auto& file: modFS.GetAllFilesInFolder("main_menu/common/named_colors"))
 	{
 		if (file.extension() != ".txt")
 			continue;

@@ -2,14 +2,14 @@
 #define EU5_WORLD_H
 #include "Configuration.h"
 #include "ConverterVersion.h"
+#include "CountryManager/EU5CountryManager.h"
 #include "DatingData.h"
 #include "GameVersion.h"
+#include "Mappers/NamedColors/NamedColorsMapper.h"
 #include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
 #include "Parser.h"
 #include "ProvinceManager/ProvinceManager.h"
-#include "Mappers/NamedColors/NamedColorsMapper.h"
-#include "CountryManager/EU5CountryManager.h"
 
 namespace EU5
 {
