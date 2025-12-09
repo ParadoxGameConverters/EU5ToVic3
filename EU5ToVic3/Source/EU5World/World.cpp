@@ -192,6 +192,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		provinceManager.loadProvinces(theStream);
 		Log(LogLevel::Info) << "\t<> Imported " << provinceManager.getAllLocations().size() << " provinces.";
 	});
+	registerKeyword("countries", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Importing Countries";
+		countryManager.loadCountries(theStream);
+		Log(LogLevel::Info) << "\t<> Imported " << countryManager.getCountries().size() << " countries.";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

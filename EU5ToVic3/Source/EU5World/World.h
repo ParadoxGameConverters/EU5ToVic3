@@ -9,6 +9,7 @@
 #include "Parser.h"
 #include "ProvinceManager/ProvinceManager.h"
 #include "Mappers/NamedColors/NamedColorsMapper.h"
+#include "CountryManager/EU5CountryManager.h"
 
 namespace EU5
 {
@@ -48,6 +49,7 @@ class World: commonItems::parser
 
 	ProvinceManager provinceManager;
 	mappers::NamedColorsMapper namedColors;
+	CountryManager countryManager;
 };
 } // namespace EU5
 

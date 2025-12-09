@@ -11,7 +11,8 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5ToVic3Converter.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.cpp" />
-    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CountryColorLoader\CommonCountryLoader.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.cpp" />
@@ -35,7 +36,8 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5ToVic3Converter.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.h" />
-    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CountryColorLoader\CommonCountryLoader.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.h" />
