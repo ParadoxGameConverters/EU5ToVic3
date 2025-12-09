@@ -9,6 +9,7 @@
 #include <istream>
 #include <stdexcept>
 #include <string>
+auto laFabricaDeColor = commonItems::Color::Factory();
 
 Configuration::Configuration(const commonItems::ConverterVersion& converterVersion)
 {
