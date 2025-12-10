@@ -17,7 +17,8 @@ void EU5::CountryManager::loadCountries(std::istream& theStream)
 		{
 
 			theTarget->setRevolutionaryTarget();
-			Log(LogLevel::Info) << "\t^^^ Revolution Lives!";
+			Log(LogLevel::Info) << "\t^^^ Revolution Lives! (" << theTarget->getTag() << ")";
+
 			return;
 		}
 	}
@@ -37,6 +38,7 @@ void EU5::CountryManager::registerKeys()
 
 	registerKeyword("tags", [this](const std::string& unused, std::istream& theStream) {
 		tagRegistryParser.parseStream(theStream);
+		Log(LogLevel::Info) << "\t-> Registered " << tagRegistry.size() << " tags.";
 	});
 
 	countryDatabaseParser.registerRegex(commonItems::integerRegex, [this](const std::string& theID, std::istream& theStream) {
