@@ -13,6 +13,7 @@ class Country: commonItems::parser
 	// Tag and links
 	void setTag(const std::string& theTag) { tag = theTag; }
 	[[nodiscard]] const auto& getID() const { return countryID; }
+	[[nodiscard]] const auto& getTag() const { return tag; }
 
 	void setRevolutionaryTarget() { revolutionaryTarget = true; }
 
@@ -20,6 +21,7 @@ class Country: commonItems::parser
 	void registerKeys();
 
 	std::string countryName; // This is the localization key used for map name display. SWE or blagodarnoye.
+	std::string adjective;	 // this is apparently an optional field. :/
 	std::string flag;			 // should tag, AGA94?
 	std::string type;			 // location, banking?
 	std::string historical;	 // presumably same as tag.

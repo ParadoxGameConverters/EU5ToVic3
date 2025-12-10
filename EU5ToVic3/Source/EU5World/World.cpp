@@ -35,6 +35,9 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	if (!saveGame.metadata.empty())
 		saveGame.parsedMeta = true;
 
+	// With mods loaded we can init stuff that requires them.
+	modFS = commonItems::ModFilesystem(EU5Path, mods);
+
 	primeLaFabricaDeColor();
 
 	parseStream(gameState);
@@ -42,8 +45,6 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	Log(LogLevel::Progress) << "\t* Import Complete. *";
 	Log(LogLevel::Progress) << "15 %";
 
-	// With mods loaded we can init stuff that requires them.
-	modFS = commonItems::ModFilesystem(EU5Path, mods);
 
 	Log(LogLevel::Info) << "-> Booting Loaders:";
 	Log(LogLevel::Info) << "\t\tRegions";

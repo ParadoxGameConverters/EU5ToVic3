@@ -20,6 +20,9 @@ Configuration::Configuration(const commonItems::ConverterVersion& converterVersi
 	setOutputName();
 	verifyEU5Path();
 	verifyEU5Version(converterVersion);
+	// We'll only need game folder from now on.
+	EU5Path /= std::filesystem::path("game");
+
 	verifyVic3Path();
 	verifyVic3Version(converterVersion);
 	Log(LogLevel::Progress) << "3 %";
@@ -33,6 +36,9 @@ Configuration::Configuration(std::istream& theStream, const commonItems::Convert
 	setOutputName();
 	verifyEU5Path();
 	verifyEU5Version(converterVersion);
+	// We'll only need game folder from now on.
+	EU5Path /= std::filesystem::path("game");
+
 	verifyVic3Path();
 	verifyVic3Version(converterVersion);
 }
