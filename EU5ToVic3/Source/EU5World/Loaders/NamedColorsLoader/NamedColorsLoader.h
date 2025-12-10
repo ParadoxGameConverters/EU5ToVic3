@@ -16,6 +16,6 @@ class NamedColorsLoader: commonItems::parser
   private:
 	void registerKeys();
 };
-} // namespace mappers
+} // namespace EU5
 
 #endif // NAMED_COLORS_LOADER_H

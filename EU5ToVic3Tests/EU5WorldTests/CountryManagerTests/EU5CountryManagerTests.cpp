@@ -72,7 +72,7 @@ TEST(EU5_CountryManagerTests, RegisteredCountriesCanBeLoaded)
 	EU5::CountryManager manager;
 	manager.loadCountries(input);
 
-   EXPECT_EQ(2, manager.getTagRegistry().size());
+	EXPECT_EQ(2, manager.getTagRegistry().size());
 	EXPECT_EQ(2, manager.getCountries().size());
 	EXPECT_EQ("AAA", manager.getCountryByID(1)->getCountryName());
 	EXPECT_EQ("BBB", manager.getCountryByID(2)->getCountryName());

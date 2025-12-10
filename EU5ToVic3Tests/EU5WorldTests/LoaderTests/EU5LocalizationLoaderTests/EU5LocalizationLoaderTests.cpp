@@ -1,5 +1,5 @@
-#include "EU5LocalizationLoader/EU5LocalizationLoader.h"
 #include "CommonFunctions.h"
+#include "EU5LocalizationLoader/EU5LocalizationLoader.h"
 #include "gtest/gtest.h"
 
 TEST(EU5_LocalizationLoaderTests, localisationsCanBeLoadedAndMatched)
