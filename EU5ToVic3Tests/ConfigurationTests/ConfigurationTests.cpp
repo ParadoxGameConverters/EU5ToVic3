@@ -27,12 +27,12 @@ TEST(ConfigurationTests, BrokenVic3PathThrowsException)
 TEST(ConfigurationTests, InstallationPathsCanBeUpdatedRetrieved)
 {
 	std::stringstream configurationInput;
-	configurationInput << "EU5Directory = \"TestFiles/eu5installation\"\n";
+	configurationInput << "EU5Directory = \"TestFiles/eu5installation\"\n";	  // updated with "/game/"
 	configurationInput << "Vic3Directory = \"TestFiles/vic3installation\"\n"; // updated with "/game/"
 	const commonItems::ConverterVersion converterVersion;
 	const auto configuration = Configuration(configurationInput, converterVersion);
 
-	EXPECT_EQ("TestFiles/eu5installation", configuration.getEU5Path());
+	EXPECT_EQ("TestFiles/eu5installation/game", configuration.getEU5Path());
 	EXPECT_EQ("TestFiles/vic3installation/game", configuration.getVic3Path());
 }
 

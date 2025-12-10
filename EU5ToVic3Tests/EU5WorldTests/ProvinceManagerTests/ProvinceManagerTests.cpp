@@ -2,14 +2,14 @@
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 
-TEST(EU5World_ProvinceManagerTests, defaultProvinceManagerIsEmpty)
+TEST(EU5_ProvinceManagerTests, defaultProvinceManagerIsEmpty)
 {
 	EU5::ProvinceManager theProvinceManager;
 
 	EXPECT_TRUE(theProvinceManager.getSeenLocations().empty());
 }
 
-TEST(EU5World_ProvinceManagerTests, LocationsCanBeRegistered)
+TEST(EU5_ProvinceManagerTests, LocationsCanBeRegistered)
 {
 	EU5::ProvinceManager theProvinceManager;
 	theProvinceManager.registerLocation(1, "a");
@@ -19,7 +19,7 @@ TEST(EU5World_ProvinceManagerTests, LocationsCanBeRegistered)
 	EXPECT_TRUE(theProvinceManager.getSeenLocations().contains("b"));
 }
 
-TEST(EU5World_ProvinceManagerTests, accessingNonExistentLocationReturnsNullptr)
+TEST(EU5_ProvinceManagerTests, accessingNonExistentLocationReturnsNullptr)
 {
 	EU5::ProvinceManager theProvinceManager;
 	theProvinceManager.registerLocation(1, "a");
@@ -29,7 +29,7 @@ TEST(EU5World_ProvinceManagerTests, accessingNonExistentLocationReturnsNullptr)
 	EXPECT_EQ(nullptr, location);
 }
 
-TEST(EU5World_ProvinceManagerTests, SameNamedLocationsCanNotBeRegistered)
+TEST(EU5_ProvinceManagerTests, SameNamedLocationsCanNotBeRegistered)
 {
 	EU5::ProvinceManager theProvinceManager;
 	theProvinceManager.registerLocation(1, "a");
@@ -42,7 +42,7 @@ TEST(EU5World_ProvinceManagerTests, SameNamedLocationsCanNotBeRegistered)
 	EXPECT_EQ(nullptr, two);
 }
 
-TEST(EU5World_ProvinceManagerTests, LocationsCanBeRetrieved)
+TEST(EU5_ProvinceManagerTests, LocationsCanBeRetrieved)
 {
 	EU5::ProvinceManager theProvinceManager;
 	theProvinceManager.registerLocation(1, "a");
@@ -52,7 +52,7 @@ TEST(EU5World_ProvinceManagerTests, LocationsCanBeRetrieved)
 	EXPECT_EQ(2, theProvinceManager.getSeenLocationByID(2)->getID());
 }
 
-TEST(EU4World_ProvinceManagerTests, LocationsCanBeParsed)
+TEST(EU5_ProvinceManagerTests, LocationsCanBeParsed)
 {
 	EU5::ProvinceManager theProvinceManager;
 	theProvinceManager.registerLocation(1, "a");
@@ -69,7 +69,7 @@ TEST(EU4World_ProvinceManagerTests, LocationsCanBeParsed)
 	EXPECT_EQ(5, theProvinceManager.getAllLocations().at("b")->getControllerID());
 }
 
-TEST(EU4World_ProvinceManagerTests, UnregisteredLocationsCannotBeParsed)
+TEST(EU5_ProvinceManagerTests, UnregisteredLocationsCannotBeParsed)
 {
 	EU5::ProvinceManager theProvinceManager;
 	std::stringstream input;

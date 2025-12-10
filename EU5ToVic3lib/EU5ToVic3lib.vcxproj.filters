@@ -37,6 +37,18 @@
     <Filter Include="Mappers\SuperGroupMapper">
       <UniqueIdentifier>{5114ff40-8608-4a11-b17b-84054e4bba15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\CountryManager">
+      <UniqueIdentifier>{398391fb-546f-4bd2-b480-dfbbbd5f6a42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\CommonCountryLoader">
+      <UniqueIdentifier>{9f8f9f7f-3f9f-4dc8-8da5-7536d783db3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\EU5LocalizationLoader">
+      <UniqueIdentifier>{f9b770b5-424d-47a8-aacb-06a47e888b46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\NamedColorsLoader">
+      <UniqueIdentifier>{92fb2fca-9aa4-43fe-9453-bef7f7231d7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -87,6 +99,21 @@
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.cpp">
       <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.cpp">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.cpp">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.cpp">
+      <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.cpp">
+      <Filter>EU5World\Loaders\EU5LocalizationLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.cpp">
+      <Filter>EU5World\Loaders\NamedColorsLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +171,21 @@
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.h">
       <Filter>Mappers\SuperGroupMapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.h">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.h">
+      <Filter>EU5World\CountryManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.h">
+      <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.h">
+      <Filter>EU5World\Loaders\EU5LocalizationLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.h">
+      <Filter>EU5World\Loaders\NamedColorsLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
