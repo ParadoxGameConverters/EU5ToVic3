@@ -255,22 +255,32 @@ std::optional<EU5::LocBlock> EU5::EU5LocalizationLoader::getLocBlockForKey(const
 	if (keyItr == localizations.end())
 		return std::nullopt;
 
-	if (!keyItr->second.english.empty() && (keyItr->second.spanish.empty() || keyItr->second.german.empty() || keyItr->second.french.empty() ||
-															 keyItr->second.korean.empty() || keyItr->second.russian.empty() || keyItr->second.simp_chinese.empty()))
+	if (!keyItr->second.english.empty() &&
+		 (keyItr->second.braz_por.empty() || keyItr->second.spanish.empty() || keyItr->second.german.empty() || keyItr->second.french.empty() ||
+			  keyItr->second.japanese.empty() || keyItr->second.korean.empty() || keyItr->second.polish.empty() || keyItr->second.russian.empty() ||
+			  keyItr->second.simp_chinese.empty() || keyItr->second.turkish.empty()))
 	{
 		auto newBlock = keyItr->second;
-		if (newBlock.spanish.empty())
-			newBlock.spanish = newBlock.english;
+		if (newBlock.braz_por.empty())
+			newBlock.german = newBlock.english;
 		if (newBlock.german.empty())
 			newBlock.german = newBlock.english;
 		if (newBlock.french.empty())
 			newBlock.french = newBlock.english;
+		if (newBlock.japanese.empty())
+			newBlock.japanese = newBlock.english;
 		if (newBlock.korean.empty())
 			newBlock.korean = newBlock.english;
+		if (newBlock.polish.empty())
+			newBlock.polish = newBlock.english;
 		if (newBlock.russian.empty())
 			newBlock.russian = newBlock.english;
 		if (newBlock.simp_chinese.empty())
 			newBlock.simp_chinese = newBlock.english;
+		if (newBlock.spanish.empty())
+			newBlock.spanish = newBlock.english;
+		if (newBlock.turkish.empty())
+			newBlock.turkish = newBlock.english;
 		return newBlock;
 	}
 
@@ -280,20 +290,6 @@ std::optional<EU5::LocBlock> EU5::EU5LocalizationLoader::getLocBlockForKey(const
 		return std::nullopt;
 
 	return keyItr->second;
-}
-
-std::optional<std::string> EU5::EU5LocalizationLoader::reverseLookupCultureName(const std::string& localization) const
-{
-	// This looks for specifically *_name keys cultures use.
-
-	for (const auto& [locName, locBlock]: localizations)
-	{
-		if (locBlock.english == localization || locBlock.french == localization || locBlock.german == localization || locBlock.korean == localization ||
-			 locBlock.russian == localization || locBlock.simp_chinese == localization || locBlock.spanish == localization)
-			if (locName.find("_name") != std::string::npos)
-				return locName;
-	}
-	return std::nullopt;
 }
 
 std::set<std::string> EU5::EU5LocalizationLoader::reverseLookup(const std::string& localization) const

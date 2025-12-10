@@ -24,13 +24,17 @@ typedef struct LocBlock
 
 	void initializeAll(const std::string& initText)
 	{
+		braz_por = initText;
 		english = initText;
 		french = initText;
 		german = initText;
+		japanese = initText;
 		korean = initText;
+		polish = initText;
 		russian = initText;
 		simp_chinese = initText;
 		spanish = initText;
+		turkish = initText;
 	}
 
 	[[nodiscard]] std::map<std::string, std::string> getAllNames() const
@@ -67,7 +71,6 @@ class EU5LocalizationLoader
 	void removeEmphasis(LocBlock& block) const;
 
 	[[nodiscard]] std::optional<LocBlock> getLocBlockForKey(const std::string& key) const;
-	[[nodiscard]] std::optional<std::string> reverseLookupCultureName(const std::string& localization) const;
 	[[nodiscard]] std::set<std::string> reverseLookup(const std::string& localization) const;
 
   private:

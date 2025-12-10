@@ -1,15 +1,15 @@
-#ifndef NAMED_COLORS_MAPPER_H
-#define NAMED_COLORS_MAPPER_H
+#ifndef NAMED_COLORS_LOADER_H
+#define NAMED_COLORS_LOADER_H
 #include "Color.h"
 #include "Parser.h"
 extern commonItems::Color::Factory laFabricaDeColor;
 
-namespace mappers
+namespace EU5
 {
-class NamedColorsMapper: commonItems::parser
+class NamedColorsLoader: commonItems::parser
 {
   public:
-	NamedColorsMapper() = default;
+	NamedColorsLoader() = default;
 	void loadColors(std::istream& theStream);
 	void loadColors(const std::filesystem::path& filepath);
 
@@ -18,4 +18,4 @@ class NamedColorsMapper: commonItems::parser
 };
 } // namespace mappers
 
-#endif // NAMED_COLORS_MAPPER_H
+#endif // NAMED_COLORS_LOADER_H
