@@ -17,8 +17,9 @@ class CountryManager: public commonItems::parser
 	void loadCountries(std::istream& theStream);
 
 	[[nodiscard]] const auto& getCountries() const { return countries; }
-	[[nodiscard]] std::shared_ptr<Country> getCountryByID(int countryID) const;
 	[[nodiscard]] const auto& getLocalizationLoader() const { return localizationLoader; }
+	[[nodiscard]] const auto& getTagRegistry() const { return tagRegistry; }
+	[[nodiscard]] std::shared_ptr<Country> getCountryByID(int countryID) const;
 
 	// the prep
 	void loadLocalizations(const EU5LocalizationLoader& loader) { localizationLoader = loader; }
@@ -30,7 +31,6 @@ class CountryManager: public commonItems::parser
 
 	CommonCountryLoader commonCountryLoader;
 	EU5LocalizationLoader localizationLoader;
-
 
 	parser tagRegistryParser;
 	parser countryDatabaseParser;

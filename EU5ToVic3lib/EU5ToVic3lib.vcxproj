@@ -14,6 +14,7 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.cpp" />
@@ -23,7 +24,6 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp" />
-    <ClCompile Include="..\EU5ToVic3\Source\Mappers\NamedColors\NamedColorsMapper.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.cpp" />
@@ -39,6 +39,7 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.h" />
@@ -49,7 +50,6 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\World.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Helpers\rakaly.h" />
-    <ClInclude Include="..\EU5ToVic3\Source\Mappers\NamedColors\NamedColorsMapper.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupMapper.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Mappers\SuperGroupMapper\SuperGroupParser.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Output\outMetadataFile\outMetadataFile.h" />

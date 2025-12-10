@@ -3,7 +3,7 @@
 #include <gmock/gmock-matchers.h>
 using testing::UnorderedElementsAre;
 
-TEST(EU5World_LocationTests, PrimitivesDefaultToBlank)
+TEST(EU5_LocationTests, PrimitivesDefaultToBlank)
 {
 	const EU5::Location theLocation;
 
@@ -18,7 +18,7 @@ TEST(EU5World_LocationTests, PrimitivesDefaultToBlank)
 	EXPECT_TRUE(theLocation.getCoreIDs().empty());
 }
 
-TEST(EU5World_LocationTests, primitivesCanBeSet)
+TEST(EU5_LocationTests, primitivesCanBeSet)
 {
 	EU5::Location theLocation(99, "theName");
 

@@ -5,9 +5,9 @@
 #include "CountryManager/EU5CountryManager.h"
 #include "DatingData.h"
 #include "GameVersion.h"
-#include "Mappers/NamedColors/NamedColorsMapper.h"
 #include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
+#include "NamedColorsLoader/NamedColorsLoader.h"
 #include "Parser.h"
 #include "ProvinceManager/ProvinceManager.h"
 
@@ -48,7 +48,7 @@ class World: commonItems::parser
 	GameVersion version;
 
 	ProvinceManager provinceManager;
-	mappers::NamedColorsMapper namedColors;
+	NamedColorsLoader namedColors;
 	CountryManager countryManager;
 };
 } // namespace EU5

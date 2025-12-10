@@ -72,7 +72,12 @@
     <ClCompile Include="..\commonItems\external\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="ConfigurationTests\ConfigurationTests.cpp" />
+    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryManagerTests.cpp" />
+    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryTests.cpp" />
+    <ClCompile Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests\CommonCountryLoaderTests.cpp" />
+    <ClCompile Include="EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests\EU5LocalizationLoaderTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp" />
+    <ClCompile Include="EU5WorldTests\LoaderTests\NamedColorLoaderTests\NamedColorLoaderTests.cpp" />
     <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5LocationTests.cpp" />
     <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp" />

@@ -12,6 +12,7 @@ class CommonCountryLoader: commonItems::parser
 	CommonCountryLoader() = default;
 
 	void loadCommonCountries(const commonItems::ModFilesystem& modFS);
+	void loadCommonCountries(std::istream& theStream);
 
 	[[nodiscard]] std::optional<commonItems::Color> getColor1(const std::string& tag) const;
 	[[nodiscard]] std::optional<commonItems::Color> getColor2(const std::string& tag) const;

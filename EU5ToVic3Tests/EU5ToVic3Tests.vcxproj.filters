@@ -40,6 +40,21 @@
     <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp">
       <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
     </ClCompile>
+    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryManagerTests.cpp">
+      <Filter>EU5WorldTests\CountryManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryTests.cpp">
+      <Filter>EU5WorldTests\CountryManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests\CommonCountryLoaderTests.cpp">
+      <Filter>EU5WorldTests\LoaderTests\CommonCountryLoaderTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests\EU5LocalizationLoaderTests.cpp">
+      <Filter>EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\LoaderTests\NamedColorLoaderTests\NamedColorLoaderTests.cpp">
+      <Filter>EU5WorldTests\LoaderTests\NamedColorsLoaderTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="EU5WorldTests">
@@ -221,6 +236,18 @@
     </Filter>
     <Filter Include="EU5WorldTests\ProvinceManagerTests">
       <UniqueIdentifier>{50997f70-8e94-4ae9-a2eb-d09fb454575a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\CountryManagerTests">
+      <UniqueIdentifier>{ea44d414-eec6-446f-802a-ef86866c91bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests">
+      <UniqueIdentifier>{b5da364b-fe0e-4689-8b6f-5018452ce5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests">
+      <UniqueIdentifier>{dd7c9e0d-0ee2-467b-8859-002a44dbb174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\LoaderTests\NamedColorsLoaderTests">
+      <UniqueIdentifier>{4e786bc6-2b47-4b33-b7d0-034449b8460f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

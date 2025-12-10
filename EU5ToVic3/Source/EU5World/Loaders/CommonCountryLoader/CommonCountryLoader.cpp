@@ -22,6 +22,13 @@ void EU5::CommonCountryLoader::loadCommonCountries(const commonItems::ModFilesys
 	clearRegisteredKeywords();
 }
 
+void EU5::CommonCountryLoader::loadCommonCountries(std::istream& theStream)
+{
+	registerKeys();
+	parseStream(theStream);
+	clearRegisteredKeywords();
+}
+
 void EU5::CommonCountryLoader::registerKeys()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& tag, std::istream& theStream) {
@@ -33,7 +40,7 @@ void EU5::CommonCountryLoader::registerKeys()
 		auto color = commonItems::Color::Factory{}.getColor(theStream);
 		countryColors1.emplace(currentTag, color);
 	});
-	tagParser.registerKeyword("colo2", [this](std::istream& theStream) {
+	tagParser.registerKeyword("color2", [this](std::istream& theStream) {
 		auto color = commonItems::Color::Factory{}.getColor(theStream);
 		countryColors2.emplace(currentTag, color);
 	});
@@ -55,7 +62,7 @@ std::optional<commonItems::Color> EU5::CommonCountryLoader::getColor1(const std:
 
 std::optional<commonItems::Color> EU5::CommonCountryLoader::getColor2(const std::string& tag) const
 {
-	if (const auto& colorItr = countryColors2.find(tag); colorItr != countryColors1.end())
+	if (const auto& colorItr = countryColors2.find(tag); colorItr != countryColors2.end())
 		return colorItr->second;
 	return std::nullopt;
 }
