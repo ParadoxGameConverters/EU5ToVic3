@@ -1,7 +1,7 @@
 #include "SuperRegion.h"
 #include <ranges>
 
-
+// Sub-continent
 EU5::SuperRegion::SuperRegion(std::istream& theStream)
 {
 	registerKeys();
