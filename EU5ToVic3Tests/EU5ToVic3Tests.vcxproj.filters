@@ -25,7 +25,7 @@
     <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionTests.cpp">
       <Filter>EU5WorldTests\RegionManagerTests</Filter>
     </ClCompile>
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\SuperRegionTests.cpp">
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\SubContinentTests.cpp">
       <Filter>EU5WorldTests\RegionManagerTests</Filter>
     </ClCompile>
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ContinentTests.cpp">
@@ -34,11 +34,11 @@
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ProvinceTests.cpp">
       <Filter>EU5WorldTests\RegionManagerTests</Filter>
     </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5LocationTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
+    <ClCompile Include="EU5WorldTests\LocationManagerTests\EU5LocationTests.cpp">
+      <Filter>EU5WorldTests\LocationManagerTests</Filter>
     </ClCompile>
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp">
-      <Filter>EU5WorldTests\ProvinceManagerTests</Filter>
+    <ClCompile Include="EU5WorldTests\LocationManagerTests\LocationManagerTests.cpp">
+      <Filter>EU5WorldTests\LocationManagerTests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +219,7 @@
     <Filter Include="EU5WorldTests\RegionManagerTests">
       <UniqueIdentifier>{205ccac8-49df-49f3-bd03-e1d264dcb6fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EU5WorldTests\ProvinceManagerTests">
+    <Filter Include="EU5WorldTests\LocationManagerTests">
       <UniqueIdentifier>{50997f70-8e94-4ae9-a2eb-d09fb454575a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

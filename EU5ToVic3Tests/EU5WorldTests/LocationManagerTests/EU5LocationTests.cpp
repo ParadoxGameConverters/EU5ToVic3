@@ -1,4 +1,4 @@
-#include "ProvinceManager/EU5Location.h"
+#include "LocationManager/EU5Location.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
 using testing::Pair;

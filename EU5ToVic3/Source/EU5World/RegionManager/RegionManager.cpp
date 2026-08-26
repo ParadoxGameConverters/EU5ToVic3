@@ -1,6 +1,6 @@
 #include "RegionManager.h"
 #include "Log.h"
-#include "ProvinceManager/ProvinceManager.h"
+#include "LocationManager/LocationManager.h"
 #include <filesystem>
 #include <fstream>
 #include <ranges>
@@ -36,10 +36,10 @@ void EU5::RegionManager::registerKeys()
 	registerRegex(commonItems::catchallRegex, [this](const std::string& continentName, std::istream& theStream) {
 		auto newContinent = std::make_shared<Continent>(theStream);
 		continents.emplace(continentName, newContinent);
-		for (const auto& [superRegionName, superRegion]: newContinent->getSuperRegions())
+		for (const auto& [subContinentName, subContinent]: newContinent->getSubContinents())
 		{
-			superRegions.emplace(superRegionName, superRegion);
-			for (const auto& [regionName, region]: superRegion->getRegions())
+			subContinents.emplace(subContinentName, subContinent);
+			for (const auto& [regionName, region]: subContinent->getRegions())
 			{
 				regions.emplace(regionName, region);
 				for (const auto& [areaName, area]: region->getAreas())
@@ -61,8 +61,8 @@ bool EU5::RegionManager::locationIsInRegion(const std::string& location, const s
 		return regionItr->second->regionContainsLocation(location);
 
 	// "Regions" are such a fluid term.
-	if (const auto& superRegionItr = superRegions.find(regionName); superRegionItr != superRegions.end())
-		return superRegionItr->second->superRegionContainsLocation(location);
+	if (const auto& subContinentItr = subContinents.find(regionName); subContinentItr != subContinents.end())
+		return subContinentItr->second->subContinentContainsLocation(location);
 
 	// And sometimes they don't mean what people think they mean at all.
 	if (const auto& areaItr = areas.find(regionName); areaItr != areas.end())
@@ -108,13 +108,13 @@ std::optional<std::string> EU5::RegionManager::getParentRegionName(const std::st
 	return std::nullopt;
 }
 
-std::optional<std::string> EU5::RegionManager::getParentSuperRegionName(const std::string& location) const
+std::optional<std::string> EU5::RegionManager::getParentSubContinentName(const std::string& location) const
 {
-	for (const auto& [superRegionName, superRegion]: superRegions)
-		if (superRegion->superRegionContainsLocation(location))
-			return superRegionName;
+	for (const auto& [subContinentName, subContinent]: subContinents)
+		if (subContinent->subContinentContainsLocation(location))
+			return subContinentName;
 
-	Log(LogLevel::Warning) << "Location " << location << " has no parent superregion name!";
+	Log(LogLevel::Warning) << "Location " << location << " has no parent subcontinent name!";
 	return std::nullopt;
 }
 
@@ -145,8 +145,8 @@ bool EU5::RegionManager::regionNameIsValid(const std::string& regionName) const
 		return true;
 
 	// Who knows what the mapper needs. All kinds of stuff.
-	const auto& superRegionItr = superRegions.find(regionName);
-	if (superRegionItr != superRegions.end())
+	const auto& subContinentItr = subContinents.find(regionName);
+	if (subContinentItr != subContinents.end())
 		return true;
 
 	// And more stuff, what's the worst that could happen?

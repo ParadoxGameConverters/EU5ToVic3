@@ -1,15 +1,15 @@
-#include "ProvinceManager.h"
+#include "LocationManager.h"
 #include "Log.h"
 #include <ranges>
 
-void EU5::ProvinceManager::loadProvinces(std::istream& theStream)
+void EU5::LocationManager::loadLocations(std::istream& theStream)
 {
 	registerKeys();
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
 
-void EU5::ProvinceManager::registerKeys()
+void EU5::LocationManager::registerKeys()
 {
 	registerKeyword("locations", [this](const std::string& unused, std::istream& theStream) {
 		parseStream(theStream); // Double-tapping locations keyword.
@@ -29,7 +29,7 @@ void EU5::ProvinceManager::registerKeys()
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
-void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string& locationName)
+void EU5::LocationManager::registerLocation(int theLocationID, const std::string& locationName)
 {
 	if (seenLocations.contains(locationName))
 	{
@@ -41,7 +41,7 @@ void EU5::ProvinceManager::registerLocation(int theLocationID, const std::string
 	seenLocations.emplace(locationName, newLocation);
 }
 
-std::shared_ptr<EU5::Location> EU5::ProvinceManager::getSeenLocationByID(int theID) const
+std::shared_ptr<EU5::Location> EU5::LocationManager::getSeenLocationByID(int theID) const
 {
 	for (const auto& Location: seenLocations | std::views::values)
 	{

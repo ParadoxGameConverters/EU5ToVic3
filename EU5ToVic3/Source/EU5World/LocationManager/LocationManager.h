@@ -1,16 +1,16 @@
-#ifndef PROVINCE_MANAGER
-#define PROVINCE_MANAGER
+#ifndef LOCATION_MANAGER
+#define LOCATION_MANAGER
 #include "EU5Location.h"
 #include <map>
 
 namespace EU5
 {
-class ProvinceManager: commonItems::parser
+class LocationManager: commonItems::parser
 {
   public:
-	ProvinceManager() = default;
+	LocationManager() = default;
 
-	void loadProvinces(std::istream& theStream);
+	void loadLocations(std::istream& theStream);
 	void registerLocation(int theLocationID, const std::string& locationName);
 
 	[[nodiscard]] const auto& getSeenLocations() const { return seenLocations; }
@@ -28,4 +28,4 @@ class ProvinceManager: commonItems::parser
 };
 } // namespace EU5
 
-#endif // PROVINCE_MANAGER
+#endif // LOCATION_MANAGER

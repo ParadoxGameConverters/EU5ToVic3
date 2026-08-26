@@ -1,8 +1,8 @@
-#include "ProvinceManager/ProvinceManager.h"
+#include "LocationManager/LocationManager.h"
 #include "RegionManager/RegionManager.h"
 #include "gtest/gtest.h"
 
-// This is a collective mapper test for Area, Region, SuperRegion and RegionManager.
+// This is a collective mapper test for Area, Region, SubContinent and RegionManager.
 
 TEST(Mappers_RegionMapperTests, regionMapperCanBeEnabled)
 {
@@ -16,7 +16,7 @@ TEST(Mappers_RegionMapperTests, regionMapperCanBeEnabled)
 	EXPECT_FALSE(theMapper.getParentProvinceName("location"));
 	EXPECT_FALSE(theMapper.getParentAreaName("location"));
 	EXPECT_FALSE(theMapper.getParentRegionName("location"));
-	EXPECT_FALSE(theMapper.getParentSuperRegionName("location"));
+	EXPECT_FALSE(theMapper.getParentSubContinentName("location"));
 	EXPECT_FALSE(theMapper.getParentContinentName("location"));
 	EXPECT_FALSE(theMapper.getParentSuperGroupName("location"));
 }
@@ -95,12 +95,12 @@ TEST(Mappers_RegionMapperTests, correctParentLocationsReported)
 	EXPECT_EQ("uppland_province", *theMapper.getParentProvinceName("norrtalje"));
 	EXPECT_EQ("svealand_area", *theMapper.getParentAreaName("norrtalje"));
 	EXPECT_EQ("scandinavian_region", *theMapper.getParentRegionName("norrtalje"));
-	EXPECT_EQ("western_europe", *theMapper.getParentSuperRegionName("norrtalje"));
+	EXPECT_EQ("western_europe", *theMapper.getParentSubContinentName("norrtalje"));
 	EXPECT_EQ("europe", *theMapper.getParentContinentName("norrtalje"));
 	EXPECT_EQ("wardandi_province", *theMapper.getParentProvinceName("nannup"));
 	EXPECT_EQ("southwestern_australia_area", *theMapper.getParentAreaName("nannup"));
 	EXPECT_EQ("australia_region", *theMapper.getParentRegionName("nannup"));
-	EXPECT_EQ("australasia", *theMapper.getParentSuperRegionName("nannup"));
+	EXPECT_EQ("australasia", *theMapper.getParentSubContinentName("nannup"));
 	EXPECT_EQ("oceania", *theMapper.getParentContinentName("nannup"));
 }
 
@@ -119,7 +119,7 @@ TEST(Mappers_RegionMapperTests, wrongParentLocationsReturnNullopt)
 	EXPECT_FALSE(theMapper.getParentProvinceName("nonsense"));
 	EXPECT_FALSE(theMapper.getParentAreaName("nonsense"));
 	EXPECT_FALSE(theMapper.getParentRegionName("nonsense"));
-	EXPECT_FALSE(theMapper.getParentSuperRegionName("nonsense"));
+	EXPECT_FALSE(theMapper.getParentSubContinentName("nonsense"));
 	EXPECT_FALSE(theMapper.getParentContinentName("nonsense"));
 }
 

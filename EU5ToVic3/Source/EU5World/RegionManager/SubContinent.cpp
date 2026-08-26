@@ -1,15 +1,14 @@
-#include "SuperRegion.h"
+#include "SubContinent.h"
 #include <ranges>
 
-// Sub-continent
-EU5::SuperRegion::SuperRegion(std::istream& theStream)
+EU5::SubContinent::SubContinent(std::istream& theStream)
 {
 	registerKeys();
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
 
-bool EU5::SuperRegion::superRegionContainsLocation(const std::string& location) const
+bool EU5::SubContinent::subContinentContainsLocation(const std::string& location) const
 {
 	for (const auto& region: regions | std::views::values)
 		if (region->regionContainsLocation(location))
@@ -17,7 +16,7 @@ bool EU5::SuperRegion::superRegionContainsLocation(const std::string& location) 
 	return false;
 }
 
-void EU5::SuperRegion::registerKeys()
+void EU5::SubContinent::registerKeys()
 {
 	registerRegex(R"([\w_]+)", [this](const std::string& regionName, std::istream& theStream) {
 		regions.emplace(regionName, std::make_shared<Region>(theStream));

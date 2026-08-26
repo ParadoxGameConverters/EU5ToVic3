@@ -10,15 +10,15 @@ EU5::Continent::Continent(std::istream& theStream)
 
 bool EU5::Continent::continentContainsLocation(const std::string& location) const
 {
-	for (const auto& superRegion: superRegions | std::views::values)
-		if (superRegion->superRegionContainsLocation(location))
+	for (const auto& subContinent: subContinents | std::views::values)
+		if (subContinent->subContinentContainsLocation(location))
 			return true;
 	return false;
 }
 
 void EU5::Continent::registerKeys()
 {
-	registerRegex(R"([\w_]+)", [this](const std::string& superRegionName, std::istream& theStream) {
-		superRegions.emplace(superRegionName, std::make_shared<SuperRegion>(theStream));
+	registerRegex(R"([\w_]+)", [this](const std::string& subContinentName, std::istream& theStream) {
+		subContinents.emplace(subContinentName, std::make_shared<SubContinent>(theStream));
 	});
 }
