@@ -73,14 +73,14 @@
     <ClCompile Include="..\commonItems\external\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="ConfigurationTests\ConfigurationTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\EU5LocationTests.cpp" />
-    <ClCompile Include="EU5WorldTests\ProvinceManagerTests\ProvinceManagerTests.cpp" />
+    <ClCompile Include="EU5WorldTests\LocationManagerTests\EU5LocationTests.cpp" />
+    <ClCompile Include="EU5WorldTests\LocationManagerTests\LocationManagerTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ContinentTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ProvinceTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionManagerTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\RegionTests.cpp" />
-    <ClCompile Include="EU5WorldTests\RegionManagerTests\SuperRegionTests.cpp" />
+    <ClCompile Include="EU5WorldTests\RegionManagerTests\SubContinentTests.cpp" />
     <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupMapperTests.cpp" />
     <ClCompile Include="MapperTests\SuperGroupMapperTests\SuperGroupParserTests.cpp" />
   </ItemGroup>

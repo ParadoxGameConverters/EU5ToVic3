@@ -1,6 +1,6 @@
 #ifndef EU5_CONTINENT_H
 #define EU5_CONTINENT_H
-#include "SuperRegion.h"
+#include "SubContinent.h"
 
 namespace EU5
 {
@@ -10,7 +10,7 @@ class Continent: commonItems::parser
 	Continent() = default;
 	explicit Continent(std::istream& theStream);
 
-	[[nodiscard]] const auto& getSuperRegions() const { return superRegions; }
+	[[nodiscard]] const auto& getSubContinents() const { return subContinents; }
 	[[nodiscard]] const auto& getSuperGroup() const { return superGroup; }
 	[[nodiscard]] bool continentContainsLocation(const std::string& location) const;
 
@@ -19,7 +19,7 @@ class Continent: commonItems::parser
   private:
 	void registerKeys();
 
-	std::map<std::string, std::shared_ptr<SuperRegion>> superRegions;
+	std::map<std::string, std::shared_ptr<SubContinent>> subContinents;
 	std::string superGroup;
 };
 } // namespace EU5

@@ -6,11 +6,11 @@
 #include "Parser.h"
 #include "Province.h"
 #include "Region.h"
-#include "SuperRegion.h"
+#include "SubContinent.h"
 
 namespace EU5
 {
-class ProvinceManager;
+class LocationManager;
 class RegionManager: commonItems::parser
 {
   public:
@@ -24,7 +24,7 @@ class RegionManager: commonItems::parser
 	[[nodiscard]] std::optional<std::string> getParentAreaName(const std::string& location) const;
 	[[nodiscard]] std::optional<std::string> getParentProvinceName(const std::string& location) const;
 	[[nodiscard]] std::optional<std::string> getParentRegionName(const std::string& location) const;
-	[[nodiscard]] std::optional<std::string> getParentSuperRegionName(const std::string& location) const;
+	[[nodiscard]] std::optional<std::string> getParentSubContinentName(const std::string& location) const;
 	[[nodiscard]] std::optional<std::string> getParentContinentName(const std::string& location) const;
 	[[nodiscard]] std::optional<std::string> getParentSuperGroupName(const std::string& location) const;
 
@@ -37,7 +37,7 @@ class RegionManager: commonItems::parser
 	std::map<std::string, std::shared_ptr<Province>> provinces;
 	std::map<std::string, std::shared_ptr<Area>> areas;
 	std::map<std::string, std::shared_ptr<Region>> regions;
-	std::map<std::string, std::shared_ptr<SuperRegion>> superRegions;
+	std::map<std::string, std::shared_ptr<SubContinent>> subContinents;
 	std::map<std::string, std::shared_ptr<Continent>> continents;
 
 	mappers::SuperGroupMapper superGroupMapper;

@@ -4,10 +4,10 @@
 #include "ConverterVersion.h"
 #include "DatingData.h"
 #include "GameVersion.h"
+#include "LocationManager/LocationManager.h"
 #include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
 #include "Parser.h"
-#include "ProvinceManager/ProvinceManager.h"
 
 namespace EU5
 {
@@ -44,7 +44,7 @@ class World: commonItems::parser
 	DatingData datingData;
 	GameVersion version;
 
-	ProvinceManager provinceManager;
+	LocationManager locationManager;
 };
 } // namespace EU5
 

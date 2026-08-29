@@ -1,18 +1,18 @@
 #include "RegionManager/Area.h"
 #include "RegionManager/Continent.h"
 #include "RegionManager/Region.h"
-#include "RegionManager/SuperRegion.h"
+#include "RegionManager/SubContinent.h"
 #include "gtest/gtest.h"
 
-TEST(Mappers_ContinentTests, blankContinentLoadsWithNoSuperRegions)
+TEST(Mappers_ContinentTests, blankContinentLoadsWithNoSubContinents)
 {
 	std::stringstream input;
 	const EU5::Continent continent(input);
 
-	EXPECT_TRUE(continent.getSuperRegions().empty());
+	EXPECT_TRUE(continent.getSubContinents().empty());
 }
 
-TEST(Mappers_ContinentTests, SuperRegionsCanBeLoaded)
+TEST(Mappers_ContinentTests, SubContinentsCanBeLoaded)
 {
 	std::stringstream input;
 	input << "western_europe = { scandinavian_region = { svealand_area = { uppland_province = { stockholm norrtalje enkoping uppsala kastelholm tierp heby } } "
@@ -21,8 +21,8 @@ TEST(Mappers_ContinentTests, SuperRegionsCanBeLoaded)
 				"targu_trotus } } } }\n";
 	const EU5::Continent continent(input);
 
-	EXPECT_TRUE(continent.getSuperRegions().contains("western_europe"));
-	EXPECT_TRUE(continent.getSuperRegions().contains("eastern_europe"));
+	EXPECT_TRUE(continent.getSubContinents().contains("western_europe"));
+	EXPECT_TRUE(continent.getSubContinents().contains("eastern_europe"));
 }
 
 TEST(Mappers_ContinentTests, ContinentCanLocateLocation)

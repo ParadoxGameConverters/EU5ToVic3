@@ -28,7 +28,7 @@
     <Filter Include="EU5World\Loaders\ModLoader">
       <UniqueIdentifier>{ca17ef5f-51c9-480f-be68-57812f4e6b99}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EU5World\ProvinceManager">
+    <Filter Include="EU5World\LocationManager">
       <UniqueIdentifier>{6d621aa1-56e6-48e6-bc4d-d3194b081556}</UniqueIdentifier>
     </Filter>
     <Filter Include="EU5World\RegionManager">
@@ -58,11 +58,11 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.cpp">
       <Filter>EU5World\Loaders\ModLoader</Filter>
     </ClCompile>
-    <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.cpp">
-      <Filter>EU5World\ProvinceManager</Filter>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\LocationManager\LocationManager.cpp">
+      <Filter>EU5World\LocationManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.cpp">
-      <Filter>EU5World\ProvinceManager</Filter>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.cpp">
+      <Filter>EU5World\LocationManager</Filter>
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.cpp">
       <Filter>EU5World\RegionManager</Filter>
@@ -76,7 +76,7 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.cpp">
       <Filter>EU5World\RegionManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.cpp">
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\SubContinent.cpp">
       <Filter>EU5World\RegionManager</Filter>
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.cpp">
@@ -115,11 +115,11 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\ModLoader\ModNames.h">
       <Filter>EU5World\Loaders\ModLoader</Filter>
     </ClInclude>
-    <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\ProvinceManager.h">
-      <Filter>EU5World\ProvinceManager</Filter>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\LocationManager\LocationManager.h">
+      <Filter>EU5World\LocationManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\EU5ToVic3\Source\EU5World\ProvinceManager\EU5Location.h">
-      <Filter>EU5World\ProvinceManager</Filter>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.h">
+      <Filter>EU5World\LocationManager</Filter>
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.h">
       <Filter>EU5World\RegionManager</Filter>
@@ -133,7 +133,7 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\RegionManager.h">
       <Filter>EU5World\RegionManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\SuperRegion.h">
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\SubContinent.h">
       <Filter>EU5World\RegionManager</Filter>
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.h">
