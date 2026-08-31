@@ -15,7 +15,6 @@ void EU5::CountryManager::loadCountries(std::istream& theStream)
 	{
 		if (auto theTarget = getCountryByID(revolutionaryTarget); theTarget)
 		{
-
 			theTarget->setRevolutionaryTarget();
 			Log(LogLevel::Info) << "\t^^^ Revolution Lives! (" << theTarget->getTag() << ")";
 

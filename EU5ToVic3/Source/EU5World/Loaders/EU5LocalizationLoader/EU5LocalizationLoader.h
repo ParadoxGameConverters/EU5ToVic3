@@ -51,7 +51,6 @@ typedef struct LocBlock
 			 std::pair{"spanish", spanish},
 			 std::pair{"turkish", turkish}};
 	}
-
 } LocBlock;
 
 // Returns substring of str before nth occurrence of match string.
