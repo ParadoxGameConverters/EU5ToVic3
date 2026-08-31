@@ -75,8 +75,6 @@ class EU5LocalizationLoader
 
   private:
 	void scrapeLanguage(const std::string& language, const std::filesystem::path& path);
-	std::string selectLanguage(const std::string& language, const LocBlock& block) const;
-	void assignSelectLanguage(const std::string& str, const std::string& language, LocBlock& block) const;
 
 	[[nodiscard]] static std::pair<std::string, std::string> determineKeyLocalizationPair(const std::string& text);
 

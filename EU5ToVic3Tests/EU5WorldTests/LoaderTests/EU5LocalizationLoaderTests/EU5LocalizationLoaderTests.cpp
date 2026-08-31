@@ -39,10 +39,28 @@ TEST(EU5_LocalizationLoaderTests, localisationsReturnsEnglishForMissingLanguage)
 	EU5::EU5LocalizationLoader locs;
 	std::stringstream input;
 	input << commonItems::utf8BOM << "l_english:\n";
-	input << " key1: \"value 1\" # comment\n";
+	input << " rift_valley_area: \"Rift Valley\" # comment\n";
 	locs.scrapeStream(input, "english");
 
-	EXPECT_EQ("value 1", locs.getLocBlockForKey("key1")->french);
+	EXPECT_EQ("Rift Valley", locs.getLocBlockForKey("rift_valley_area")->french);
+	EXPECT_EQ("Rift Valley", locs.getLocBlockForKey("rift_valley_area")->braz_por);
+}
+
+TEST(EU5_LocalizationLoaderTests, brazilianPortugueseIsStoredUnderItsOwnFieldWhenCreatingANewEntry)
+{
+	EU5::EU5LocalizationLoader locs;
+	std::stringstream input;
+	input << commonItems::utf8BOM << "l_braz_por:\n";
+	input << " malawi_area: \"Vale do Rifte no Malawi\"\n";
+	std::stringstream input2;
+	input2 << commonItems::utf8BOM << "l_english:\n";
+	input2 << " malawi_area: \"Malawi Rift\"\n";
+
+	locs.scrapeStream(input, "braz_por");
+	locs.scrapeStream(input2, "english");
+
+	EXPECT_EQ("Malawi Rift", locs.getLocBlockForKey("malawi_area")->english);
+	EXPECT_EQ("Vale do Rifte no Malawi", locs.getLocBlockForKey("malawi_area")->braz_por);
 }
 
 TEST(EU5_LocalizationLoaderTests, nestedLocalisationsCanBeUnravelled)
