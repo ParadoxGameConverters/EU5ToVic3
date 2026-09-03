@@ -9,6 +9,7 @@
 #include <istream>
 #include <stdexcept>
 #include <string>
+auto laFabricaDeColor = commonItems::Color::Factory();
 
 Configuration::Configuration(const commonItems::ConverterVersion& converterVersion)
 {
@@ -71,7 +72,7 @@ void Configuration::registerKeys()
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
-void Configuration::verifyEU5Path() const
+void Configuration::verifyEU5Path()
 {
 	if (!commonItems::DoesFolderExist(EU5Path))
 		throw std::runtime_error("EU5 path " + EU5Path.string() + " does not exist!");
@@ -80,6 +81,7 @@ void Configuration::verifyEU5Path() const
 	if (!commonItems::DoesFileExist(EU5Path / "game/in_game/map_data/definitions.txt"))
 		throw std::runtime_error(EU5Path.string() + " does not appear to be a valid EU5 install!");
 	Log(LogLevel::Info) << "\tEU5 install path is " << EU5Path.string();
+	EU5Path = EU5Path / "game"; // We're adding "/game/" since all we ever need from now on is in that subdirectory.
 }
 
 void Configuration::verifyVic3Path()

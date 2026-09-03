@@ -2,11 +2,13 @@
 #define EU5_WORLD_H
 #include "Configuration.h"
 #include "ConverterVersion.h"
+#include "CountryManager/EU5CountryManager.h"
 #include "DatingData.h"
 #include "GameVersion.h"
 #include "LocationManager/LocationManager.h"
 #include "ModLoader/ModFilesystem.h"
 #include "ModLoader/ModLoader.h"
+#include "NamedColorsLoader/NamedColorsLoader.h"
 #include "Parser.h"
 
 namespace EU5
@@ -24,6 +26,7 @@ class World: commonItems::parser
   private:
 	void registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion);
 	void verifySave();
+	void primeLaFabricaDeColor();
 
 	parser metaPreParser;
 	parser metaParser;
@@ -45,6 +48,8 @@ class World: commonItems::parser
 	GameVersion version;
 
 	LocationManager locationManager;
+	NamedColorsLoader namedColors;
+	CountryManager countryManager;
 };
 } // namespace EU5
 

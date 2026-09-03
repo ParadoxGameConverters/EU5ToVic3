@@ -34,7 +34,7 @@ class Configuration: commonItems::parser
 
   private:
 	void registerKeys();
-	void verifyEU5Path() const;
+	void verifyEU5Path();
 	void verifyVic3Path();
 	void setOutputName();
 	void verifyVic3Version(const commonItems::ConverterVersion& converterVersion);

@@ -1,7 +1,7 @@
 #include "ModLoader/ModNames.h"
 #include "gtest/gtest.h"
 
-TEST(EU4World_ModNamesTests, primitivesDefaultToBlank)
+TEST(EU5_ModNamesTests, primitivesDefaultToBlank)
 {
 	std::stringstream input;
 	const EU5::ModNames theMod(input);
@@ -10,7 +10,7 @@ TEST(EU4World_ModNamesTests, primitivesDefaultToBlank)
 	EXPECT_TRUE(theMod.getPath().empty());
 }
 
-TEST(EU4World_ModNamesTests, primitivesCanBeSet)
+TEST(EU5_ModNamesTests, primitivesCanBeSet)
 {
 	std::stringstream input;
 	input << "name=\"modName\"\n";
