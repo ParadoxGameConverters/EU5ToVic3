@@ -49,6 +49,9 @@
     <Filter Include="EU5World\Loaders\NamedColorsLoader">
       <UniqueIdentifier>{92fb2fca-9aa4-43fe-9453-bef7f7231d7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\PopulationManager">
+      <UniqueIdentifier>{5552b26e-0c0c-4f2e-b540-c904cd59988c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -75,6 +78,12 @@
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.cpp">
       <Filter>EU5World\LocationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\PopulationManager\PopulationManager.cpp">
+      <Filter>EU5World\PopulationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\PopulationManager\EU5Pop.cpp">
+      <Filter>EU5World\PopulationManager</Filter>
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.cpp">
       <Filter>EU5World\RegionManager</Filter>
@@ -147,6 +156,12 @@
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.h">
       <Filter>EU5World\LocationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\PopulationManager\PopulationManager.h">
+      <Filter>EU5World\PopulationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\PopulationManager\EU5Pop.h">
+      <Filter>EU5World\PopulationManager</Filter>
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.h">
       <Filter>EU5World\RegionManager</Filter>

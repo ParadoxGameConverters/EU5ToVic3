@@ -40,6 +40,12 @@
     <ClCompile Include="EU5WorldTests\LocationManagerTests\LocationManagerTests.cpp">
       <Filter>EU5WorldTests\LocationManagerTests</Filter>
     </ClCompile>
+    <ClCompile Include="EU5WorldTests\PopulationManagerTests\EU5PopTests.cpp">
+      <Filter>EU5WorldTests\PopulationManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\PopulationManagerTests\PopulationManagerTests.cpp">
+      <Filter>EU5WorldTests\PopulationManagerTests</Filter>
+    </ClCompile>
     <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryManagerTests.cpp">
       <Filter>EU5WorldTests\CountryManagerTests</Filter>
     </ClCompile>
@@ -236,6 +242,9 @@
     </Filter>
     <Filter Include="EU5WorldTests\LocationManagerTests">
       <UniqueIdentifier>{50997f70-8e94-4ae9-a2eb-d09fb454575a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\PopulationManagerTests">
+      <UniqueIdentifier>{48029ae2-205b-442b-a430-27bc4d473f30}</UniqueIdentifier>
     </Filter>
     <Filter Include="EU5WorldTests\CountryManagerTests">
       <UniqueIdentifier>{ea44d414-eec6-446f-802a-ef86866c91bb}</UniqueIdentifier>

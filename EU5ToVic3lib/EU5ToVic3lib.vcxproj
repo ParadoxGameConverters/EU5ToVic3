@@ -17,6 +17,8 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\LocationManager\LocationManager.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\PopulationManager\EU5Pop.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\PopulationManager\PopulationManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\RegionManager\Province.cpp" />
@@ -42,6 +44,8 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\LocationManager\EU5Location.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\LocationManager\LocationManager.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\PopulationManager\EU5Pop.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\PopulationManager\PopulationManager.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Area.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Continent.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\RegionManager\Province.h" />
