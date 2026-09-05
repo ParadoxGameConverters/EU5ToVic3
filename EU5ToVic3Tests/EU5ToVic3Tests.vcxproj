@@ -80,6 +80,8 @@
     <ClCompile Include="EU5WorldTests\LoaderTests\NamedColorLoaderTests\NamedColorLoaderTests.cpp" />
     <ClCompile Include="EU5WorldTests\LocationManagerTests\EU5LocationTests.cpp" />
     <ClCompile Include="EU5WorldTests\LocationManagerTests\LocationManagerTests.cpp" />
+    <ClCompile Include="EU5WorldTests\PopulationManagerTests\EU5PopTests.cpp" />
+    <ClCompile Include="EU5WorldTests\PopulationManagerTests\PopulationManagerTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\AreaTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ContinentTests.cpp" />
     <ClCompile Include="EU5WorldTests\RegionManagerTests\ProvinceTests.cpp" />
