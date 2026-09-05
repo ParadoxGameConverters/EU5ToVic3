@@ -26,7 +26,7 @@ class Pop: commonItems::parser
 	void registerKeys();
 
 	int popID = 0;
-	std::string type;	 // "clergy", "nobles", "laborers"
+	std::string type;	// "clergy", "nobles", "laborers"
 	std::string estate; // "burgher_estate"
 
 	int cultureID = 0;
