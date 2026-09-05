@@ -198,6 +198,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		countryManager.loadCountries(theStream);
 		Log(LogLevel::Info) << "\t<> Imported " << countryManager.getCountries().size() << " countries.";
 	});
+	registerKeyword("population", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Importing Population";
+		populationManager.loadPopulation(theStream);
+		Log(LogLevel::Info) << "\t<> Imported " << populationManager.getPops().size() << " pop groups.";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

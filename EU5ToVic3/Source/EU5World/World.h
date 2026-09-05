@@ -10,6 +10,7 @@
 #include "ModLoader/ModLoader.h"
 #include "NamedColorsLoader/NamedColorsLoader.h"
 #include "Parser.h"
+#include "PopulationManager/PopulationManager.h"
 
 namespace EU5
 {
@@ -50,6 +51,7 @@ class World: commonItems::parser
 	LocationManager locationManager;
 	NamedColorsLoader namedColors;
 	CountryManager countryManager;
+	PopulationManager populationManager;
 };
 } // namespace EU5
 
