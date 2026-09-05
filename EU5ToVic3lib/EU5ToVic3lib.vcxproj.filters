@@ -49,6 +49,12 @@
     <Filter Include="EU5World\Loaders\NamedColorsLoader">
       <UniqueIdentifier>{92fb2fca-9aa4-43fe-9453-bef7f7231d7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\BuildingManager">
+      <UniqueIdentifier>{6593b8ab-a063-44f6-98e2-cf548f48e538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\BuildingTypeLoader">
+      <UniqueIdentifier>{aa828159-ebc9-4fff-8333-a009656cf12b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -114,6 +120,18 @@
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.cpp">
       <Filter>EU5World\Loaders\NamedColorsLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\BuildingManager\EU5Building.cpp">
+      <Filter>EU5World\BuildingManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\BuildingManager\BuildingManager.cpp">
+      <Filter>EU5World\BuildingManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\ProductionMethod.cpp">
+      <Filter>EU5World\Loaders\BuildingTypeLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\BuildingTypeLoader.cpp">
+      <Filter>EU5World\Loaders\BuildingTypeLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +204,18 @@
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\NamedColorsLoader\NamedColorsLoader.h">
       <Filter>EU5World\Loaders\NamedColorsLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\BuildingManager\EU5Building.h">
+      <Filter>EU5World\BuildingManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\BuildingManager\BuildingManager.h">
+      <Filter>EU5World\BuildingManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\ProductionMethod.h">
+      <Filter>EU5World\Loaders\BuildingTypeLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\BuildingTypeLoader.h">
+      <Filter>EU5World\Loaders\BuildingTypeLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

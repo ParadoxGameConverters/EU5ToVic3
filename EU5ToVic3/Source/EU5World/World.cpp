@@ -39,6 +39,7 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	modFS = commonItems::ModFilesystem(EU5Path, mods);
 
 	primeLaFabricaDeColor();
+	loadBuildingTypes();
 
 	parseStream(gameState);
 	clearRegisteredKeywords();
@@ -198,6 +199,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		countryManager.loadCountries(theStream);
 		Log(LogLevel::Info) << "\t<> Imported " << countryManager.getCountries().size() << " countries.";
 	});
+	registerKeyword("building_manager", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Importing Buildings";
+		buildingManager.loadBuildings(theStream);
+		Log(LogLevel::Info) << "\t<> Imported " << buildingManager.getBuildings().size() << " buildings.";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
@@ -262,4 +268,10 @@ void EU5::World::primeLaFabricaDeColor()
 		namedColors.loadColors(file);
 	}
 	Log(LogLevel::Info) << "<> Loaded " << laFabricaDeColor.getRegisteredColors().size() << " colors.";
+}
+
+void EU5::World::loadBuildingTypes()
+{
+	Log(LogLevel::Info) << "-> Loading building types.";
+	buildingTypeLoader.loadBuildingTypes(modFS);
 }

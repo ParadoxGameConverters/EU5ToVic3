@@ -1,5 +1,7 @@
 #ifndef EU5_WORLD_H
 #define EU5_WORLD_H
+#include "BuildingManager/BuildingManager.h"
+#include "BuildingTypeLoader/BuildingTypeLoader.h"
 #include "Configuration.h"
 #include "ConverterVersion.h"
 #include "CountryManager/EU5CountryManager.h"
@@ -27,6 +29,7 @@ class World: commonItems::parser
 	void registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion);
 	void verifySave();
 	void primeLaFabricaDeColor();
+	void loadBuildingTypes();
 
 	parser metaPreParser;
 	parser metaParser;
@@ -50,6 +53,8 @@ class World: commonItems::parser
 	LocationManager locationManager;
 	NamedColorsLoader namedColors;
 	CountryManager countryManager;
+	BuildingManager buildingManager;
+	BuildingTypeLoader buildingTypeLoader;
 };
 } // namespace EU5
 

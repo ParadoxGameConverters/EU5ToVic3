@@ -46,8 +46,20 @@
     <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryTests.cpp">
       <Filter>EU5WorldTests\CountryManagerTests</Filter>
     </ClCompile>
+    <ClCompile Include="EU5WorldTests\BuildingManagerTests\BuildingManagerTests.cpp">
+      <Filter>EU5WorldTests\BuildingManagerTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\BuildingManagerTests\EU5BuildingTests.cpp">
+      <Filter>EU5WorldTests\BuildingManagerTests</Filter>
+    </ClCompile>
     <ClCompile Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests\CommonCountryLoaderTests.cpp">
       <Filter>EU5WorldTests\LoaderTests\CommonCountryLoaderTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\LoaderTests\BuildingTypeLoaderTests\BuildingTypeLoaderTests.cpp">
+      <Filter>EU5WorldTests\LoaderTests\BuildingTypeLoaderTests</Filter>
+    </ClCompile>
+    <ClCompile Include="EU5WorldTests\LoaderTests\BuildingTypeLoaderTests\ProductionMethodTests.cpp">
+      <Filter>EU5WorldTests\LoaderTests\BuildingTypeLoaderTests</Filter>
     </ClCompile>
     <ClCompile Include="EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests\EU5LocalizationLoaderTests.cpp">
       <Filter>EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests</Filter>
@@ -248,6 +260,12 @@
     </Filter>
     <Filter Include="EU5WorldTests\LoaderTests\NamedColorsLoaderTests">
       <UniqueIdentifier>{4e786bc6-2b47-4b33-b7d0-034449b8460f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\BuildingManagerTests">
+      <UniqueIdentifier>{3bc8bb3a-a271-4eb6-afa4-658493f9ddab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5WorldTests\LoaderTests\BuildingTypeLoaderTests">
+      <UniqueIdentifier>{b5ee48fa-05be-4946-a36b-ee4e4b352786}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
