@@ -324,12 +324,14 @@ include_directories("${CMAKE_SOURCE_DIR}/commonItems/external/googletest/googlem
 file(GLOB TEST_SOURCES "EU5ToVic3Tests/*.cpp")
 file(GLOB TEST_SUB_SOURCES "EU5ToVic3Tests/*/*.cpp")
 file(GLOB TEST_SUB_SUB_SOURCES "EU5ToVic3Tests/*/*/*.cpp")
+file(GLOB TEST_SUB_SUB_SUB_SOURCES "EU5ToVic3Tests/*/*/*/*.cpp")
 
 add_executable(
 	EU5ToVic3Tests
 	${TEST_SOURCES}
 	${TEST_SUB_SOURCES}
 	${TEST_SUB_SUB_SOURCES}
+	${TEST_SUB_SUB_SUB_SOURCES}
 )
 
 set_target_properties(EU5ToVic3Tests
