@@ -39,6 +39,7 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 	modFS = commonItems::ModFilesystem(EU5Path, mods);
 
 	primeLaFabricaDeColor();
+	loadCommonCultures();
 
 	parseStream(gameState);
 	clearRegisteredKeywords();
@@ -198,6 +199,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		countryManager.loadCountries(theStream);
 		Log(LogLevel::Info) << "\t<> Imported " << countryManager.getCountries().size() << " countries.";
 	});
+	registerKeyword("culture_manager", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Importing Cultures";
+		cultureManager.loadCultures(theStream);
+		Log(LogLevel::Info) << "\t<> Imported " << cultureManager.getCultures().size() << " cultures.";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
@@ -262,4 +268,10 @@ void EU5::World::primeLaFabricaDeColor()
 		namedColors.loadColors(file);
 	}
 	Log(LogLevel::Info) << "<> Loaded " << laFabricaDeColor.getRegisteredColors().size() << " colors.";
+}
+
+void EU5::World::loadCommonCultures()
+{
+	Log(LogLevel::Info) << "-> Loading common cultures.";
+	commonCultureLoader.loadCommonCultures(modFS);
 }
