@@ -74,10 +74,7 @@
     <ClCompile Include="ConfigurationTests\ConfigurationTests.cpp" />
     <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryManagerTests.cpp" />
     <ClCompile Include="EU5WorldTests\CountryManagerTests\EU5CountryTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CultureManagerTests\CultureManagerTests.cpp" />
-    <ClCompile Include="EU5WorldTests\CultureManagerTests\EU5CultureTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\CommonCountryLoaderTests\CommonCountryLoaderTests.cpp" />
-    <ClCompile Include="EU5WorldTests\LoaderTests\CommonCultureLoaderTests\CommonCultureLoaderTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\EU5LocalizationLoaderTests\EU5LocalizationLoaderTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\ModLoaderTests\ModNamesTests.cpp" />
     <ClCompile Include="EU5WorldTests\LoaderTests\NamedColorLoaderTests\NamedColorLoaderTests.cpp" />
