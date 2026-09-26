@@ -1,6 +1,7 @@
 #include "BuildingManager/EU5Building.h"
 #include "gtest/gtest.h"
 #include <gmock/gmock-matchers.h>
+using testing::UnorderedElementsAre;
 
 TEST(EU5_EU5BuildingTests, PrimitivesDefaultToDefault)
 {
@@ -12,17 +13,16 @@ TEST(EU5_EU5BuildingTests, PrimitivesDefaultToDefault)
 	EXPECT_EQ(0, building.getLevel());
 	EXPECT_EQ(0, building.getLocationID());
 	EXPECT_EQ(0, building.getOwnerEstateID());
-	EXPECT_EQ(0, building.getPopID());
+	EXPECT_EQ(std::nullopt, building.getPopID());
 	EXPECT_EQ(0, building.getEmployed());
-	EXPECT_EQ(0, building.getEmploymentRequirement());
+	EXPECT_EQ(100, building.getEmploymentRequirement());
 	EXPECT_TRUE(building.getEmploymentRequirementStatus().empty());
 	EXPECT_EQ(0, building.getEstablishmentProgress());
 	EXPECT_EQ(0, building.getLastMonthsProfit());
 	EXPECT_EQ(0, building.getUpkeep());
-	EXPECT_FALSE(building.getOpen());
+	EXPECT_TRUE(building.getOpen());
 	EXPECT_FALSE(building.getSubsidized());
-	EXPECT_TRUE(building.getProductionMethod().empty());
-	EXPECT_EQ(0, building.getInput());
+	EXPECT_TRUE(building.getProductionMethods().empty());
 }
 
 // real save data, building_manager.database.15067 (Bohemia save, 1339.4.1)
@@ -115,6 +115,42 @@ TEST(EU5_EU5BuildingTests, ProductionMethodBlockIsParsed)
 	input << "}\n";
 	const EU5::Building building(1, input);
 
-	EXPECT_EQ("temple_maintenance", building.getProductionMethod());
-	EXPECT_DOUBLE_EQ(0.83333, building.getInput());
+	EXPECT_THAT(building.getProductionMethods(), UnorderedElementsAre("temple_maintenance"));
+}
+
+// real save data, building_manager.database.1085 (Bohemia save, 1339.4.1)
+TEST(EU5_EU5BuildingTests, MultipleProductionMethodsAreAllKept)
+{
+	std::stringstream input;
+	input << "type=jewelry_guild\n";
+	input << "level=1\n";
+	input << "location=3027\n";
+	input << "owner=1495\n";
+	input << "establishment_progress=240\n";
+	input << "silver_base={\n";
+	input << "  missing={\n";
+	input << "    demand=silver_base\n";
+	input << "  }\n";
+	input << "}\n";
+	input << "ivory_enhancement={\n";
+	input << "  missing={\n";
+	input << "    demand=ivory_enhancement\n";
+	input << "  }\n";
+	input << "}\n";
+	const EU5::Building building(1085, input);
+
+	EXPECT_THAT(building.getProductionMethods(), UnorderedElementsAre("silver_base", "ivory_enhancement"));
+}
+
+TEST(EU5_EU5BuildingTests, UnknownScalarFieldsAreNotProductionMethods)
+{
+	std::stringstream input;
+	input << "type=temple\n";
+	input << "some_future_field=5\n";
+	input << "temple_maintenance={\n";
+	input << "  input=0.5\n";
+	input << "}\n";
+	const EU5::Building building(1, input);
+
+	EXPECT_THAT(building.getProductionMethods(), UnorderedElementsAre("temple_maintenance"));
 }

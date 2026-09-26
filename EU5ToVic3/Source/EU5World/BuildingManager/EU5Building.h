@@ -1,6 +1,8 @@
 #ifndef EU5_BUILDING_H
 #define EU5_BUILDING_H
 #include "Parser.h"
+#include <optional>
+#include <set>
 #include <string>
 
 namespace EU5
@@ -16,7 +18,7 @@ class Building: commonItems::parser
 	[[nodiscard]] int getLevel() const { return level; }
 	[[nodiscard]] int getLocationID() const { return locationID; }
 	[[nodiscard]] int getOwnerEstateID() const { return ownerEstateID; }
-	[[nodiscard]] int getPopID() const { return popID; }
+	[[nodiscard]] std::optional<int> getPopID() const { return popID; }
 	[[nodiscard]] double getEmployed() const { return employed; }
 	[[nodiscard]] int getEmploymentRequirement() const { return employmentRequirement; }
 	[[nodiscard]] const auto& getEmploymentRequirementStatus() const { return employmentRequirementStatus; }
@@ -25,8 +27,7 @@ class Building: commonItems::parser
 	[[nodiscard]] double getUpkeep() const { return upkeep; }
 	[[nodiscard]] bool getOpen() const { return open; }
 	[[nodiscard]] bool getSubsidized() const { return subsidized; }
-	[[nodiscard]] const auto& getProductionMethod() const { return productionMethod; }
-	[[nodiscard]] double getInput() const { return input; }
+	[[nodiscard]] const auto& getProductionMethods() const { return productionMethods; }
 
   private:
 	void registerKeys();
@@ -36,17 +37,16 @@ class Building: commonItems::parser
 	int level = 0;
 	int locationID = 0;
 	int ownerEstateID = 0;
-	int popID = 0;
+	std::optional<int> popID;
 	double employed = 0;
-	int employmentRequirement = 0;
+	int employmentRequirement = 100;
 	std::string employmentRequirementStatus;
 	int establishmentProgress = 0;
 	double lastMonthsProfit = 0;
 	double upkeep = 0;
-	bool open = false;
+	bool open = true;
 	bool subsidized = false;
-	std::string productionMethod;
-	double input = 0;
+	std::set<std::string> productionMethods;
 };
 } // namespace EU5
 

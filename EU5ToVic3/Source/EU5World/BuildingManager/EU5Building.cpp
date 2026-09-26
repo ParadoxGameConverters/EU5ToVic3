@@ -51,12 +51,14 @@ void EU5::Building::registerKeys()
 		subsidized = commonItems::getString(theStream) == "yes";
 	});
 	registerRegex(commonItems::catchallRegex, [this](const std::string& productionMethodKey, std::istream& theStream) {
-		productionMethod = productionMethodKey;
-		parser parser;
-		parser.registerKeyword("input", [this](std::istream& theStream) {
-			input = commonItems::getDouble(theStream);
-		});
-		parser.registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-		parser.parseStream(theStream);
+		commonItems::parser::getNextTokenWithoutMatching(theStream); // remove equals
+		theStream >> std::ws;
+		if (theStream.peek() != '{')
+		{
+			commonItems::parser::getNextTokenWithoutMatching(theStream);
+			return;
+		}
+		productionMethods.emplace(productionMethodKey);
+		commonItems::ignoreItem(productionMethodKey, theStream);
 	});
 }
