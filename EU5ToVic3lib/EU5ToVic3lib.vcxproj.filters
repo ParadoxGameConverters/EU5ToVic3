@@ -55,6 +55,12 @@
     <Filter Include="EU5World\Loaders\BuildingTypeLoader">
       <UniqueIdentifier>{aa828159-ebc9-4fff-8333-a009656cf12b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EU5World\CultureManager">
+      <UniqueIdentifier>{d60311ae-9bb4-4763-80f7-7dbcca4758ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EU5World\Loaders\CommonCultureLoader">
+      <UniqueIdentifier>{640bfcf1-4f0f-445d-8732-fb450b4bd89a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\World.cpp">
@@ -112,8 +118,17 @@
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.cpp">
       <Filter>EU5World\CountryManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CultureManager\EU5Culture.cpp">
+      <Filter>EU5World\CultureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\CultureManager\CultureManager.cpp">
+      <Filter>EU5World\CultureManager</Filter>
+    </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.cpp">
       <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCultureLoader\CommonCultureLoader.cpp">
+      <Filter>EU5World\Loaders\CommonCultureLoader</Filter>
     </ClCompile>
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.cpp">
       <Filter>EU5World\Loaders\EU5LocalizationLoader</Filter>
@@ -196,8 +211,17 @@
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.h">
       <Filter>EU5World\CountryManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CultureManager\EU5Culture.h">
+      <Filter>EU5World\CultureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\CultureManager\CultureManager.h">
+      <Filter>EU5World\CultureManager</Filter>
+    </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.h">
       <Filter>EU5World\Loaders\CommonCountryLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCultureLoader\CommonCultureLoader.h">
+      <Filter>EU5World\Loaders\CommonCultureLoader</Filter>
     </ClInclude>
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\EU5LocalizationLoader\EU5LocalizationLoader.h">
       <Filter>EU5World\Loaders\EU5LocalizationLoader</Filter>

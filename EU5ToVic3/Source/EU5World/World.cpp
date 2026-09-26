@@ -40,6 +40,7 @@ EU5::World::World(const std::shared_ptr<Configuration>& theConfiguration, const 
 
 	primeLaFabricaDeColor();
 	loadBuildingTypes();
+	loadCommonCultures();
 
 	parseStream(gameState);
 	clearRegisteredKeywords();
@@ -204,6 +205,11 @@ void EU5::World::registerKeys(const std::shared_ptr<Configuration>& theConfigura
 		buildingManager.loadBuildings(theStream);
 		Log(LogLevel::Info) << "\t<> Imported " << buildingManager.getBuildings().size() << " buildings.";
 	});
+	registerKeyword("culture_manager", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\t-> Importing Cultures";
+		cultureManager.loadCultures(theStream);
+		Log(LogLevel::Info) << "\t<> Imported " << cultureManager.getCultures().size() << " cultures.";
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
@@ -274,4 +280,10 @@ void EU5::World::loadBuildingTypes()
 {
 	Log(LogLevel::Info) << "-> Loading building types.";
 	buildingTypeLoader.loadBuildingTypes(modFS);
+}
+
+void EU5::World::loadCommonCultures()
+{
+	Log(LogLevel::Info) << "-> Loading common cultures.";
+	commonCultureLoader.loadCommonCultures(modFS);
 }

@@ -2,9 +2,11 @@
 #define EU5_WORLD_H
 #include "BuildingManager/BuildingManager.h"
 #include "BuildingTypeLoader/BuildingTypeLoader.h"
+#include "CommonCultureLoader/CommonCultureLoader.h"
 #include "Configuration.h"
 #include "ConverterVersion.h"
 #include "CountryManager/EU5CountryManager.h"
+#include "CultureManager/CultureManager.h"
 #include "DatingData.h"
 #include "GameVersion.h"
 #include "LocationManager/LocationManager.h"
@@ -30,6 +32,7 @@ class World: commonItems::parser
 	void verifySave();
 	void primeLaFabricaDeColor();
 	void loadBuildingTypes();
+	void loadCommonCultures();
 
 	parser metaPreParser;
 	parser metaParser;
@@ -55,6 +58,8 @@ class World: commonItems::parser
 	CountryManager countryManager;
 	BuildingManager buildingManager;
 	BuildingTypeLoader buildingTypeLoader;
+	CultureManager cultureManager;
+	CommonCultureLoader commonCultureLoader;
 };
 } // namespace EU5
 
