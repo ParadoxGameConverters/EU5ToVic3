@@ -9,8 +9,12 @@
   <ItemGroup>
     <ClCompile Include="..\EU5ToVic3\Source\Configuration\Configuration.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5ToVic3Converter.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\BuildingManager\EU5Building.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\BuildingManager\BuildingManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\ProductionMethod.cpp" />
+    <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\BuildingTypeLoader.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CultureManager\EU5Culture.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\CultureManager\CultureManager.cpp" />
     <ClCompile Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.cpp" />
@@ -37,8 +41,12 @@
     <ClInclude Include="..\EU5ToVic3\Source\Configuration\Configuration.h" />
     <ClInclude Include="..\EU5ToVic3\Source\Configuration\DatingData.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5ToVic3Converter.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\BuildingManager\EU5Building.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\BuildingManager\BuildingManager.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5Country.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CountryManager\EU5CountryManager.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\ProductionMethod.h" />
+    <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\BuildingTypeLoader\BuildingTypeLoader.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CultureManager\EU5Culture.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\CultureManager\CultureManager.h" />
     <ClInclude Include="..\EU5ToVic3\Source\EU5World\Loaders\CommonCountryLoader\CommonCountryLoader.h" />

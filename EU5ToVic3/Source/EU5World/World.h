@@ -1,5 +1,7 @@
 #ifndef EU5_WORLD_H
 #define EU5_WORLD_H
+#include "BuildingManager/BuildingManager.h"
+#include "BuildingTypeLoader/BuildingTypeLoader.h"
 #include "CommonCultureLoader/CommonCultureLoader.h"
 #include "Configuration.h"
 #include "ConverterVersion.h"
@@ -29,6 +31,7 @@ class World: commonItems::parser
 	void registerKeys(const std::shared_ptr<Configuration>& theConfiguration, const commonItems::ConverterVersion& converterVersion);
 	void verifySave();
 	void primeLaFabricaDeColor();
+	void loadBuildingTypes();
 	void loadCommonCultures();
 
 	parser metaPreParser;
@@ -53,6 +56,8 @@ class World: commonItems::parser
 	LocationManager locationManager;
 	NamedColorsLoader namedColors;
 	CountryManager countryManager;
+	BuildingManager buildingManager;
+	BuildingTypeLoader buildingTypeLoader;
 	CultureManager cultureManager;
 	CommonCultureLoader commonCultureLoader;
 };
